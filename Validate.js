@@ -2,6 +2,7 @@ var test = {a:[6,7],b:[25,70],c:[9,34]};
 var picX = 60;
 var picY = 100;
 
+//lul
 
 function validate(obj, picX, picY) {
 
