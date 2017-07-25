@@ -1,11 +1,11 @@
 function draw() {
-    var canvas = document.getElementById('canvas');
+    var canvas = document.getElementById('Geometric_Filter');
     if (canvas.getContext) {
         var ctx = canvas.getContext('2d');
 
         for (var rec of population) {
 
-            validate(rec,picX,picY)
+            validate(rec, picX, picY)
 
             ctx.beginPath();
             ctx.moveTo(rec.a[0], rec.a[1]);
