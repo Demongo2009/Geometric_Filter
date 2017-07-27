@@ -7,14 +7,15 @@ function draw() {
 
             validate(rec, picX, picY)
 
-            ctx.fillStyle = 'rgb(200, ' + Math.floor(255 - 30 * (Math.random() * 6)) + ', ' +
-                Math.floor(255 - 30 * (Math.random() * 6)) + ')';
+            //ctx.fillStyle = 'rgb(200, ' + Math.floor(255 - 30 * (Math.random() * 6)) + ', ' +
+            //   Math.floor(255 - 30 * (Math.random() * 6)) + ')';
+            ctx.fillStyle = 'rgb(' + Math.floor(Math.random() * 256) + ', ' + Math.floor(Math.random() * 256) + ', ' +
+               Math.floor(Math.random() * 256) + ')';
+            console.log(ctx.fillStyle);
             ctx.beginPath();
             ctx.moveTo(rec.a[0], rec.a[1]);
             ctx.lineTo(rec.b[0], rec.b[1]);
             ctx.lineTo(rec.c[0], rec.c[1]);
-            //ctx.closePath();
-            //ctx.stroke();
             ctx.fill();
         }
     }
