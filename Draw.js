@@ -1,4 +1,15 @@
 function draw() {
+
+    //Display Img
+    var ctxImg = document.getElementById('Img').getContext('2d');
+    var img = new Image();
+    img.src = 'Mona_Lisa.jpg';
+
+    img.onload = function() {
+        ctxImg.drawImage(img, 0, 0);
+    }
+    //
+
     var canvas = document.getElementById('Geometric_Filter');
     if (canvas.getContext) {
         var ctx = canvas.getContext('2d');
