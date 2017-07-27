@@ -1,6 +1,6 @@
 function draw() {
 
-    //Display Img
+    // Display Img
     var ctxImg = document.getElementById('Img').getContext('2d');
     var img = new Image();
     img.src = 'Mona_Lisa.jpg';
