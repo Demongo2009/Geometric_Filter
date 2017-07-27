@@ -8,7 +8,7 @@ function draw() {
     img.onload = function() {
         ctxImg.drawImage(img, 0, 0);
     }
-    //
+    // -----
 
     var canvas = document.getElementById('Geometric_Filter');
     if (canvas.getContext) {
