@@ -7,10 +7,7 @@ function draw() {
 
             validate(rec, picX, picY)
 
-            //ctx.fillStyle = 'rgb(200, ' + Math.floor(255 - 30 * (Math.random() * 6)) + ', ' +
-            //   Math.floor(255 - 30 * (Math.random() * 6)) + ')';
-            ctx.fillStyle = 'rgb(' + Math.floor(Math.random() * 256) + ', ' + Math.floor(Math.random() * 256) + ', ' +
-               Math.floor(Math.random() * 256) + ')';
+            ctx.fillStyle = 'rgb(' + Math.floor(Math.random() * 256) + ', ' + Math.floor(Math.random() * 256) + ', ' + Math.floor(Math.random() * 256) + ')';
             console.log(ctx.fillStyle);
             ctx.beginPath();
             ctx.moveTo(rec.a[0], rec.a[1]);

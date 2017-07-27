@@ -1,5 +1,5 @@
-var picX = 700;
-var picY = 600;
+var picX = 600;
+var picY = 500;
 var x = 10;
 var population = new Array();
 
