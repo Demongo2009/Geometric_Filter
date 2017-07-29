@@ -1,7 +1,13 @@
 imgX0 = 240;
 imgY0 = 358;
 
-var test = {'a':[10,15], 'b':[8,4], 'c':[5,12], 'red':135, 'green':40, 'blue':210};
+var test = new Object();
+test.a = [10,15];
+test.b = [8,4];
+test.c = [3,12];
+test.red = 135;
+test.green = 40;
+test.blue = 210;
 
 function rank2(tri) {
 
@@ -85,7 +91,7 @@ function rank2(tri) {
 
             if (tri.red !== trianglePix[0] || tri.green !== trianglePix[1] || tri.blue !== trianglePix[2]) continue;
 
-            var imgPix = ctx.getImageData(imgX0 +left + j, imgY0 + top + i, 1, 1).data;
+            var imgPix = ctx.getImageData(imgX0 + left + j, imgY0 + top + i, 1, 1).data;
 
             var pointsOfPixel = 765 - (Math.abs(imgPix[0] - trianglePix[0]) +
                 Math.abs(imgPix[1] - trianglePix[1]) +
