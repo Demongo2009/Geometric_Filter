@@ -22,6 +22,8 @@ function draw() {
             ctx.lineTo(population[i].b[0], population[i].b[1]);
             ctx.lineTo(population[i].c[0], population[i].c[1]);
             ctx.fill();
+
+            //population[i].points = rank2(population[i]);
         }
 
         img.addEventListener('load', function() {
@@ -35,7 +37,8 @@ function draw() {
             population[i] = mutate(population[i]);
         }
 
-        setTimeout(rank, 200);
+        setTimeout(rank2, 200);
+        //setTimeout(rank, 200);
 
         //setTimeout(draw, 1000);
 

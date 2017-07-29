@@ -31,10 +31,9 @@ function triangle() {
 
     this.setColor = function(r, g, b,) {
 
-        this.color = 'rgba(' + r + ', ' + g + ', ' + b + ')';
+        this.color = 'rgb(' + r + ', ' + g + ', ' + b + ')';
     }
 
-    //this.points = rank();
 }
 
 
