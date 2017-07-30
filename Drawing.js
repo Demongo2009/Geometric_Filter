@@ -1,5 +1,5 @@
-var canvasWidth = 900;
-var canvasHeight = 600;
+var canvasWidth = 240;
+var canvasHeight = 358;
 
 function draw() {
     var canvas = document.getElementById('Geometric_Filter');
@@ -14,8 +14,6 @@ function draw() {
 
         for (var i = 0; i < trianglesLimit; i++) {
 
-            console.log(i);
-            console.log(population[i]);
             validate(population[i]);
             ctx.fillStyle = population[i].color;
 
@@ -24,10 +22,12 @@ function draw() {
             ctx.lineTo(population[i].b[0], population[i].b[1]);
             ctx.lineTo(population[i].c[0], population[i].c[1]);
             ctx.fill();
+
+            population[i].points = rank(population[i]);
         }
 
         img.addEventListener('load', function() {
-            ctx.drawImage(img, 0, 0, 220, 310);
+            ctx.drawImage(img, 240, 0, 240, 358);
         }, false);
 
         img.src = 'Mona_Lisa.jpg';
@@ -37,7 +37,9 @@ function draw() {
             population[i] = mutate(population[i]);
         }
 
-        setTimeout(draw, 1000);
+        //setTimeout(rank, 1000);
+
+        //setTimeout(draw, 1000);
 
     }
 
