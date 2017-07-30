@@ -17,66 +17,23 @@ function rank(tri) {
     var pixels = 0;
 
 
-    // Find left & right
-    if (tri.a[0] > tri.b[0]) {
+    var LR = [tri.a[0], tri.b[0], tri.c[0]];
+    LR.sort(function(a, b) {
+        return a - b;
+    })
 
-        if (tri.a[0] > tri.c[0]) {
-            var right = tri.a[0]
-
-            if (tri.b[0] > tri.c[0]) {
-                var left = tri.c[0]
-            } else {
-                var left = tri.b[0]
-            }
-
-        } else {
-            var right = tri.c[0];
-            var left = tri.b[0]
-        }
-    } else if (tri.b[0] > tri.c[0]) {
-        var right = tri.b[0]
-
-        if (tri.a[0] > tri.c[0]) {
-            var left = tri.c[0];
-        } else {
-            var left = tri.a[0];
-        }
-
-    } else {
-        var right = tri.c[0];
-        var left = tri.a[0]
-    }
+    var left = LR[0];
+    var right = LR[2];
 
 
-    // Find top and bottom
-    if (tri.a[1] > tri.b[1]) {
+    var TB = [tri.a[1], tri.b[1], tri.c[1]];
+    TB.sort(function(a, b) {
+        return a - b;
+    })
 
-        if (tri.a[1] > tri.c[1]) {
-            var bottom = tri.a[1]
+    var top = TB[0];
+    var bottom = TB[2];
 
-            if (tri.b[1] > tri.c[1]) {
-                var top = tri.c[1]
-            } else {
-                var top = tri.b[1]
-            }
-
-        } else {
-            var bottom = tri.c[1];
-            var top = tri.b[1]
-        }
-    } else if (tri.b[1] > tri.c[1]) {
-        var bottom = tri.b[1]
-
-        if (tri.a[1] > tri.c[1]) {
-            var top = tri.c[1];
-        } else {
-            var top = tri.a[1];
-        }
-
-    } else {
-        var bottom = tri.c[1];
-        var top = tri.a[1]
-    }
 
     //console.log(left + ', ' + right + ', ' + top + ', ' + bottom);
 
