@@ -1,6 +1,6 @@
-var trianglesLimit = 3;
+var trianglesLimit = 10;
 
-function triangle() {
+function Triangle() {
 
     this.a = [];
     this.b = [];
@@ -29,7 +29,7 @@ function triangle() {
         this.c[1] = cy;
     }
 
-    this.setColor = function(r, g, b,) {
+    this.setColor = function(r, g, b) {
 
         this.color = 'rgb(' + r + ', ' + g + ', ' + b + ')';
     }
@@ -42,14 +42,14 @@ function triangle() {
 var population = new Array();
 for (var i = 0; i < trianglesLimit; i++) {
 
-    population[i] = new triangle;
+    population[i] = new Triangle();
     //console.log(population[i]);
 }
 
 
 function crossover(parent1, parent2) {
 
-    var offspring = new triangle;
+    var offspring = new Triangle();
 
     offspring.setABC(parent1.a[0], parent2.a[1],
         parent1.b[0], parent2.b[1],
@@ -64,15 +64,15 @@ function crossover(parent1, parent2) {
 
 function mutate(parent) {
 
-    var offspring = new triangle();
+    var offspring = new Triangle();
 
     offspring.setABC(
         parent.a[0] - 0.5*(parent.a[0] - offspring.a[0]),
-    parent.a[0] - 0.5*(parent.a[0] - offspring.a[0]),
-    parent.a[0] - 0.5*(parent.a[0] - offspring.a[0]),
-    parent.a[0] - 0.5*(parent.a[0] - offspring.a[0]),
-    parent.a[0] - 0.5*(parent.a[0] - offspring.a[0]),
-    parent.a[0] - 0.5*(parent.a[0] - offspring.a[0]));
+        parent.a[1] - 0.5*(parent.a[1] - offspring.a[1]),
+        parent.b[0] - 0.5*(parent.b[0] - offspring.b[0]),
+        parent.b[1] - 0.5*(parent.b[1] - offspring.b[1]),
+        parent.c[0] - 0.5*(parent.c[0] - offspring.c[0]),
+        parent.c[1] - 0.5*(parent.c[1] - offspring.c[1]));
 
     offspring.setColor(parent.red - 0.5*(parent.red - offspring.red),
     parent.green - 0.5*(parent.green - offspring.green),

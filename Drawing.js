@@ -5,11 +5,6 @@ function draw() {
     var canvas = document.getElementById('Geometric_Filter');
     var img = new Image();
 
-    img.addEventListener('load', function() {
-        ctx.drawImage(img, 240, 0, 240, 358);
-    }, false);
-
-    img.src = 'Mona_Lisa.jpg';
 
     if (canvas.getContext) {
 
@@ -30,28 +25,34 @@ function draw() {
             ctx.fill();
 
             //population[i].points = rank(population[i]);
-            console.log(population[i]);
+            //console.log(population[i]);
         }
+
+
+        img.addEventListener('load', function() {
+            ctx.drawImage(img, 240, 0, 240, 358);
+        }, false);
+
+        img.src = 'Mona_Lisa.jpg';
 /*
         population.sort(function(a, b) {
 
             return b.points - a.points;
         })
 */
-        console.log(population);
+        //console.log(population);
 
-/*
+
         for (var i = 0; i < trianglesLimit; i++) {
 
             population[i] = mutate(population[i]);
             //console.log(population[i]);
         }
-*/
+
 
 
         //setTimeout(rank, 1000);
-
-        //setTimeout(draw, 1000);
+        setTimeout(draw, 1000);
 
 
     }
