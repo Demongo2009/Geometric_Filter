@@ -25,7 +25,6 @@ function draw() {
             ctx.fill();
 
             //population[i].points = rank(population[i]);
-            //console.log(population[i]);
         }
 
 
@@ -46,9 +45,10 @@ function draw() {
         for (var i = 0; i < trianglesLimit; i++) {
 
             population[i] = mutate(population[i]);
-            //console.log(population[i]);
+            console.log(population[i].points);
         }
 
+        console.log(population);
 
 
         //setTimeout(rank, 1000);

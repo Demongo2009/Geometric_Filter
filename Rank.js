@@ -61,7 +61,7 @@ function rank(tri) {
 
     //console.log(pixels);
     var ranking = (points/(765 * pixels)) * 100;
-    console.log(ranking);
+    //console.log(ranking);
     return ranking;
 }
 

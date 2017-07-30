@@ -1,4 +1,4 @@
-var trianglesLimit = 10;
+var trianglesLimit = 3;
 
 function Triangle() {
 
