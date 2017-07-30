@@ -29,18 +29,30 @@ function draw() {
             ctx.lineTo(population[i].c[0], population[i].c[1]);
             ctx.fill();
 
-            population[i].points = rank(population[i]);
+            //population[i].points = rank(population[i]);
+            console.log(population[i]);
         }
+/*
+        population.sort(function(a, b) {
 
+            return b.points - a.points;
+        })
+*/
+        console.log(population);
 
+/*
         for (var i = 0; i < trianglesLimit; i++) {
 
             population[i] = mutate(population[i]);
+            //console.log(population[i]);
         }
+*/
+
 
         //setTimeout(rank, 1000);
 
         //setTimeout(draw, 1000);
+
 
     }
 

@@ -34,6 +34,8 @@ function triangle() {
         this.color = 'rgb(' + r + ', ' + g + ', ' + b + ')';
     }
 
+    this.points = 0;
+
 }
 
 
@@ -41,11 +43,11 @@ var population = new Array();
 for (var i = 0; i < trianglesLimit; i++) {
 
     population[i] = new triangle;
-    console.log(population[i]);
+    //console.log(population[i]);
 }
 
 
-var crossover = function(parent1, parent2) {
+function crossover(parent1, parent2) {
 
     var offspring = new triangle;
 
@@ -60,7 +62,7 @@ var crossover = function(parent1, parent2) {
     return offspirng
 }
 
-var mutate = function (parent) {
+function mutate(parent) {
 
     var offspring = new triangle();
 
