@@ -1,4 +1,4 @@
-var trianglesLimit = 5;
+var trianglesLimit = 2;
 
 function triangle() {
 
@@ -6,12 +6,12 @@ function triangle() {
     this.b = [];
     this.c = [];
 
-    this.a[0] = Math.random() * canvasWidth;
-    this.a[1] = Math.random() * canvasHeight;
-    this.b[0] = Math.random() * canvasWidth;
-    this.b[1] = Math.random() * canvasHeight;
-    this.c[0] = Math.random() * canvasWidth;
-    this.c[1] = Math.random() * canvasHeight;
+    this.a[0] = Math.floor(Math.random() * canvasWidth);
+    this.a[1] = Math.floor(Math.random() * canvasWidth);
+    this.b[0] = Math.floor(Math.random() * canvasWidth);
+    this.b[1] = Math.floor(Math.random() * canvasWidth);
+    this.c[0] = Math.floor(Math.random() * canvasWidth);
+    this.c[1] = Math.floor(Math.random() * canvasWidth);
 
     this.red = Math.floor(Math.random() * 256);
     this.green = Math.floor(Math.random() * 256);
@@ -41,6 +41,7 @@ var population = new Array();
 for (var i = 0; i < trianglesLimit; i++) {
 
     population[i] = new triangle;
+    console.log(population[i]);
 }
 
 
