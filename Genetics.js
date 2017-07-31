@@ -1,4 +1,5 @@
-var trianglesLimit = 20;
+
+var trianglesLimit = 5;
 
 function triangle() {
 
@@ -52,9 +53,9 @@ var crossover = function(parent1, parent2) {
         parent1.b[0], parent2.b[1],
         parent1.c[0], parent2.c[1]);
 
-    offspring.setColor(Math.abs(parent1.red - parent2.red),
-        Math.abs(parent1.green - parent2.green),
-        Math.abs(parent1.blue - parent2.blue));
+    offspring.setColor(parent1.red - 0.5*(parent1.red - parent2.red),
+        parent1.green - 0.5*(parent1.green - parent2.green),
+        parent1.blue - 0.5*(parent1.blue - parent2.blue));
 
     return offspirng
 }
@@ -63,16 +64,17 @@ var mutate = function (parent) {
 
     var offspring = new triangle();
 
-    offspring.setABC(Math.abs(parent.a[0] * Math.random() - parent.a[0] * Math.random()),
-        Math.abs(parent.a[1] * Math.random() - parent.a[1] * Math.random()),
-        Math.abs(parent.b[0] * Math.random() - parent.b[0] * Math.random()),
-        Math.abs(parent.b[1] * Math.random() - parent.b[1] * Math.random()),
-        Math.abs(parent.c[0] * Math.random() - parent.c[0] * Math.random()),
-        Math.abs(parent.c[1] * Math.random() - parent.c[1] * Math.random()));
+    offspring.setABC(
+        parent.a[0] - 0.5*(parent.a[0] - offspring.a[0]),
+        parent.a[0] - 0.5*(parent.a[0] - offspring.a[0]),
+        parent.a[0] - 0.5*(parent.a[0] - offspring.a[0]),
+        parent.a[0] - 0.5*(parent.a[0] - offspring.a[0]),
+        parent.a[0] - 0.5*(parent.a[0] - offspring.a[0]),
+        parent.a[0] - 0.5*(parent.a[0] - offspring.a[0]));
 
-    offspring.setColor(Math.abs(parent.red - offspring.red),
-        Math.abs(parent.green - offspring.green),
-        Math.abs(parent.blue - offspring.blue));
+    offspring.setColor(parent.red - 0.5*(parent.red - offspring.red),
+        parent.green - 0.5*(parent.green - offspring.green),
+        parent.blue - 0.5*(parent.blue - offspring.blue));
 
     return offspring;
 }
