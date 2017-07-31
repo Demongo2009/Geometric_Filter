@@ -6,7 +6,7 @@ test.red = 135;
 test.green = 40;
 test.blue = 210;
 
-function rank(tri) {
+function rank(triangle) {
 
     countRank++;
 
@@ -16,7 +16,7 @@ function rank(tri) {
     var pixels = 0;
 
 
-    var LR = [tri.a[0], tri.b[0], tri.c[0]];
+    var LR = [triangle.a[0], triangle.b[0], triangle.c[0]];
     LR.sort(function(a, b) {
         return a - b;
     })
@@ -25,7 +25,7 @@ function rank(tri) {
     var right = LR[2];
 
 
-    var TB = [tri.a[1], tri.b[1], tri.c[1]];
+    var TB = [triangle.a[1], triangle.b[1], triangle.c[1]];
     TB.sort(function(a, b) {
         return a - b;
     })
@@ -43,7 +43,7 @@ function rank(tri) {
             var trianglePix = ctx.getImageData(left + j, top + i, 1, 1).data;
             //console.log(trianglePix);
 
-            if (tri.red !== trianglePix[0] || tri.green !== trianglePix[1] || tri.blue !== trianglePix[2]) continue;
+            if (triangle.red !== trianglePix[0] || triangle.green !== trianglePix[1] || triangle.blue !== trianglePix[2]) continue;
 
             var imgPix = ctx.getImageData(imgX0 + left + j, top + i, 1, 1).data;
 
@@ -62,6 +62,7 @@ function rank(tri) {
     //console.log(pixels);
     var ranking = (points/(765 * pixels)) * 100;
     //console.log(ranking);
+    console.log('WutFace');
     return ranking;
 }
 

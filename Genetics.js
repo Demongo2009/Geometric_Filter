@@ -1,3 +1,33 @@
+var canvasWidth = 240;
+var canvasHeight = 358;
+var trianglesLimit = 3;
+var countDraw = 0;
+var countRank = 0;
+var imgX0 = 240;
+var imgY0 = 358;
+
+function main() {
+
+     canvasWidth = 240;
+     canvasHeight = 358;
+     trianglesLimit = 3;
+     countDraw = 0;
+     countRank = 0;
+     imgX0 = 240;
+     imgY0 = 358;
+
+    population = new Array();
+    for (var i = 0; i < trianglesLimit; i++) {
+
+        population[i] = new Triangle();
+        console.log(countRank);
+        console.log(population[i]);
+    }
+
+    draw();
+}
+
+
 function Triangle() {
 
     this.a = [];
@@ -30,23 +60,29 @@ function Triangle() {
     this.setColor = function(r, g, b) {
 
         this.color = 'rgb(' + r + ', ' + g + ', ' + b + ')';
+        this.red = r;
+        this.green = g;
+        this.blue = b;
     }
+//var points=false;
+    //this.points = points;
 
-    this.points = 0;
-
+    console.log(this);
 }
 
-
+/*
 var population = new Array();
 for (var i = 0; i < trianglesLimit; i++) {
 
     population[i] = new Triangle;
+    console.log(countRank);
+    console.log(population[i]);
 }
-
+*/
 
 function crossover(parent1, parent2) {
 
-    var offspring = new Triangle;
+    var offspring = new Triangle();
 
     offspring.setABC(parent1.a[0], parent2.a[1],
         parent1.b[0], parent2.b[1],

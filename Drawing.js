@@ -1,8 +1,8 @@
 function draw() {
     var canvas = document.getElementById('Geometric_Filter');
     var img = new Image();
-    console.log(countDraw);
-    countDraw++;
+    //console.log(countDraw);
+    //countDraw++;
 
     if (canvas.getContext) {
 
@@ -16,8 +16,8 @@ function draw() {
 
         ctx.clearRect(0, 0, canvasWidth, canvasHeight);
 
-        console.log(countRank);
-        console.log(population);
+        //console.log(countRank);
+        //console.log(population);
 
 
         for (var i = 0; i < trianglesLimit; i++) {
@@ -36,8 +36,6 @@ function draw() {
             //console.log(population);
         }
 
-
-
         /*
         for (var i = 0; i < trianglesLimit; i++) {
 
@@ -48,7 +46,7 @@ function draw() {
 
         //setTimeout(rank, 1000);
 
-        setTimeout(draw, 1000);
+        //setTimeout(draw, 1000);
 
     }
 
