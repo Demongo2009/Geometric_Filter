@@ -65,4 +65,8 @@ function rank(tri) {
     return ranking;
 }
 
+<<<<<<< HEAD
 //rank(test);
+=======
+//rank(test);
+>>>>>>> 6f9b741345924a11aaf82664e2e755640f40ab17
