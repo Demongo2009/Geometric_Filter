@@ -1,6 +1,3 @@
-imgX0 = 240;
-imgY0 = 358;
-
 var test = new Object();
 test.a = [10,15];
 test.b = [8,4];
@@ -10,6 +7,8 @@ test.green = 40;
 test.blue = 210;
 
 function rank(tri) {
+
+    countRank++;
 
     var canvas = document.getElementById('Geometric_Filter');
     var ctx = canvas.getContext('2d');
@@ -59,6 +58,7 @@ function rank(tri) {
         }
     }
 
+    if (points === 0) console.log('Kappa123');
     //console.log(pixels);
     var ranking = (points/(765 * pixels)) * 100;
     //console.log(ranking);
