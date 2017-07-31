@@ -65,9 +65,11 @@ function Triangle() {
         this.blue = b;
     }
 //var points=false;
-    //this.points = points;
+    //this.points = 1;
 
+    console.log(this.hasOwnProperty("points"));
     console.log(this);
+    console.log(this.hasOwnProperty("points"));
 }
 
 /*

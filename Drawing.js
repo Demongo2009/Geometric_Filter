@@ -31,17 +31,18 @@ function draw() {
             ctx.lineTo(population[i].c[0], population[i].c[1]);
             ctx.fill();
 
+            console.log('wtf');
             population[i].points = rank(population[i]);
             //console.log(population[i].points);
             //console.log(population);
         }
 
-        /*
+
         for (var i = 0; i < trianglesLimit; i++) {
 
             population[i] = mutate(population[i]);
         }
-*/
+
 
 
         //setTimeout(rank, 1000);
