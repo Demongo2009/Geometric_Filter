@@ -12,7 +12,7 @@ function rank(triangle) {
 
     var canvas = document.getElementById('Geometric_Filter');
     var ctx = canvas.getContext('2d');
-    var points = 0;
+    var pointsSummedUp = 0;
     var pixels = 0;
 
 
@@ -45,24 +45,29 @@ function rank(triangle) {
 
             if (triangle.red !== trianglePix[0] || triangle.green !== trianglePix[1] || triangle.blue !== trianglePix[2]) continue;
 
-            var imgPix = ctx.getImageData(imgX0 + left + j, top + i, 1, 1).data;
 
+            var imgPix = ctx.getImageData(imgX0 + left + j, top + i, 1, 1).data;
+            if (pixels === 0) console.log(imgPix);
+
+            ctx.strokeRect(imgX0 + left + j, top + i, 1, 1); // Test
 
             var pointsOfPixel = 765 - (Math.abs(imgPix[0] - trianglePix[0]) +
-                Math.abs(imgPix[1] - trianglePix[1]) +
-                Math.abs(imgPix[2] - trianglePix[2]));
+               Math.abs(imgPix[1] - trianglePix[1]) +
+               Math.abs(imgPix[2] - trianglePix[2]));
+
+            //var pointsOfPixel = checkColor(trianglePix, imgPix);
 
             pixels++;
-            points += pointsOfPixel;
+            pointsSummedUp += pointsOfPixel;
 
         }
     }
     console.log('Pixels: ' + pixels);
-    if (points === 0) console.log('Kappa123');
-    //console.log(pixels);
-    var ranking = (points/(765 * pixels)) * 100;
-    //console.log(ranking);
+    if (pointsSummedUp === 0) console.log('Points = 0');
+    var ranking = (pointsSummedUp/(765 * pixels)) * 100;
+    //var ranking = pointsSummedUp/pixels;
     console.log('Rank performing');
+    console.log('Ranking: ' + ranking);
     return ranking;
 }
 

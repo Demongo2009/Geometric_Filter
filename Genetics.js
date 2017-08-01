@@ -21,7 +21,7 @@ function main() {
 
         population[i] = new Triangle();
         console.log('Rank: ' + countRank);
-        console.log(population[i]);
+        //console.log(population[i]);
     }
 
     draw();

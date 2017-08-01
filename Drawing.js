@@ -37,12 +37,12 @@ function draw() {
             //console.log(population);
         }
 
-
+/*
         for (var i = 0; i < trianglesLimit; i++) {
 
             population[i] = mutate(population[i]);
         }
-
+*/
 
 
         //setTimeout(rank, 1000);

@@ -6,7 +6,10 @@ var countRank = 0;
 var imgX0 = 240;
 var imgY0 = 358;
 
+
+
 function main() {
+
 
     var canvasWidth = 240;
     var canvasHeight = 358;
@@ -25,4 +28,5 @@ function main() {
     }
 
     draw();
+
 }
