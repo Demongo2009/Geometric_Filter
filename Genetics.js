@@ -1,11 +1,3 @@
-var canvasWidth = 240;
-var canvasHeight = 358;
-var trianglesLimit = 3;
-var countDraw = 0;
-var countRank = 0;
-var imgX0 = 240;
-var imgY0 = 358;
-
 function main() {
 
      canvasWidth = 240;
@@ -13,8 +5,6 @@ function main() {
      trianglesLimit = 3;
      countDraw = 0;
      countRank = 0;
-     imgX0 = 240;
-     imgY0 = 358;
 
     population = new Array();
     for (var i = 0; i < trianglesLimit; i++) {
@@ -68,7 +58,7 @@ function Triangle() {
     //this.points = 1;
 
     console.log(this.hasOwnProperty("points"));
-    console.log(this);
+    console.log(JSON.stringify(this));
     console.log(this.hasOwnProperty("points"));
 }
 

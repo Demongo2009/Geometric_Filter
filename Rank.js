@@ -10,8 +10,10 @@ function rank(triangle) {
 
     countRank++;
 
-    var canvas = document.getElementById('Geometric_Filter');
+    var canvas = document.getElementById('GeometricFilter');
+    var image = document.getElementById('image');
     var ctx = canvas.getContext('2d');
+    var ctxImg = image.getContext('2d');
     var pointsSummedUp = 0;
     var pixels = 0;
 
@@ -46,10 +48,10 @@ function rank(triangle) {
             if (triangle.red !== trianglePix[0] || triangle.green !== trianglePix[1] || triangle.blue !== trianglePix[2]) continue;
 
 
-            var imgPix = ctx.getImageData(imgX0 + left + j, top + i, 1, 1).data;
+            var imgPix = ctxImg.getImageData(left + j, top + i, 1, 1).data;
             if (pixels === 0) console.log(imgPix);
 
-            ctx.strokeRect(imgX0 + left + j, top + i, 1, 1); // Test
+            ctxImg.strokeRect(left + j, top + i, 1, 1); // Test
 
             var pointsOfPixel = 765 - (Math.abs(imgPix[0] - trianglePix[0]) +
                Math.abs(imgPix[1] - trianglePix[1]) +
