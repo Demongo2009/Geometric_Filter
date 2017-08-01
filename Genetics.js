@@ -57,7 +57,7 @@ function Triangle() {
     //console.log(JSON.stringify(this));
 }
 
-
+/*
 function crossover(parent1, parent2) {
 
     var offspring = new Triangle();
@@ -78,17 +78,12 @@ function mutate(parent) {
     var offspring = new Triangle();
     console.log(JSON.stringify(offspring.red + ' ' + offspring.green + ' ' + offspring.blue));
 
-    //offspring.setABC(
-
         offspring.a[0] = Math.floor(parent.a[0] - 0.5*(parent.a[0] - offspring.a[0]));
         offspring.a[1] = Math.floor(parent.a[1] - 0.5*(parent.a[1] - offspring.a[1]));
         offspring.b[0] = Math.floor(parent.b[0] - 0.5*(parent.b[0] - offspring.b[0]));
         offspring.b[1] = Math.floor(parent.b[1] - 0.5*(parent.b[1] - offspring.b[1]));
         offspring.c[0] = Math.floor(parent.c[0] - 0.5*(parent.c[0] - offspring.c[0]));
         offspring.c[1] = Math.floor(parent.c[1] - 0.5*(parent.c[1] - offspring.c[1]));
-
-
-    //offspring.setColor(
 
         offspring.red = Math.floor(parent.red - 0.5*(parent.red - offspring.red));
         offspring.green = Math.floor(parent.green - 0.5*(parent.green - offspring.green));
@@ -97,10 +92,8 @@ function mutate(parent) {
         offspring.color = 'rgb(' + offspring.red + ', ' + offspring.green + ', ' + offspring.blue + ')';
 
     console.log('\n');
-    console.log(JSON.stringify(offspring.red));
-    console.log(JSON.stringify(offspring.red + ' ' + offspring.green + ' ' + offspring.blue));;
-
-    //console.log(offspring.setColor());
+    console.log(JSON.stringify(offspring.red + ' ' + offspring.green + ' ' + offspring.blue));
 
     return offspring;
 }
+*/

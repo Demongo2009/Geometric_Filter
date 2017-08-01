@@ -57,7 +57,7 @@ function rank(triangle) {
     //var ranking = (pointsSummedUp/(765 * pixels)) * 100;
     var ranking = pointsSummedUp/pixels;
     //console.log('Rank performing');
-    console.log('Ranking: ' + ranking);
+    //console.log('Ranking: ' + ranking);
     return ranking;
 }
 

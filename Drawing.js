@@ -32,7 +32,7 @@ function draw() {
             ctx.lineTo(population[i].c[0], population[i].c[1]);
             ctx.fill();
 
-            console.log('Drawing triangle');
+            //console.log('Drawing triangle');
             population[i].points = rank(population[i]);
             //console.log(population[i].points);
         }
@@ -41,11 +41,11 @@ function draw() {
         for (var i = 0; i < trianglesLimit; i++) {
 
             population[i] = mutate(population[i]);
-            console.log(JSON.stringify(population[i]));
+            //console.log(JSON.stringify(population[i]));
         }
 
 
-        setTimeout(draw, 2000);
+        setTimeout(draw, 200);
 
         }, false);
 
