@@ -13,7 +13,7 @@ function checkColor(trianglePix, imgPix) {
 
     var pointsOfPixel = colors[2];
 
-    console.log('Pixel gains: ' + pointsOfPixel + ' points');
+    //console.log('Pixel gains: ' + pointsOfPixel + ' points');
     return pointsOfPixel;
 
 }

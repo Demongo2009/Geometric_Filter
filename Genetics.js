@@ -3,14 +3,11 @@ function main() {
      canvasWidth = 240;
      canvasHeight = 358;
      trianglesLimit = 3;
-     countDraw = 0;
-     countRank = 0;
 
     population = new Array();
     for (var i = 0; i < trianglesLimit; i++) {
 
         population[i] = new Triangle();
-        console.log('Rank: ' + countRank);
         //console.log(population[i]);
     }
 
@@ -24,12 +21,12 @@ function Triangle() {
     this.b = [];
     this.c = [];
 
-    this.a[0] = Math.random() * canvasWidth;
-    this.a[1] = Math.random() * canvasHeight;
-    this.b[0] = Math.random() * canvasWidth;
-    this.b[1] = Math.random() * canvasHeight;
-    this.c[0] = Math.random() * canvasWidth;
-    this.c[1] = Math.random() * canvasHeight;
+    this.a[0] = Math.floor(Math.random() * canvasWidth);
+    this.a[1] = Math.floor(Math.random() * canvasHeight);
+    this.b[0] = Math.floor(Math.random() * canvasWidth);
+    this.b[1] = Math.floor(Math.random() * canvasHeight);
+    this.c[0] = Math.floor(Math.random() * canvasWidth);
+    this.c[1] = Math.floor(Math.random() * canvasHeight);
 
     this.red = Math.floor(Math.random() * 256);
     this.green = Math.floor(Math.random() * 256);
@@ -37,6 +34,7 @@ function Triangle() {
 
     this.color = 'rgb(' + this.red + ', ' + this.green + ', ' + this.blue + ')';
 
+    /*
     this.setABC = function(ax, ay, bx, by, cx, cy) {
 
         this.a[0] = ax;
@@ -50,27 +48,15 @@ function Triangle() {
     this.setColor = function(r, g, b) {
 
         this.color = 'rgb(' + r + ', ' + g + ', ' + b + ')';
-        this.red = r;
-        this.green = g;
-        this.blue = b;
+        //this.red = r;
+        //this.green = g;
+        //this.blue = b;
     }
-//var points=false;
-    //this.points = 1;
 
-    console.log(this.hasOwnProperty("points"));
-    console.log(JSON.stringify(this));
-    console.log(this.hasOwnProperty("points"));
-}
-
-/*
-var population = new Array();
-for (var i = 0; i < trianglesLimit; i++) {
-
-    population[i] = new Triangle;
-    console.log(countRank);
-    console.log(population[i]);
-}
 */
+    //console.log(JSON.stringify(this));
+}
+
 
 function crossover(parent1, parent2) {
 
@@ -84,24 +70,37 @@ function crossover(parent1, parent2) {
         parent1.green - 0.5*(parent1.green - parent2.green),
         parent1.blue - 0.5*(parent1.blue - parent2.blue));
 
-    return offspirng
+    return offspring;
 }
 
 function mutate(parent) {
 
     var offspring = new Triangle();
+    console.log(JSON.stringify(offspring.red + ' ' + offspring.green + ' ' + offspring.blue));
 
-    offspring.setABC(
-        parent.a[0] - 0.5*(parent.a[0] - offspring.a[0]),
-        parent.a[1] - 0.5*(parent.a[1] - offspring.a[1]),
-        parent.b[0] - 0.5*(parent.b[0] - offspring.b[0]),
-        parent.b[1] - 0.5*(parent.b[1] - offspring.b[1]),
-        parent.c[0] - 0.5*(parent.c[0] - offspring.c[0]),
-        parent.c[1] - 0.5*(parent.c[1] - offspring.c[1]));
+    //offspring.setABC(
 
-    offspring.setColor(parent.red - 0.5*(parent.red - offspring.red),
-        parent.green - 0.5*(parent.green - offspring.green),
-        parent.blue - 0.5*(parent.blue - offspring.blue));
+        offspring.a[0] = Math.floor(parent.a[0] - 0.5*(parent.a[0] - offspring.a[0]));
+        offspring.a[1] = Math.floor(parent.a[1] - 0.5*(parent.a[1] - offspring.a[1]));
+        offspring.b[0] = Math.floor(parent.b[0] - 0.5*(parent.b[0] - offspring.b[0]));
+        offspring.b[1] = Math.floor(parent.b[1] - 0.5*(parent.b[1] - offspring.b[1]));
+        offspring.c[0] = Math.floor(parent.c[0] - 0.5*(parent.c[0] - offspring.c[0]));
+        offspring.c[1] = Math.floor(parent.c[1] - 0.5*(parent.c[1] - offspring.c[1]));
+
+
+    //offspring.setColor(
+
+        offspring.red = Math.floor(parent.red - 0.5*(parent.red - offspring.red));
+        offspring.green = Math.floor(parent.green - 0.5*(parent.green - offspring.green));
+        offspring.blue = Math.floor(parent.blue - 0.5*(parent.blue - offspring.blue));
+
+        offspring.color = 'rgb(' + offspring.red + ', ' + offspring.green + ', ' + offspring.blue + ')';
+
+    console.log('\n');
+    console.log(JSON.stringify(offspring.red));
+    console.log(JSON.stringify(offspring.red + ' ' + offspring.green + ' ' + offspring.blue));;
+
+    //console.log(offspring.setColor());
 
     return offspring;
 }

@@ -37,14 +37,15 @@ function draw() {
             //console.log(population[i].points);
         }
 
-/*
+
         for (var i = 0; i < trianglesLimit; i++) {
 
             population[i] = mutate(population[i]);
+            console.log(JSON.stringify(population[i]));
         }
-*/
 
-        //setTimeout(draw, 1000);
+
+        setTimeout(draw, 2000);
 
         }, false);
 
