@@ -20,7 +20,7 @@ function main() {
     for (var i = 0; i < trianglesLimit; i++) {
 
         population[i] = new Triangle();
-        console.log(countRank);
+        console.log('Rank: ' + countRank);
         console.log(population[i]);
     }
 

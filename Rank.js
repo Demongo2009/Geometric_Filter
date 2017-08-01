@@ -57,12 +57,12 @@ function rank(triangle) {
 
         }
     }
-    console.log(pixels);
+    console.log('Pixels: ' + pixels);
     if (points === 0) console.log('Kappa123');
     //console.log(pixels);
     var ranking = (points/(765 * pixels)) * 100;
     //console.log(ranking);
-    console.log('WutFace');
+    console.log('Rank performing');
     return ranking;
 }
 

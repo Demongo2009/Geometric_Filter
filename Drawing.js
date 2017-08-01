@@ -31,7 +31,7 @@ function draw() {
             ctx.lineTo(population[i].c[0], population[i].c[1]);
             ctx.fill();
 
-            console.log('wtf');
+            console.log('Drawing triangle');
             population[i].points = rank(population[i]);
             //console.log(population[i].points);
             //console.log(population);
