@@ -53,7 +53,10 @@ function rank(triangle) {
         }
     }
     //console.log('Pixels: ' + pixels);
-    if (pointsSummedUp === 0) console.log('Points = 0');
+    if (pointsSummedUp === 0) {
+        console.log('Pixels: ' + pixels);
+        console.log('Points = 0');
+    }
     //var ranking = (pointsSummedUp/(765 * pixels)) * 100;
     var ranking = pointsSummedUp/pixels;
     //console.log('Rank performing');

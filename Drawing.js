@@ -13,7 +13,7 @@ function draw() {
         img.addEventListener('load', function() {
             ctxImg.drawImage(img, 0, 0, 240, 358);
 
-            console.log("Image drawn");
+            //console.log("Image drawn");
 
         ctx.clearRect(0, 0, canvasWidth, canvasHeight);
 
@@ -38,12 +38,14 @@ function draw() {
         }
 
 
-        for (var i = 0; i < trianglesLimit; i++) {
+        population.sort(function(a, b) {
 
-            population[i] = mutate(population[i]);
-            //console.log(JSON.stringify(population[i]));
-        }
+            return a.points - b.points;
+            })
 
+            //console.log(JSON.stringify(population));
+
+            population = generation(population);
 
         setTimeout(draw, 200);
 
