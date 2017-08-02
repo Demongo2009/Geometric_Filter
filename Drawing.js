@@ -33,6 +33,7 @@ function draw() {
             ctx.fill();
 
             //console.log('Drawing triangle');
+            var imageData=ctxImg.getImageData(0,0,canvasWidth,canvasHeight).data;
             population[i].points = rank(population[i]);
             //console.log(population[i].points);
         }
@@ -47,7 +48,7 @@ function draw() {
 
             population = generation(population);
 
-        setTimeout(draw, 200);
+        //setTimeout(draw, 200);
 
         }, false);
 

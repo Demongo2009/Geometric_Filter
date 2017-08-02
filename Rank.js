@@ -1,14 +1,44 @@
-function rank(triangle) {
+function rank(obj) {
 
     var canvas = document.getElementById('GeometricFilter');
     var image = document.getElementById('image');
     var ctx = canvas.getContext('2d');
     var ctxImg = image.getContext('2d');
-    var pointsSummedUp = 0;
-    var pixels = 0;
 
 
-    var LR = [triangle.a[0], triangle.b[0], triangle.c[0]];
+
+    // line1=(iy-obj.a[1])*(obj.b[0]-obj.a[0])-(obj.b[1]-obj.a[1])*(ix-obj.a[0]);
+    // y=((obj.b[1]-obj.a[1])*(ix-obj.a[0]))/(obj.b[0]-obj.a[0])+obj.a[1];
+
+    // line2=(iy-obj.b[1])*(obj.c[0]-obj.b[0])-(obj.c[1]-obj.b[1])*(ix-obj.b[0]);
+    //y=((obj.c[1]-obj.b[1])*(ix-obj.b[0]))/(obj.c[0]-obj.b[0])+obj.b[1];
+
+    // line3=(iy-obj.c[1])*(obj.a[0]-obj.c[0])-(obj.a[1]-obj.c[1])*(ix-obj.c[0]);
+    //y=((obj.a[1]-obj.c[1])*(ix-obj.c[0]))/(obj.a[0]-obj.c[0])+obj.c[1];
+
+
+
+    if(obj.c[1]< ( (obj.b[1] - obj.a[1]) * (obj.c[0] - obj.a[0]) )/ (obj.b[0] - obj.a[0]) + obj.a[1])
+        //pod
+        var c_is_under=true;
+    else
+        var c_is_under=false;
+
+    if(obj.a[1]< ( (obj.c[1]-obj.b[1])*(obj.a[0]-obj.b[0])) /(obj.c[0]-obj.b[0])+obj.b[1])
+    //pod
+        var a_is_under=true;
+    else
+        var a_is_under=false;
+
+
+    if(obj.b[1]< ( (obj.a[1]-obj.c[1])*(obj.b[0]-obj.c[0]) )/(obj.a[0]-obj.c[0])+obj.c[1])
+    //pod
+        var b_is_under=true;
+    else
+        var b_is_under=false;
+
+
+    var LR = [obj.a[0], obj.b[0], obj.c[0]];
     LR.sort(function(a, b) {
         return a - b;
     })
@@ -17,7 +47,7 @@ function rank(triangle) {
     var right = LR[2];
 
 
-    var TB = [triangle.a[1], triangle.b[1], triangle.c[1]];
+    var TB = [obj.a[1], obj.b[1], obj.c[1]];
     TB.sort(function(a, b) {
         return a - b;
     })
@@ -26,42 +56,57 @@ function rank(triangle) {
     var bottom = TB[2];
 
 
-    //console.log(left + ', ' + right + ', ' + top + ', ' + bottom);
+    var side1 = right-left;
+    var side2= bottom- top;
 
-    for (var i = 0; i < (Math.abs(top - bottom)); i++) {
+    var area= side1 * side2;
 
-        for (var j = 0; j < (Math.abs(left - right)); j++) {
+var c_is_in=false;
+var a_is_in=false;
+var b_is_in=false;
+var points=0;
+    for(var i=left*top; i<left+area; i+4) {
+        var pixel_x=left+(Math.floor(i/4) % side1);
+        var pixel_y=top+(Math.floor(i/4/ side1));
+        var line_x = pixel_x;
+        var line_ab =( (obj.b[1] - obj.a[1]) * (line_x - obj.a[0]) )/ (obj.b[0] - obj.a[0]) + obj.a[1];
+        var line_cb =( (obj.c[1]-obj.b[1])*(line_x-obj.b[0])) /(obj.c[0]-obj.b[0])+obj.b[1];
+        var line_ac=( (obj.a[1]-obj.c[1])*(line_x-obj.c[0]) )/(obj.a[0]-obj.c[0])+obj.c[1];
 
-            var trianglePix = ctx.getImageData(left + j, top + i, 1, 1).data;
-
-            if (triangle.red !== trianglePix[0] || triangle.green !== trianglePix[1] || triangle.blue !== trianglePix[2]) continue;
-
-
-            var imgPix = ctxImg.getImageData(left + j, top + i, 1, 1).data;
-
-            //ctxImg.strokeRect(left + j, top + i, 1, 1); // Test
-
-            //var pointsOfPixel = 765 - (Math.abs(imgPix[0] - trianglePix[0]) +
-            //   Math.abs(imgPix[1] - trianglePix[1]) +
-            //   Math.abs(imgPix[2] - trianglePix[2]));
-
-            var pointsOfPixel = checkColor(trianglePix, imgPix);
-
-            pixels++;
-            pointsSummedUp += pointsOfPixel;
-
+        if ((pixel_y < line_ab) === c_is_under){
+            c_is_in=true;
         }
+        if ((pixel_y < line_cb) === a_is_under){
+            a_is_in=true;
+        }
+        if ((pixel_y < line_ac) === b_is_under){
+            b_is_in=true;
+        }
+
+        if(c_is_in && a_is_in && b_is_in){
+            points+=765-(obj.red- imageData[i])-(obj.green-imageData[i+1])
+            -(obj.blue - imageData[i+2]);
+
+
+        }else continue;
     }
-    //console.log('Pixels: ' + pixels);
-    if (pointsSummedUp === 0) {
-        console.log('Pixels: ' + pixels);
-        console.log('Points = 0');
-    }
-    //var ranking = (pointsSummedUp/(765 * pixels)) * 100;
-    var ranking = pointsSummedUp/pixels;
-    //console.log('Rank performing');
-    //console.log('Ranking: ' + ranking);
-    return ranking;
+
+     console.log(points);
+    return points;
+
 }
 
 //rank(test);
+/*var left=0;
+    var tope= 0;
+    var side1=10;
+    var side2=10;
+    var area=side1*side2;
+    var counter=0;
+    for(var i=0; i<area*4;i++){
+    var pixel_x=left+(Math.floor(i/4) % side1);
+    var pixel_y=tope+(Math.floor(i/4/ side1));
+
+    console.log(pixel_x+ " "+ pixel_y+" "+counter);
+    counter++;
+    }*/

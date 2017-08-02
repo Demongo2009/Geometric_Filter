@@ -2,7 +2,7 @@ function main() {
 
      canvasWidth = 240;
      canvasHeight = 358;
-     trianglesLimit = 20;
+     trianglesLimit = 3;
 
     population = new Array();
     for (var i = 0; i < trianglesLimit; i++) {
