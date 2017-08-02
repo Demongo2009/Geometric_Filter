@@ -1,8 +1,10 @@
+/*
 function main() {
 
      canvasWidth = 240;
      canvasHeight = 358;
      trianglesLimit = 20;
+     imgPix = ctxImg.getImageData(0, 0, canvasWidth, canvasHeight).data;
 
     population = new Array();
     for (var i = 0; i < trianglesLimit; i++) {
@@ -13,7 +15,7 @@ function main() {
 
     draw();
 }
-
+*/
 
 function Triangle() {
 

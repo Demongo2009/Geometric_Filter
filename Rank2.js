@@ -7,7 +7,6 @@ function rank(triangle) {
     var pointsSummedUp = 0;
     var pixels = 0;
 
-
     var LR = [triangle.a[0], triangle.b[0], triangle.c[0]];
     LR.sort(function(a, b) {
         return a - b;
@@ -26,7 +25,13 @@ function rank(triangle) {
     var bottom = TB[2];
 
 
-    //console.log(left + ', ' + right + ', ' + top + ', ' + bottom);
+    var YW1 = (((triangle.b[1] - triangle.a[1])*(triangle.c[0] - triangle.a[0]))/(triangle.b[0] - triangle.a[0])) + triangle.a[1];
+
+    var YW2 = (((triangle.c[1] - triangle.b[1])*(triangle.a[0] - triangle.b[0]))/(triangle.c[0] - triangle.b[0])) + triangle.b[1];
+
+    var YW3 = (((triangle.c[1] - triangle.a[1])*(triangle.c[0] - triangle.a[0]))/(triangle.c[0] - triangle.a[0])) + triangle.a[1];
+
+
 
     for (var i = 0; i < (Math.abs(top - bottom)); i++) {
         for (var j = 0; j < (Math.abs(left - right)); j++) {
@@ -34,18 +39,9 @@ function rank(triangle) {
             var pixX = left + j;
             var pixY = top + i;
 
-            var trianglePix = ctx.getImageData(left + j, top + i, 1, 1).data;
-
-            if (triangle.red !== trianglePix[0] || triangle.green !== trianglePix[1] || triangle.blue !== trianglePix[2]) continue;
+            if (!mathAnalysis(triangle, YW1, YW2, YW3, pixX, pixY)) continue;
 
 
-            var imgPix = ctxImg.getImageData(left + j, top + i, 1, 1).data;
-
-            //ctxImg.strokeRect(left + j, top + i, 1, 1); // Test
-
-            //var pointsOfPixel = 765 - (Math.abs(imgPix[0] - trianglePix[0]) +
-            //   Math.abs(imgPix[1] - trianglePix[1]) +
-            //   Math.abs(imgPix[2] - trianglePix[2]));
 
             var pointsOfPixel = checkColor(trianglePix, imgPix);
 
