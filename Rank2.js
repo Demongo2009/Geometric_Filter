@@ -40,9 +40,9 @@ function rank(triangle) {
 
             if (!mathAnalysis(triangle, YW1, YW2, YW3, pixX, pixY)) continue;
 
-            console.log('\n');
+            //console.log('\n');
 
-            var startSlice = (i * (canvasWidth * 4)) + (j * 4) + 1;
+            var startSlice = (i * (canvasWidth * 4)) + (j * 4);
 
             var imgPixData = imgData.slice(startSlice, startSlice + 4);
             console.log(imgPixData);

@@ -1,5 +1,6 @@
 function main() {
 
+    console.log('It lives!');
     counter = 0;
 
     canvasWidth = 240;
@@ -15,6 +16,9 @@ function main() {
 
     var canvas = document.getElementById('GeometricFilter');
     var image = document.getElementById('image');
+
+    //var imgData = ctxImg.getImageData(0, 0, canvasWidth, canvasHeight).data;
+    //console.log(imgData);
 
     var img = new Image();
 
@@ -34,7 +38,7 @@ function main() {
 
             draw();
 
-        setTimeout(draw, 200);
+        //setTimeout(draw, 200);
 
         }, false);
 
