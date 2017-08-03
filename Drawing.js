@@ -6,20 +6,24 @@ function draw() {
     //console.log(population);
 
 
-    for (var i = 0; i < trianglesLimit; i++) {
+    for (var i = 0; i < popLength; i++) {
 
-        validate(population[i]);
-        ctx.fillStyle = population[i].color;
+        for (var j = 0; j < 10; j++) {
 
-        ctx.beginPath();
-        ctx.moveTo(population[i].a[0], population[i].a[1]);
-        ctx.lineTo(population[i].b[0], population[i].b[1]);
-        ctx.lineTo(population[i].c[0], population[i].c[1]);
-        ctx.fill();
+            validate(population[i][j]);
 
-        //console.log('Drawing triangle');
+            ctx.fillStyle = population[i][j].color;
+
+            ctx.beginPath();
+            ctx.moveTo(population[i][j].a[0], population[i][j].a[1]);
+            ctx.lineTo(population[i][j].b[0], population[i][j].b[1]);
+            ctx.lineTo(population[i][j].c[0], population[i][j].c[1]);
+            ctx.fill();
+
+
+        }
+
         population[i].points = rank(population[i]);
-        //console.log(population[i].points);
     }
 
 
@@ -31,5 +35,6 @@ function draw() {
     //console.log(JSON.stringify(population));
 
     population = generation(population);
+    console.log('New generation');
 
 }

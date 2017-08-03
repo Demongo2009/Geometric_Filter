@@ -3,15 +3,22 @@ function main() {
     console.log('It lives!');
     counter = 0;
 
-    canvasWidth = 240;
-    canvasHeight = 358;
-    trianglesLimit = 3;
+    canvasWidth = 30;
+    canvasHeight = 45;
+    trianglesLimit = 10;
+    popLength = 20;
 
     population = new Array();
-    for (var i = 0; i < trianglesLimit; i++) {
 
-        population[i] = new Triangle();
-        //console.log(population[i]);
+    for (var i = 0; i < popLength; i++) {
+
+        population[i] = new Object()
+
+        for (var j = 0; j < trianglesLimit; j++) {
+
+            var newTriangle = new Triangle();
+            population[i][j] = newTriangle;
+        }
     }
 
     var canvas = document.getElementById('GeometricFilter');
@@ -29,16 +36,16 @@ function main() {
 
 
         img.addEventListener('load', function() {
-            ctxImg.drawImage(img, 0, 0, 240, 358);
+            ctxImg.drawImage(img, 0, 0, 30, 45);
 
-            imgData = ctxImg.getImageData(0, 0, canvasWidth, canvasHeight).data;
+            imgData = ctxImg.getImageData(0, 0, 30, 45).data;
             console.log(imgData);
 
             console.log("Image drawn");
 
             draw();
 
-        //setTimeout(draw, 200);
+        setTimeout(draw, 200);
 
         }, false);
 
