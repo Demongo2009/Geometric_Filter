@@ -1,9 +1,5 @@
 function rank(triangle) {
 
-    var canvas = document.getElementById('GeometricFilter');
-    var image = document.getElementById('image');
-    var ctx = canvas.getContext('2d');
-    var ctxImg = image.getContext('2d');
     var pointsSummedUp = 0;
     var pixels = 0;
 
@@ -31,19 +27,27 @@ function rank(triangle) {
 
     var YW3 = (((triangle.c[1] - triangle.a[1])*(triangle.c[0] - triangle.a[0]))/(triangle.c[0] - triangle.a[0])) + triangle.a[1];
 
+    var BTside = bottom - top;
+    var RLside = right - left;
 
-
-    for (var i = 0; i < (Math.abs(top - bottom)); i++) {
-        for (var j = 0; j < (Math.abs(left - right)); j++) {
+    for (var i = 0; i < BTside; i++) {
+        for (var j = 0; j < RLside; j++) {
 
             var pixX = left + j;
             var pixY = top + i;
 
+            //console.log('\n');
+
             if (!mathAnalysis(triangle, YW1, YW2, YW3, pixX, pixY)) continue;
 
+            console.log('\n');
 
+            var startSlice = (i * (canvasWidth * 4)) + (j * 4) + 1;
 
-            var pointsOfPixel = checkColor(trianglePix, imgPix);
+            var imgPixData = imgData.slice(startSlice, startSlice + 4);
+            console.log(imgPixData);
+
+            var pointsOfPixel = checkColor(triangle, imgPixData);
 
             pixels++;
             pointsSummedUp += pointsOfPixel;

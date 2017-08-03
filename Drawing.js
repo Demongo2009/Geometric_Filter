@@ -1,4 +1,4 @@
-function draw(ctx) {
+function draw() {
 
     ctx.clearRect(0, 0, canvasWidth, canvasHeight);
 

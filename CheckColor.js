@@ -1,8 +1,8 @@
-function checkColor(triangle, imgPix) {
+function checkColor(triangle, imgPixData) {
 
-    var redOdds = Math.abs(triangle.red - imgPix[0]);
-    var greenOdds = Math.abs(triangle.green - imgPix[1]);
-    var blueOdds = Math.abs(triangle.blue - imgPix[2]);
+    var redOdds = Math.abs(triangle.red - imgPixData[0]);
+    var greenOdds = Math.abs(triangle.green - imgPixData[1]);
+    var blueOdds = Math.abs(triangle.blue - imgPixData[2]);
 
     var colors = [redOdds, greenOdds, blueOdds];
 

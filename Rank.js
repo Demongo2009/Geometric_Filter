@@ -1,4 +1,4 @@
-function rank(triangle) {
+function rank2(triangle) {
 
     var canvas = document.getElementById('GeometricFilter');
     var image = document.getElementById('image');

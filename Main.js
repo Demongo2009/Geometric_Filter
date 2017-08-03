@@ -1,8 +1,10 @@
 function main() {
 
+    counter = 0;
+
     canvasWidth = 240;
     canvasHeight = 358;
-    trianglesLimit = 10;
+    trianglesLimit = 3;
 
     population = new Array();
     for (var i = 0; i < trianglesLimit; i++) {
@@ -18,17 +20,19 @@ function main() {
 
     if (canvas.getContext) {
 
-        var ctx = canvas.getContext('2d');
-        var ctxImg = image.getContext('2d');
+        ctx = canvas.getContext('2d');
+        ctxImg = image.getContext('2d');
 
-        imgPix = ctxImg.getImageData(0, 0, canvasWidth, canvasHeight).data;
 
         img.addEventListener('load', function() {
             ctxImg.drawImage(img, 0, 0, 240, 358);
 
-            //console.log("Image drawn");
+            imgData = ctxImg.getImageData(0, 0, canvasWidth, canvasHeight).data;
+            console.log(imgData);
 
-            draw(ctx);
+            console.log("Image drawn");
+
+            draw();
 
         setTimeout(draw, 200);
 
