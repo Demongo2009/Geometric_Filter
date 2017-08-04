@@ -1,34 +1,17 @@
-/*
-function main() {
-
-     canvasWidth = 240;
-     canvasHeight = 358;
-     trianglesLimit = 20;
-     imgPix = ctxImg.getImageData(0, 0, canvasWidth, canvasHeight).data;
-
-    population = new Array();
-    for (var i = 0; i < trianglesLimit; i++) {
-
-        population[i] = new Triangle();
-        //console.log(population[i]);
-    }
-
-    draw();
-}
-*/
-
 function Triangle() {
 
     this.a = [];
     this.b = [];
     this.c = [];
 
-    this.a[0] = Math.floor(Math.random() * canvasWidth);
-    this.a[1] = Math.floor(Math.random() * canvasHeight);
-    this.b[0] = Math.floor(Math.random() * canvasWidth);
-    this.b[1] = Math.floor(Math.random() * canvasHeight);
-    this.c[0] = Math.floor(Math.random() * canvasWidth);
-    this.c[1] = Math.floor(Math.random() * canvasHeight);
+    do {
+        this.a[0] = Math.floor(Math.random() * canvasWidth);
+        this.a[1] = Math.floor(Math.random() * canvasHeight);
+        this.b[0] = Math.floor(Math.random() * canvasWidth);
+        this.b[1] = Math.floor(Math.random() * canvasHeight);
+        this.c[0] = Math.floor(Math.random() * canvasWidth);
+        this.c[1] = Math.floor(Math.random() * canvasHeight);
+    } while (this.a[0] === this.b[0] || this.a[0] === this.c[0] || this.b[0] === this.c[0] || this.a[1] === this.b[1] || this.a[1] === this.c[1] || this.b[1] === this.c[1]);
 
     this.red = Math.floor(Math.random() * 256);
     this.green = Math.floor(Math.random() * 256);
@@ -59,43 +42,3 @@ function Triangle() {
     //console.log(JSON.stringify(this));
 }
 
-/*
-function crossover(parent1, parent2) {
-
-    var offspring = new Triangle();
-
-    offspring.setABC(parent1.a[0], parent2.a[1],
-        parent1.b[0], parent2.b[1],
-        parent1.c[0], parent2.c[1]);
-
-    offspring.setColor(parent1.red - 0.5*(parent1.red - parent2.red),
-        parent1.green - 0.5*(parent1.green - parent2.green),
-        parent1.blue - 0.5*(parent1.blue - parent2.blue));
-
-    return offspring;
-}
-
-function mutate(parent) {
-
-    var offspring = new Triangle();
-    console.log(JSON.stringify(offspring.red + ' ' + offspring.green + ' ' + offspring.blue));
-
-        offspring.a[0] = Math.floor(parent.a[0] - 0.5*(parent.a[0] - offspring.a[0]));
-        offspring.a[1] = Math.floor(parent.a[1] - 0.5*(parent.a[1] - offspring.a[1]));
-        offspring.b[0] = Math.floor(parent.b[0] - 0.5*(parent.b[0] - offspring.b[0]));
-        offspring.b[1] = Math.floor(parent.b[1] - 0.5*(parent.b[1] - offspring.b[1]));
-        offspring.c[0] = Math.floor(parent.c[0] - 0.5*(parent.c[0] - offspring.c[0]));
-        offspring.c[1] = Math.floor(parent.c[1] - 0.5*(parent.c[1] - offspring.c[1]));
-
-        offspring.red = Math.floor(parent.red - 0.5*(parent.red - offspring.red));
-        offspring.green = Math.floor(parent.green - 0.5*(parent.green - offspring.green));
-        offspring.blue = Math.floor(parent.blue - 0.5*(parent.blue - offspring.blue));
-
-        offspring.color = 'rgb(' + offspring.red + ', ' + offspring.green + ', ' + offspring.blue + ')';
-
-    console.log('\n');
-    console.log(JSON.stringify(offspring.red + ' ' + offspring.green + ' ' + offspring.blue));
-
-    return offspring;
-}
-*/

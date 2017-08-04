@@ -5,10 +5,11 @@ function draw() {
     //console.log(countRank);
     //console.log(population);
 
+    console.log(population);
 
     for (var i = 0; i < popLength; i++) {
 
-        for (var j = 0; j < 10; j++) {
+        for (var j = 0; j < trianglesLimit; j++) {
 
             validate(population[i][j]);
 
@@ -32,9 +33,10 @@ function draw() {
         return a.points - b.points;
     })
 
-    //console.log(JSON.stringify(population));
+    console.log('\n');
+    console.log(population);
 
-    population = generation(population);
-    console.log('New generation');
+    //population = generation(population);
+    //console.log('New generation');
 
 }

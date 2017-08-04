@@ -36,16 +36,16 @@ function main() {
 
 
         img.addEventListener('load', function() {
-            ctxImg.drawImage(img, 0, 0, 30, 45);
+            ctxImg.drawImage(img, 0, 0, canvasWidth, canvasHeight);
 
-            imgData = ctxImg.getImageData(0, 0, 30, 45).data;
-            console.log(imgData);
+            imgData = ctxImg.getImageData(0, 0, canvasWidth, canvasHeight).data;
+            //console.log(imgData);
 
             console.log("Image drawn");
 
             draw();
 
-        setTimeout(draw, 200);
+        //setTimeout(draw, 200);
 
         }, false);
 
