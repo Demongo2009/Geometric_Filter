@@ -21,6 +21,8 @@ function main() {
         }
     }
 
+    console.log(population);
+
     var canvas = document.getElementById('GeometricFilter');
     var image = document.getElementById('image');
 
@@ -45,7 +47,7 @@ function main() {
 
             draw();
 
-        //setTimeout(draw, 200);
+        setTimeout(draw, 200);
 
         }, false);
 

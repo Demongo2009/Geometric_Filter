@@ -8,6 +8,7 @@ function rank(triangles) {
         var pixels = 0;
 
         var w = triangles[i].a[0];
+        console.log(w);
         var t = triangles[i].b[0];
         var f = triangles[i].c[0];
 
@@ -64,7 +65,7 @@ function rank(triangles) {
 
         console.log(pixels);
         console.log(pointsOfTriangle);
-        if (pixels === 0) debugger;
+       // if (pixels === 0) debugger;
         if (typeof pointsOfTriangle !== 'number') debugger;
         console.log('\n');
         pointsOfTriangle = pointsOfTriangle / pixels;
@@ -84,4 +85,3 @@ function rank(triangles) {
     return ranking;
 }
 
-//rank(test);

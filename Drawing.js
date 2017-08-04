@@ -36,7 +36,7 @@ function draw() {
     console.log('\n');
     console.log(population);
 
-    //population = generation(population);
+    population = generation(population);
     //console.log('New generation');
 
 }

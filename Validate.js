@@ -1,6 +1,6 @@
 function validate(obj) {
 
-    if (typeof obj !== 'object') throw 'Error1';
+    if (typeof obj !== 'object') {debugger;} //throw 'Error1';}
 
     if (obj.hasOwnProperty('a') !== true || obj.hasOwnProperty('b') !== true || obj.hasOwnProperty('c') !== true) throw 'Error2';
 
