@@ -22,13 +22,8 @@ function main() {
         }
     }
 
-    console.log(population);
-
     var canvas = document.getElementById('GeometricFilter');
     var image = document.getElementById('image');
-
-    //var imgData = ctxImg.getImageData(0, 0, canvasWidth, canvasHeight).data;
-    //console.log(imgData);
 
     var img = new Image();
 
@@ -50,5 +45,4 @@ function main() {
         img.src = 'Mona_Lisa.jpg';
 
     }
-
 }

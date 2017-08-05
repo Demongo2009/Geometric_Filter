@@ -24,7 +24,6 @@ function generation(population) {
 
         for (var j = 0; j < trianglesLimit; j++) {
 
-            //var newTriangle = new Triangle();
             newGroupOfTriangles[j] = new Triangle();
         }
 
