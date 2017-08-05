@@ -19,7 +19,7 @@ function draw() {
         }
 
         population[i].points = rank();
-        if (population[i].points < 20) console.log(population[i]);
+        if (population[i].points < 10) console.log(population[i].points);
     }
 
     //console.log('Drawn');
@@ -29,7 +29,7 @@ function draw() {
     })
 
     population = generation(population);
-    if ( generationNumber % 100 === 0) console.log('Generation number: ' + generationNumber);
+    if ( generationNumber % 1000 === 0) console.log('Generation number: ' + generationNumber);
     setTimeout(draw, 10);
 
 }

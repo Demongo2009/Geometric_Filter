@@ -1,3 +1,26 @@
+function Mutate(population) {
+
+    var mutatedPopulation = population;
+    var mutationNumber = 1;
+
+    for (var i = 0; i < mutatedPopulation.length; i++) {
+
+        var event = Math.floor(Math.random() * mutationNumber);
+
+        if (event === 0) {
+            mutatedPopulation[i] = mutate2(mutatedPopulation[i])
+
+        } else if (event === 1) {
+            mutatedPopulation[i] = mutate1(mutatedPopulation[i])
+        }
+
+    }
+
+    return mutatedPopulation;
+}
+
+
+
 function mutate1(parent) {
 
     var offspring = parent;
@@ -11,7 +34,7 @@ function mutate1(parent) {
 function mutate2(parent) {
 
     var offspring = parent;
-    var chanceToChange = 4;
+    var chanceToChange = 2;
     var maxChangeFactor = 1.05;
     var minChangeFactor  = 0.95;
 

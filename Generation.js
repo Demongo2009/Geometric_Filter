@@ -17,6 +17,8 @@ function generation(population) {
         newGeneration.push(offSpr);
     }
 
+    newGeneration = Mutate(newGeneration);
+
 
     for (var i = 0; i < popLength * 0.4; i++) {
 
