@@ -1,28 +1,49 @@
-function mutate(parent) {
+function mutate1(parent) {
 
-    var offspring = new Triangle();
+    var offspring = parent;
 
-
+    var rand = Math.floor(Math.random() * trianglesLimit);
+    offspring[rand] = new Triangle();
 
     return offspring;
 }
 
+function mutate2(parent) {
 
-function crossover(parent1, parent2) {
+    var offspring = parent;
+    var chanceToChange = 4;
+    var maxChangeFactor = 1.05;
+    var minChangeFactor  = 0.95;
 
-    var newGroupOfTriangles = new Object();
+    for (var i = 0; i < trianglesLimit; i++) {
 
-    var rand = Math.floor(Math.random() * trianglesLimit);
+        if (Math.floor(Math.random() * chanceToChange) === 0) {
+            var red = offspring[i].red;
+            offspring[i].red *= Math.random * (maxChangeFactor - minChangeFactor) + minChangeFactor;
+            if (offspring[i].red === 0 || offspring[i].red >= 255) offspring[i].red = red;
+        }
 
-    for (var i = 0; i <= rand; i++) {
+        if (Math.floor(Math.random() * chanceToChange) === 0) {
+            var green = offspring[i].green;
+            offspring[i].green *= Math.random * (maxChangeFactor - minChangeFactor) + minChangeFactor;
+            if (offspring[i].green === 0 || offspring[i].green >= 255) offspring[i].green = green;
+        }
 
-        newGroupOfTriangles[i] = parent1[i];
+        if (Math.floor(Math.random() * chanceToChange) === 0) {
+            var blue = offspring[i].blue;
+            offspring[i].blue *= Math.random * (maxChangeFactor - minChangeFactor) + minChangeFactor;
+            if (offspring[i].blue === 0 || offspring[i].blue >= 255) offspring[i].blue = blue;
+        }
     }
 
-    for (var i = rand + 1; i < trianglesLimit; i++) {
+    return offspring;
+}
 
-        newGroupOfTriangles[i] = parent2[i];
-    }
+function mutate3(parent) {
 
-    return newGroupOfTriangles;
+    var offspring = parent;
+
+    
+
+    return offspring;
 }
