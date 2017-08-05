@@ -46,7 +46,7 @@ function rank(triangles) {
                 var pixY = top + y;
 
                 //console.log(mathAnalysis(triangles[i], YW1, YW2, YW3, pixX, pixY));
-                if (!mathAnalysis(triangles[i], YW1, YW2, YW3, pixX, pixY)) continue;
+                if (!mathAnalysis(triangles[i], YW1, YW2, YW3, pixX, pixY)){ continue;}
 
                 //console.log('\n');
 
@@ -59,13 +59,12 @@ function rank(triangles) {
 
                 pixels++;
                 pointsOfTriangle += pointsOfPixel;
-                pointsOfTriangle = pointsOfTriangle;
             }
         }
 
         console.log(pixels);
         console.log(pointsOfTriangle);
-       // if (pixels === 0) debugger;
+        if (pixels === 0) debugger;
         if (typeof pointsOfTriangle !== 'number') debugger;
         console.log('\n');
         pointsOfTriangle = pointsOfTriangle / pixels;
