@@ -5,8 +5,9 @@ function main() {
 
     canvasWidth = 30;
     canvasHeight = 45;
-    trianglesLimit = 10;
-    popLength = 20;
+    trianglesLimit = 5;
+    popLength = 10;
+    canvasSqure = canvasWidth * canvasHeight;
 
     population = new Array();
 
@@ -47,7 +48,7 @@ function main() {
 
             draw();
 
-        setTimeout(draw, 200);
+        setTimeout(draw, 500);
 
         }, false);
 

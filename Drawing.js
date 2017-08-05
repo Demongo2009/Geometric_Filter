@@ -24,7 +24,7 @@ function draw() {
 
         }
 
-        population[i].points = rank(population[i]);
+        population[i].points = rank();
     }
 
 
@@ -33,8 +33,8 @@ function draw() {
         return a.points - b.points;
     })
 
-    console.log('\n');
-    console.log(population);
+    //console.log('\n');
+    //console.log(population);
 
     population = generation(population);
     //console.log('New generation');
