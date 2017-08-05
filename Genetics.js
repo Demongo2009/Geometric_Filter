@@ -18,27 +18,4 @@ function Triangle() {
     this.blue = Math.floor(Math.random() * 256);
 
     this.color = 'rgb(' + this.red + ', ' + this.green + ', ' + this.blue + ')';
-
-    /*
-    this.setABC = function(ax, ay, bx, by, cx, cy) {
-
-        this.a[0] = ax;
-        this.a[1] = ay;
-        this.b[0] = bx;
-        this.b[1] = by;
-        this.c[0] = cx;
-        this.c[1] = cy;
-    }
-
-    this.setColor = function(r, g, b) {
-
-        this.color = 'rgb(' + r + ', ' + g + ', ' + b + ')';
-        //this.red = r;
-        //this.green = g;
-        //this.blue = b;
-    }
-
-*/
-    //console.log(JSON.stringify(this));
 }
-

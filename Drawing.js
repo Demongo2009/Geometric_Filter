@@ -1,13 +1,8 @@
 function draw() {
 
-    ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-
-    //console.log(countRank);
-    //console.log(population);
-
-    console.log(population);
-
     for (var i = 0; i < popLength; i++) {
+
+        ctx.clearRect(0, 0, canvasWidth, canvasHeight);
 
         for (var j = 0; j < trianglesLimit; j++) {
 
@@ -21,7 +16,6 @@ function draw() {
             ctx.lineTo(population[i][j].c[0], population[i][j].c[1]);
             ctx.fill();
 
-
         }
 
         population[i].points = rank();
@@ -33,10 +27,6 @@ function draw() {
         return a.points - b.points;
     })
 
-    //console.log('\n');
-    //console.log(population);
-
     population = generation(population);
-    //console.log('New generation');
 
 }

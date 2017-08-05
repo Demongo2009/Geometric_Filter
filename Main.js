@@ -42,9 +42,6 @@ function main() {
             ctxImg.drawImage(img, 0, 0, canvasWidth, canvasHeight);
 
             imgData = ctxImg.getImageData(0, 0, canvasWidth, canvasHeight).data;
-            //console.log(imgData);
-
-            console.log("Image drawn");
 
             draw();
 
