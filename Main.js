@@ -1,12 +1,12 @@
 function main() {
 
     console.log('It lives!');
-    counter = 0;
 
+    generationNumber = 0;
     canvasWidth = 30;
     canvasHeight = 45;
-    trianglesLimit = 5;
-    popLength = 10;
+    trianglesLimit = 10;
+    popLength = 20;
     canvasSqure = canvasWidth * canvasHeight;
 
     population = new Array();
@@ -44,8 +44,6 @@ function main() {
             imgData = ctxImg.getImageData(0, 0, canvasWidth, canvasHeight).data;
 
             draw();
-
-        setTimeout(draw, 500);
 
         }, false);
 

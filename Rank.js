@@ -19,7 +19,6 @@ function rank() {
     }
 
     var ranking = points / pixels;
-
     return ranking;
 }
 

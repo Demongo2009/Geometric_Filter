@@ -5,19 +5,14 @@ function generation(population) {
 
     for (var i = 0; i < popLength * 0.4; i++) {
 
-        for (var j = 0; j < trianglesLimit; j++) {
+        do {
 
-            do {
+            var rand1 = Math.floor(Math.random() * (popLength * 0.2));
+            var rand2 = Math.floor(Math.random() * (popLength * 0.2));
 
-                var rand1 = Math.floor(Math.random() * (popLength * 0.2));
-                var rand2 = Math.floor(Math.random() * (popLength * 0.2));
+        } while (rand1 === rand2);
 
-            } while (rand1 === rand2);
-
-            var offSpr = crossover(best[rand1], best[rand2]);
-            //offSpr = mutate(offSpr);
-
-        }
+        var offSpr = crossover(best[rand1], best[rand2]);
 
         newGeneration.push(offSpr);
     }
@@ -36,7 +31,7 @@ function generation(population) {
         newGeneration.push(newGroupOfTriangles);
     }
 
-
-    console.log(newGeneration);
+    generationNumber++;
+    //console.log(newGeneration);
     return newGeneration;
 }
