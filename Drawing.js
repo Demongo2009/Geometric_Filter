@@ -19,7 +19,25 @@ function draw() {
         }
 
         population[i].points = rank();
-        if (population[i].points < 10) console.log(population[i].points);
+
+        if (population[i].points < 18) {
+            console.log(JSON.stringify(population[i]));
+            console.log(population[i].points);
+            bestOfPopulation.push(population[i]);
+
+            if (bestOfPopulation.length === popLength) {
+                console.log(JSON.stringify(bestOfPopulation));
+                console.log('bestOfPopulation full');
+                drawBest(bestOfPopulation);
+                break;
+            }
+
+            for (var j = 0; j < trianglesLimit; j++) {
+
+                population[i][j] = new Triangle();
+            }
+
+        }
     }
 
     //console.log('Drawn');
@@ -30,6 +48,33 @@ function draw() {
 
     population = generation(population);
     if ( generationNumber % 1000 === 0) console.log('Generation number: ' + generationNumber);
-    setTimeout(draw, 10);
+
+    if (keepGoingLoop) setTimeout(draw, 10);
+}
+
+
+function drawBest (bestOfPopulation) {
+
+    console.log(JSON.stringify(bestOfPopulation));
+
+    keepGoingLoop = false;
+
+    for (var i = popLength - 1; i >= 0; i--) {
+
+        for (var j = trianglesLimit - 1; j >= 0; j--) {
+
+            validate(bestOfPopulation[i][j]);
+
+            ctx.fillStyle = bestOfPopulation[i][j].color;
+
+            ctx.beginPath();
+            ctx.moveTo(bestOfPopulation[i][j].a[0], bestOfPopulation[i][j].a[1]);
+            ctx.lineTo(bestOfPopulation[i][j].b[0], bestOfPopulation[i][j].b[1]);
+            ctx.lineTo(bestOfPopulation[i][j].c[0], bestOfPopulation[i][j].c[1]);
+            ctx.fill();
+
+        }
+    }
+
 
 }

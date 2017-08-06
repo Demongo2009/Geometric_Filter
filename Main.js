@@ -5,9 +5,12 @@ function main() {
     generationNumber = 0;
     canvasWidth = 30;
     canvasHeight = 45;
-    trianglesLimit = 10;
+    trianglesLimit = 8;
     popLength = 20;
     canvasSqure = canvasWidth * canvasHeight;
+    keepGoingLoop = true;
+
+    bestOfPopulation = new Array();
 
     population = new Array();
 
