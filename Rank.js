@@ -7,18 +7,22 @@ function rank() {
     for (var i = 0; i < canvasSqure; i += 4) {
 
         var trianglesPixData = trianglesData.slice(i, i + 4);
-        if (trianglesPixData[3] === 0) continue;
+        //if (trianglesPixData[3] === 0){
 
-        var imgPixData = imgData.slice(i, i + 4);
+          //  continue;
+        //}else {
 
-        var pointsOfPixel = checkColor(trianglesPixData, imgPixData);
+            var imgPixData = imgData.slice(i, i + 4);
+
+            var pointsOfPixel = checkColor(trianglesPixData, imgPixData);
+        //}
 
         pixels++;
         //console.log(pixels);
         points += pointsOfPixel;
     }
 
-    var ranking = points / pixels;
+    var ranking = points;
     return ranking;
 }
 

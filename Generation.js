@@ -16,7 +16,7 @@ function generation(population) {
 
         newGeneration.push(offSpr);
     }
-
+    if(Math.random()*rank(population[0])>canvasSqure*255*0.01);
     newGeneration = Mutate(newGeneration);
 
 

@@ -20,12 +20,12 @@ function draw() {
 
         population[i].points = rank();
 
-        if (population[i].points < 18) {
+        if (population[i].points < canvasSqure*255*0.01) {
             console.log(JSON.stringify(population[i]));
             console.log(population[i].points);
             bestOfPopulation.push(population[i]);
 
-            if (bestOfPopulation.length === popLength) {
+            if (bestOfPopulation.length === 1) {
                 console.log(JSON.stringify(bestOfPopulation));
                 console.log('bestOfPopulation full');
                 drawBest(bestOfPopulation);
@@ -47,7 +47,6 @@ function draw() {
     })
 
     population = generation(population);
-    console.log(population);
     if ( generationNumber % 1000 === 0) console.log('Generation number: ' + generationNumber);
 
     if (keepGoingLoop) setTimeout(draw, 10);
@@ -60,9 +59,9 @@ function drawBest (bestOfPopulation) {
 
     keepGoingLoop = false;
 
-    for (var i = popLength - 1; i >= 0; i--) {
+    for (var i = 1 - 1; i >= 0; i--) {
 
-        for (var j = trianglesLimit - 1; j >= 0; j--) {
+        for (var j = 1 - 1; j >= 0; j--) {
 
             validate(bestOfPopulation[i][j]);
 
