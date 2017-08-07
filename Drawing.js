@@ -47,7 +47,7 @@ function draw() {
     })
 
     population = generation(population);
-    console.log(population);
+    //console.log(population);
     if ( generationNumber % 1000 === 0) console.log('Generation number: ' + generationNumber);
 
     if (keepGoingLoop) setTimeout(draw, 10);
