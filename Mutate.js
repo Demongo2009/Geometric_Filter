@@ -10,15 +10,15 @@ function Mutate(population) {
         switch (event) {
 
             case 0:
-                mutatedPopulation[i] = mutate1(mutatedPopulation[i]);
-                break;
-
-            case 1:
                 mutatedPopulation[i] = mutate2(mutatedPopulation[i]);
                 break;
 
-            case 2:
+            case 1:
                 mutatedPopulation[i] = mutate3(mutatedPopulation[i]);
+                break;
+
+            case 2:
+                mutatedPopulation[i] = mutate4(mutatedPopulation[i]);
                 break;
         }
     }
@@ -30,17 +30,14 @@ function Mutate(population) {
 
 function mutate1(parent) {
 
-    var offspring = parent;
-
     var rand = Math.floor(Math.random() * trianglesLimit);
-    offspring[rand] = new Triangle();
+    parent[rand] = new Triangle();
 
-    return offspring;
+    return parent;
 }
 
 function mutate2(parent) {
 
-    var offspring = parent;
     var chanceToChange = 3;
     var maxChangeFactor = 1.05;
     var minChangeFactor  = 0.95;
@@ -48,27 +45,26 @@ function mutate2(parent) {
     for (var i = 0; i < trianglesLimit; i++) {
 
         if (Math.floor(Math.random() * chanceToChange) === 0) {
-            offspring[i].red = Math.floor(offspring[i].red * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor));
-            if (offspring[i].red >= 255) offspring[i].red = Math.floor(offspring[i].red * minChangeFactor);
+            parent[i].red = Math.floor(parent[i].red * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor));
+            if (parent[i].red >= 255) parent[i].red = Math.floor(parent[i].red * minChangeFactor);
         }
 
         if (Math.floor(Math.random() * chanceToChange) === 0) {
-            offspring[i].green = Math.floor(offspring[i].green * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor));
-            if (offspring[i].green >= 255) offspring[i].green = Math.floor(offspring[i].green * minChangeFactor);
+            parent[i].green = Math.floor(parent[i].green * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor));
+            if (parent[i].green >= 255) parent[i].green = Math.floor(parent[i].green * minChangeFactor);
         }
 
         if (Math.floor(Math.random() * chanceToChange) === 0) {
-            offspring[i].blue = Math.floor(offspring[i].blue * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor));
-            if (offspring[i].blue >= 255) offspring[i].blue = Math.floor(offspring[i].blue * minChangeFactor);
+            parent[i].blue = Math.floor(parent[i].blue * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor));
+            if (parent[i].blue >= 255) parent[i].blue = Math.floor(parent[i].blue * minChangeFactor);
         }
     }
 
-    return offspring;
+    return parent;
 }
 
 function mutate3(parent) {
 
-    var offspring = parent;
     var chanceToChange = 3;
     var maxChangeFactor = 1.05;
     var minChangeFactor = 0.95;
@@ -76,26 +72,43 @@ function mutate3(parent) {
     for (var i = 0; i < trianglesLimit; i++) {
 
         if (Math.floor(Math.random() * chanceToChange) === 0) {
-            offspring[i].a[0] = offspring[i].a[0] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
-            offspring[i].a[1] = offspring[i].a[1] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
-            if (offspring[i].a[0] >= canvasWidth) offspring[i].a[0] = Math.floor(offspring[i].a[0] * minChangeFactor);
-            if (offspring[i].a[1] >= canvasHeight) offspring[i].a[1] = Math.floor(offspring[i].a[1] * minChangeFactor);
+            parent[i].a[0] = parent[i].a[0] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
+            parent[i].a[1] = parent[i].a[1] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
+            if (parent[i].a[0] >= canvasWidth) parent[i].a[0] = Math.floor(parent[i].a[0] * minChangeFactor);
+            if (parent[i].a[1] >= canvasHeight) parent[i].a[1] = Math.floor(parent[i].a[1] * minChangeFactor);
         }
 
         if (Math.floor(Math.random() * chanceToChange) === 0) {
-            offspring[i].b[0] = offspring[i].b[0] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
-            offspring[i].b[1] = offspring[i].b[1] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
-            if (offspring[i].b[0] >= canvasWidth) offspring[i].b[0] = Math.floor(offspring[i].b[0] * minChangeFactor);
-            if (offspring[i].b[1] >= canvasHeight) offspring[i].b[1] = Math.floor(offspring[i].b[1] * minChangeFactor);
+            parent[i].b[0] = parent[i].b[0] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
+            parent[i].b[1] = parent[i].b[1] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
+            if (parent[i].b[0] >= canvasWidth) parent[i].b[0] = Math.floor(parent[i].b[0] * minChangeFactor);
+            if (parent[i].b[1] >= canvasHeight) parent[i].b[1] = Math.floor(parent[i].b[1] * minChangeFactor);
         }
 
         if (Math.floor(Math.random() * chanceToChange) === 0) {
-            offspring[i].c[0] = offspring[i].c[0] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
-            offspring[i].c[1] = offspring[i].c[1] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
-            if (offspring[i].c[0] >= canvasWidth) offspring[i].c[0] = Math.floor(offspring[i].c[0] * minChangeFactor);
-            if (offspring[i].c[1] >= canvasHeight) offspring[i].c[1] = Math.floor(offspring[i].c[1] * minChangeFactor);
+            parent[i].c[0] = parent[i].c[0] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
+            parent[i].c[1] = parent[i].c[1] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
+            if (parent[i].c[0] >= canvasWidth) parent[i].c[0] = Math.floor(parent[i].c[0] * minChangeFactor);
+            if (parent[i].c[1] >= canvasHeight) parent[i].c[1] = Math.floor(parent[i].c[1] * minChangeFactor);
         }
     }
 
-    return offspring;
+    return parent;
+}
+
+
+function mutate4 (parent) {
+
+    do {
+
+        var rand1 = Math.floor(Math.random() * parent.length);
+        var rand2 = Math.floor(Math.random() * parent.length);
+
+    } while(rand1 === rand2);
+
+    var parentTemp = parent[rand1];
+    parent[rand1] = parent[rand2];
+    parent[rand2] = parentTemp;
+
+    return parent;
 }

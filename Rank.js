@@ -7,7 +7,7 @@ function rank() {
     for (var i = 0; i < canvasSqure; i += 4) {
 
         var trianglesPixData = trianglesData.slice(i, i + 4);
-        if (trianglesPixData[3] === 0) continue;
+        //if (trianglesPixData[3] === 0) continue;
 
         var imgPixData = imgData.slice(i, i + 4);
 
@@ -18,6 +18,8 @@ function rank() {
         points += pointsOfPixel;
     }
 
-    return points / pixels;
+    //console.log(trianglesData);
+    if (pixels < 10) debugger;
+    return points;
 }
 

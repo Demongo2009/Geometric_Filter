@@ -10,3 +10,8 @@ function validate(obj) {
 
     if (isNaN(obj.red) || isNaN(obj.green) || isNaN(obj.blue)) debugger; //throw 'Error5';
 }
+
+function validateColor(obj) {
+
+    if (obj.red === 0 || obj. green === 0 || obj.blue === 0) debugger;
+}
