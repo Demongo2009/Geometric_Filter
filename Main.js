@@ -2,11 +2,13 @@ function main() {
 
     console.log('It lives!');
 
+    countGeneration = 0;
+
     generationNumber = 0;
     canvasWidth = 30;
     canvasHeight = 45;
     trianglesLimit = 8;
-    popLength = 20;
+    popLength = 10;
     canvasSqure = canvasWidth * canvasHeight;
     keepGoingLoop = true;
 

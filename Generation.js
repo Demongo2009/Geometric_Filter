@@ -1,5 +1,7 @@
 function generation(population) {
 
+    countGeneration++;
+
     var best = population.slice(0, popLength * 0.2);
     var newGeneration = best;
 

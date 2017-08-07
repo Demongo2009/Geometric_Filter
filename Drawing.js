@@ -21,32 +21,32 @@ function draw() {
         population[i].points = rank();
 
         if (population[i].points < 18) {
+            console.log('\n');
+            console.log(bestOfPopulation.length);
             console.log(JSON.stringify(population[i]));
             console.log(population[i].points);
             bestOfPopulation.push(population[i]);
 
             if (bestOfPopulation.length === popLength) {
-                console.log(JSON.stringify(bestOfPopulation));
                 console.log('bestOfPopulation full');
                 drawBest(bestOfPopulation);
                 break;
             }
-
-            //for (var j = 0; j < trianglesLimit; j++) {
-
-            //    population[i][j] = new Triangle();
-            //}
-
         }
     }
 
-    //console.log('Drawn');
     population.sort(function (a, b) {
 
         return a.points - b.points;
-    })
+    });
 
     population = generation(population);
+
+    for (var g = 0; g < popLength; g++) {
+
+        population[g].generationNumber = countGeneration;
+    }
+
     //console.log(population);
     if ( generationNumber % 1000 === 0) console.log('Generation number: ' + generationNumber);
 
@@ -54,9 +54,9 @@ function draw() {
 }
 
 
-function drawBest (bestOfPopulation) {
+function drawBest() {
 
-    console.log(JSON.stringify(bestOfPopulation));
+    //console.log(JSON.stringify(bestOfPopulation));
 
     keepGoingLoop = false;
 
@@ -73,8 +73,11 @@ function drawBest (bestOfPopulation) {
             ctx.lineTo(bestOfPopulation[i][j].b[0], bestOfPopulation[i][j].b[1]);
             ctx.lineTo(bestOfPopulation[i][j].c[0], bestOfPopulation[i][j].c[1]);
             ctx.fill();
-
         }
+        console.log('\n');
+        console.log(i);
+        console.log(JSON.stringify(bestOfPopulation[i]));
+        console.log(JSON.stringify(bestOfPopulation[i].points));
     }
 
 

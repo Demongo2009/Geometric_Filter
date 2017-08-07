@@ -18,7 +18,6 @@ function rank() {
         points += pointsOfPixel;
     }
 
-    var ranking = points / pixels;
-    return ranking;
+    return points / pixels;
 }
 
