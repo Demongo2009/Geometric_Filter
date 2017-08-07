@@ -17,7 +17,7 @@ function rank() {
             var pointsOfPixel = checkColor(trianglesPixData, imgPixData);
         //}
 
-        pixels++;
+
         //console.log(pixels);
         points += pointsOfPixel;
     }
