@@ -28,12 +28,15 @@ function main() {
     var canvas = document.getElementById('GeometricFilter');
     var image = document.getElementById('image');
 
+
     var img = new Image();
 
     if (canvas.getContext) {
 
         ctx = canvas.getContext('2d');
         ctxImg = image.getContext('2d');
+
+
 
 
         img.addEventListener('load', function() {
@@ -45,7 +48,7 @@ function main() {
 
         }, false);
 
-        img.src = 'Mona_Lisa.jpg';
+        img.src = "Mona_Lisa.jpg";
 
     }
 }
