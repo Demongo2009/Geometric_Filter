@@ -48,17 +48,17 @@ function mutate2(parent) {
     for (var i = 0; i < trianglesLimit; i++) {
 
         if (Math.floor(Math.random() * chanceToChange) === 0) {
-            offspring[i].red *= Math.floor(Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
+            offspring[i].red = Math.floor(offspring[i].red * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor));
             if (offspring[i].red >= 255) offspring[i].red = Math.floor(offspring[i].red * minChangeFactor);
         }
 
         if (Math.floor(Math.random() * chanceToChange) === 0) {
-            offspring[i].green *= Math.floor(Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
+            offspring[i].green = Math.floor(offspring[i].green * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor));
             if (offspring[i].green >= 255) offspring[i].green = Math.floor(offspring[i].green * minChangeFactor);
         }
 
         if (Math.floor(Math.random() * chanceToChange) === 0) {
-            offspring[i].blue *= Math.floor(Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
+            offspring[i].blue = Math.floor(offspring[i].blue * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor));
             if (offspring[i].blue >= 255) offspring[i].blue = Math.floor(offspring[i].blue * minChangeFactor);
         }
     }

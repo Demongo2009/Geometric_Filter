@@ -32,10 +32,10 @@ function draw() {
                 break;
             }
 
-            for (var j = 0; j < trianglesLimit; j++) {
+            //for (var j = 0; j < trianglesLimit; j++) {
 
-                population[i][j] = new Triangle();
-            }
+            //    population[i][j] = new Triangle();
+            //}
 
         }
     }
@@ -47,6 +47,7 @@ function draw() {
     })
 
     population = generation(population);
+    console.log(population);
     if ( generationNumber % 1000 === 0) console.log('Generation number: ' + generationNumber);
 
     if (keepGoingLoop) setTimeout(draw, 10);
