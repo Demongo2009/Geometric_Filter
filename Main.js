@@ -1,12 +1,16 @@
 function main() {
 
     console.log('It lives!');
-    counter = 0;
 
+    generationNumber = 0;
     canvasWidth = 30;
     canvasHeight = 45;
-    trianglesLimit = 10;
+    trianglesLimit = 8;
     popLength = 20;
+    canvasSqure = canvasWidth * canvasHeight;
+    keepGoingLoop = true;
+
+    bestOfPopulation = new Array();
 
     population = new Array();
 
@@ -21,13 +25,8 @@ function main() {
         }
     }
 
-    console.log(population);
-
     var canvas = document.getElementById('GeometricFilter');
     var image = document.getElementById('image');
-
-    //var imgData = ctxImg.getImageData(0, 0, canvasWidth, canvasHeight).data;
-    //console.log(imgData);
 
     var img = new Image();
 
@@ -41,18 +40,12 @@ function main() {
             ctxImg.drawImage(img, 0, 0, canvasWidth, canvasHeight);
 
             imgData = ctxImg.getImageData(0, 0, canvasWidth, canvasHeight).data;
-            //console.log(imgData);
-
-            console.log("Image drawn");
 
             draw();
-
-            setTimeout(draw, 200);
 
         }, false);
 
         img.src = 'Mona_Lisa.jpg';
 
     }
-
 }
