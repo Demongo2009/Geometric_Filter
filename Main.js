@@ -47,7 +47,7 @@ function main() {
 
             draw();
 
-        setTimeout(draw, 200);
+            setTimeout(draw, 200);
 
         }, false);
 
