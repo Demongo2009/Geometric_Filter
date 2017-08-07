@@ -7,15 +7,15 @@ function main() {
     generationNumber = 0;
     canvasWidth = 30;
     canvasHeight = 45;
-    trianglesLimit = 10;
-    popLength = 20;
+    trianglesLimit = 4;
+    popLength = 100;
     canvasSqure = canvasWidth * canvasHeight;
 
     population = new Array();
 
     for (var i = 0; i < popLength; i++) {
 
-        population[i] = new Object()
+        population[i] = new Object();
 
         for (var j = 0; j < trianglesLimit; j++) {
 
@@ -26,6 +26,7 @@ function main() {
 
     var canvas = document.getElementById('GeometricFilter');
     var image = document.getElementById('image');
+    var best = document.getElementById('best');
 
     var img = new Image();
 
@@ -33,6 +34,7 @@ function main() {
 
         ctx = canvas.getContext('2d');
         ctxImg = image.getContext('2d');
+        ctxBest = best.getContext('2d');
 
 
         img.addEventListener('load', function() {
