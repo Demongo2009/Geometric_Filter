@@ -40,13 +40,13 @@ function draw() {
 
         validate(population[0][i]);
 
-        ctx.fillStyle = population[0][i].color;
+        ctxBest.fillStyle = population[0][i].color;
 
-        ctx.beginPath();
-        ctx.moveTo(population[0][i].a[0], population[0][i].a[1]);
-        ctx.lineTo(population[0][i].b[0], population[0][i].b[1]);
-        ctx.lineTo(population[0][i].c[0], population[0][i].c[1]);
-        ctx.fill();
+        ctxBest.beginPath();
+        ctxBest.moveTo(population[0][i].a[0], population[0][i].a[1]);
+        ctxBest.lineTo(population[0][i].b[0], population[0][i].b[1]);
+        ctxBest.lineTo(population[0][i].c[0], population[0][i].c[1]);
+        ctxBest.fill();
 
     }
 
