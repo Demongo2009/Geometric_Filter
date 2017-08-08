@@ -1,3 +1,5 @@
+var lastBestScore = -Infinity;
+
 function draw() {
 
     for (var i = popLength - 1; i >= 0; i--) {
@@ -28,15 +30,30 @@ function draw() {
         */
     }
 
+    // if(population[0].points<lastBestScore){
+    //     console.log(JSON.stringify(population[0]));
+    //     debugger;
+    //
+    // }
+
     population.sort(function (a, b) {
 
-        return a.points - b.points;
+        return b.points - a.points;
     });
+
+
+
+    if(population[0].points>lastBestScore){
+        lastBestScore = population[0].points;
+        // console.log(lastBestScore);
+    }
+
+    document.getElementById("bestScore").innerText = population[0].points;
 
     ctxBest.clearRect(0, 0, canvasWidth, canvasHeight);
 
 
-    for (var i = 0; i < trianglesLimit; i++) {
+    for (var i = trianglesLimit - 1; i >= 0; i--) {
 
         validate(population[0][i]);
 
@@ -50,8 +67,14 @@ function draw() {
 
     }
 
+    var firstScore = population[0].points;
 
     population = generation(population);
+
+    if(firstScore !== population[0].points){
+        // debugger;
+        throw Error();
+    }
 
     for (var g = 0; g < popLength; g++) {
 
@@ -59,9 +82,11 @@ function draw() {
     }
 
     //console.log(population);
-    if ( generationNumber % 1000 === 0) console.log('Generation number: ' + generationNumber);
+    if ( generationNumber % 50 === 0) console.log('Generation number: ' + generationNumber);
 
-    setTimeout(draw, 10);
+    if(generationNumber<1000){
+        setTimeout(draw, 1);
+    }
 }
 
 
