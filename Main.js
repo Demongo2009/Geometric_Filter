@@ -5,8 +5,8 @@ function main() {
     countGeneration = 0;
 
     generationNumber = 0;
-    canvasWidth = 30;
-    canvasHeight = 45;
+    canvasWidth = 60;
+    canvasHeight = 90;
     trianglesLimit = 20;
     popLength = 50;
     canvasSqure = canvasWidth * canvasHeight;
@@ -46,8 +46,8 @@ function main() {
 
         }, false);
 
-        //img.src = 'export.png';
-        img.src = 'Mona_Lisa.jpg';
-
+        // img.src = 'export.png';
+        // img.src = 'Mona_Lisa.jpg';
+        img.src = 'MonaLisa.jpg';
     }
 }

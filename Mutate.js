@@ -1,6 +1,6 @@
 function Mutate(subPopulation) {
 
-    var mutationNumber = 5;
+    var mutationNumber = 6;
 
     for (var i = 0; i < subPopulation.length; i++) {
 
@@ -9,7 +9,7 @@ function Mutate(subPopulation) {
         switch (event) {
 
             case 0:
-                subPopulation[i] = mutate4(subPopulation[i]);
+                subPopulation[i] = mutate1(subPopulation[i]);
                 break;
 
             case 1:
@@ -21,11 +21,15 @@ function Mutate(subPopulation) {
                 break;
 
             case 3:
-                subPopulation[i] = mutate1(subPopulation[i]);
+                subPopulation[i] = mutate4(subPopulation[i]);
                 break;
 
             case 4:
                 subPopulation[i] = mutate5(subPopulation[i]);
+                break;
+
+            case 5:
+                subPopulation[i] = mutate6(subPopulation[i]);
                 break;
         }
     }
@@ -36,7 +40,7 @@ function Mutate(subPopulation) {
 
 function mutate1(parent) {
 
-    var chanceToChange = 4;
+    var chanceToChange = 2;
 
     if (Math.floor(Math.random() * chanceToChange) === 0) {
 
@@ -126,7 +130,7 @@ function mutate4(parent) {
 
 function mutate5(parent) {
 
-    var chanceToChange = 5;
+    var chanceToChange = 3;
 
     for (var i = 0; i < trianglesLimit; i++) {
 
@@ -143,7 +147,27 @@ function mutate5(parent) {
     return parent;
 }
 
+function mutate6(parent) {
 
+    var rand = Math.floor(Math.random() * trianglesLimit);
+
+    var newParent = new Object();
+    var j = 0;
+
+    for (var i = rand; i < trianglesLimit; i++) {
+
+        newParent[j] = parent[i].copy();
+        j++
+    }
+
+    for (var i = 0; i < rand; i++) {
+
+        newParent[j] = parent[i].copy();
+        j++
+    }
+
+    return newParent;
+}
 
 
 
