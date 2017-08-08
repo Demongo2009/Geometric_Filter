@@ -5,24 +5,28 @@ function Mutate(population) {
 
     for (var i = 0; i < mutatedPopulation.length; i++) {
 
-        var event = Math.floor(Math.random() * mutationNumber);
+        var mutation_chance=Math.floor(Math.random()*mutatedPopulation[i].points);
 
-        switch (event) {
+        if(mutation_chance>5) {
+            var event = Math.floor(Math.random() * mutationNumber);
 
-            case 0:
-                mutatedPopulation[i] = mutate1(mutatedPopulation[i]);
-                break;
+            switch (event) {
 
-            case 1:
-                mutatedPopulation[i] = mutate2(mutatedPopulation[i]);
-                break;
+                case 0:
+                    mutatedPopulation[i] = mutate1(mutatedPopulation[i]);
+                    break;
 
-            case 2:
-                mutatedPopulation[i] = mutate3(mutatedPopulation[i]);
-                break;
-            case 3:
-                mutatedPopulation[i] = mutate4(mutatedPopulation[i]);
-                break;
+                case 1:
+                    mutatedPopulation[i] = mutate2(mutatedPopulation[i]);
+                    break;
+
+                case 2:
+                    mutatedPopulation[i] = mutate3(mutatedPopulation[i]);
+                    break;
+                case 3:
+                    mutatedPopulation[i] = mutate4(mutatedPopulation[i]);
+                    break;
+            }
         }
     }
 
@@ -45,8 +49,8 @@ function mutate2(parent) {
 
     var offspring = parent;
     var chanceToChange = 3;
-    var maxChangeFactor = 1.05;
-    var minChangeFactor  = 0.95;
+    var maxChangeFactor = 1.5;
+    var minChangeFactor  = 0.5;
 
     for (var i = 0; i < trianglesLimit; i++) {
 
@@ -73,8 +77,8 @@ function mutate3(parent) {
 
     var offspring = parent;
     var chanceToChange = 3;
-    var maxChangeFactor = 1.05;
-    var minChangeFactor = 0.95;
+    var maxChangeFactor = 1.5;
+    var minChangeFactor = 0.5;
 
     for (var i = 0; i < trianglesLimit; i++) {
 

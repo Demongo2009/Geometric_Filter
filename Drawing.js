@@ -20,7 +20,7 @@ function draw() {
 
         population[i].points = rank();
 
-        if (population[i].points < canvasSqure*255*0.01) {
+        if (population[i].points < 255*0.01) {
             console.log(JSON.stringify(population[i]));
             console.log(population[i].points);
             bestOfPopulation.push(population[i]);
@@ -49,7 +49,7 @@ function draw() {
     population = generation(population);
     if ( generationNumber % 1000 === 0) console.log('Generation number: ' + generationNumber);
 
-    if (keepGoingLoop) setTimeout(draw, 10);
+    if (keepGoingLoop) setTimeout(draw, 1);
 }
 
 

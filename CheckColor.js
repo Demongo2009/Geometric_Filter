@@ -11,7 +11,7 @@ function checkColor(trianglesPixData, imgPixData) {
         return a - b;
     });
 
-    var pointsOfPixel = colors[2];
+    var pointsOfPixel = redOdds+greenOdds+blueOdds;
 
     //console.log('Pixel gains: ' + pointsOfPixel + ' points');
     return pointsOfPixel;

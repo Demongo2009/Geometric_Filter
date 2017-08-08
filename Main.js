@@ -3,10 +3,10 @@ function main() {
     console.log('It lives!');
 
     generationNumber = 0;
-    canvasWidth = 30;
-    canvasHeight = 45;
+    canvasWidth = 30*1.5;
+    canvasHeight = 45*1.5;
     trianglesLimit = 10;
-    popLength = 20;
+    popLength = 50;
     canvasSqure = canvasWidth * canvasHeight;
     keepGoingLoop = true;
 
@@ -45,7 +45,7 @@ function main() {
 
         }, false);
 
-        img.src = 'test_img.png';
+        img.src = 'Mona_Lisa.jpg';
 
     }
 }
