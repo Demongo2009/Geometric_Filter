@@ -7,8 +7,8 @@ function main() {
     generationNumber = 0;
     canvasWidth = 30;
     canvasHeight = 45;
-    trianglesLimit = 4;
-    popLength = 100;
+    trianglesLimit = 20;
+    popLength = 50;
     canvasSqure = canvasWidth * canvasHeight;
 
     population = new Array();
@@ -46,7 +46,8 @@ function main() {
 
         }, false);
 
-        img.src = 'testImg.png';
+        // img.src = 'export.png';
+        img.src = 'Mona_Lisa.jpg';
 
     }
 }

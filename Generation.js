@@ -2,10 +2,17 @@ function generation(population) {
 
     countGeneration++;
 
-    var best = population.slice(0, popLength * 0.2);
-    var newGeneration = best;
 
-    for (var i = 0; i < popLength * 0.4; i++) {
+
+    var best = population.slice(0, popLength * 0.2);
+    //var newGeneration = best;
+    var newOffspring = new Array();
+
+    var firstDesc = JSON.stringify([population[0][0],population[0][1]]);
+
+
+
+    for (var i = 0; i < popLength * 0.3; i++) {
 
         do {
 
@@ -16,13 +23,15 @@ function generation(population) {
 
         var offSpr = crossover(best[rand1], best[rand2]);
 
-        newGeneration.push(offSpr);
+        //newGeneration.push(offSpr);
+        newOffspring.push(offSpr);
     }
 
-    newGeneration = Mutate(newGeneration);
+    var newGeneration = best.concat(Mutate(newOffspring));
+    //newGeneration = Mutate(newGeneration);
 
 
-    for (var i = 0; i < popLength * 0.4; i++) {
+    for (var i = 0; i < popLength * 0.5; i++) {
 
         var newGroupOfTriangles = new Object();
 
@@ -34,6 +43,15 @@ function generation(population) {
         newGeneration.push(newGroupOfTriangles);
     }
 
+    if(firstDesc !== JSON.stringify([population[0][0],population[0][1]])){
+        console.log(firstDesc);
+        console.log(JSON.stringify([population[0][0],population[0][1]]));
+        // debugger;
+        throw Error();
+
+    }
+
     generationNumber++;
     return newGeneration;
+    // return population;
 }

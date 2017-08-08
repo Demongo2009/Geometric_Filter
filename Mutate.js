@@ -1,39 +1,39 @@
-function Mutate(population) {
+function Mutate(subPopulation) {
 
-    var mutationNumber = 3;
+    var mutationNumber = 4;
 
-    for (var i = 0; i < population.length; i++) {
+    for (var i = 0; i < subPopulation.length; i++) {
 
         var event = Math.floor(Math.random() * mutationNumber);
 
         switch (event) {
 
             case 0:
-                population[i] = mutate4(population[i]);
+                subPopulation[i] = mutate4(subPopulation[i]);
                 break;
 
             case 1:
-                population[i] = mutate2(population[i]);
+                subPopulation[i] = mutate2(subPopulation[i]);
                 break;
 
             case 2:
-                population[i] = mutate3(population[i]);
+                subPopulation[i] = mutate3(subPopulation[i]);
                 break;
 
             case 3:
-                population[i] = mutate1(population[i]);
+                subPopulation[i] = mutate1(subPopulation[i]);
                 break;
         }
     }
 
-    return population;
+    return subPopulation;
 }
 
 
 
 function mutate1(parent) {
 
-    var chanceToChange = 3;
+    var chanceToChange = 4;
 
     if (Math.floor(Math.random() * chanceToChange) === 0) {
 
@@ -73,7 +73,7 @@ function mutate2(parent) {
 
 function mutate3(parent) {
 
-    var chanceToChange = 5;
+    var chanceToChange = 3;
     var maxChangeFactor = 1.05;
     var minChangeFactor = 0.95;
 
@@ -82,22 +82,28 @@ function mutate3(parent) {
         if (Math.floor(Math.random() * chanceToChange) === 0) {
             parent[i].a[0] = parent[i].a[0] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
             parent[i].a[1] = parent[i].a[1] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
-            if (parent[i].a[0] >= canvasWidth) parent[i].a[0] = Math.floor(parent[i].a[0] * minChangeFactor);
-            if (parent[i].a[1] >= canvasHeight) parent[i].a[1] = Math.floor(parent[i].a[1] * minChangeFactor);
+            //if (parent[i].a[0] >= canvasWidth) parent[i].a[0] = Math.floor(parent[i].a[0] * minChangeFactor);
+            //if (parent[i].a[1] >= canvasHeight) parent[i].a[1] = Math.floor(parent[i].a[1] * minChangeFactor);
+            if (parent[i].a[0] > canvasWidth) parent[i].a[0] = canvasWidth;
+            if (parent[i].a[1] > canvasHeight) parent[i].a[1] = canvasHeight;
         }
 
         if (Math.floor(Math.random() * chanceToChange) === 0) {
             parent[i].b[0] = parent[i].b[0] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
             parent[i].b[1] = parent[i].b[1] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
-            if (parent[i].b[0] >= canvasWidth) parent[i].b[0] = Math.floor(parent[i].b[0] * minChangeFactor);
-            if (parent[i].b[1] >= canvasHeight) parent[i].b[1] = Math.floor(parent[i].b[1] * minChangeFactor);
+            //if (parent[i].b[0] >= canvasWidth) parent[i].b[0] = Math.floor(parent[i].b[0] * minChangeFactor);
+            //if (parent[i].b[1] >= canvasHeight) parent[i].b[1] = Math.floor(parent[i].b[1] * minChangeFactor);
+            if (parent[i].b[0] >= canvasWidth) parent[i].b[0] = canvasWidth;
+            if (parent[i].b[1] >= canvasHeight) parent[i].b[1] = canvasHeight;
         }
 
         if (Math.floor(Math.random() * chanceToChange) === 0) {
             parent[i].c[0] = parent[i].c[0] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
             parent[i].c[1] = parent[i].c[1] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
-            if (parent[i].c[0] >= canvasWidth) parent[i].c[0] = Math.floor(parent[i].c[0] * minChangeFactor);
-            if (parent[i].c[1] >= canvasHeight) parent[i].c[1] = Math.floor(parent[i].c[1] * minChangeFactor);
+            //if (parent[i].c[0] >= canvasWidth) parent[i].c[0] = Math.floor(parent[i].c[0] * minChangeFactor);
+            //if (parent[i].c[1] >= canvasHeight) parent[i].c[1] = Math.floor(parent[i].c[1] * minChangeFactor);
+            if (parent[i].c[0] >= canvasWidth) parent[i].c[0] = canvasWidth;
+            if (parent[i].c[1] >= canvasHeight) parent[i].c[1] = canvasHeight;
         }
     }
 

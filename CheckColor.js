@@ -4,16 +4,8 @@ function checkColor(trianglesPixData, imgPixData) {
     var greenOdds = Math.abs(trianglesPixData[1] - imgPixData[1]);
     var blueOdds = Math.abs(trianglesPixData[2] - imgPixData[2]);
 
-    var colors = [redOdds, greenOdds, blueOdds];
+    // var pointsOfPixel = Math.pow((255-redOdds)*(255-greenOdds)*(255-blueOdds),1/3);
+    var pointsOfPixel = (255-redOdds)+(255-greenOdds)+(255-blueOdds);
 
-    colors.sort(function(a, b) {
-
-        return a - b;
-    });
-
-    var pointsOfPixel = colors[2];
-
-    //console.log('Pixel gains: ' + pointsOfPixel + ' points');
     return pointsOfPixel;
-
 }
