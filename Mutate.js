@@ -1,6 +1,6 @@
 function Mutate(subPopulation) {
 
-    var mutationNumber = 4;
+    var mutationNumber = 5;
 
     for (var i = 0; i < subPopulation.length; i++) {
 
@@ -23,12 +23,15 @@ function Mutate(subPopulation) {
             case 3:
                 subPopulation[i] = mutate1(subPopulation[i]);
                 break;
+
+            case 4:
+                subPopulation[i] = mutate5(subPopulation[i]);
+                break;
         }
     }
 
     return subPopulation;
 }
-
 
 
 function mutate1(parent) {
@@ -47,8 +50,8 @@ function mutate1(parent) {
 function mutate2(parent) {
 
     var chanceToChange = 3;
-    var maxChangeFactor = 1.05;
-    var minChangeFactor  = 0.95;
+    var maxChangeFactor = 1.10;
+    var minChangeFactor  = 0.90;
 
     for (var i = 0; i < trianglesLimit; i++) {
 
@@ -74,16 +77,14 @@ function mutate2(parent) {
 function mutate3(parent) {
 
     var chanceToChange = 3;
-    var maxChangeFactor = 1.05;
-    var minChangeFactor = 0.95;
+    var maxChangeFactor = 1.10;
+    var minChangeFactor = 0.90;
 
     for (var i = 0; i < trianglesLimit; i++) {
 
         if (Math.floor(Math.random() * chanceToChange) === 0) {
             parent[i].a[0] = parent[i].a[0] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
             parent[i].a[1] = parent[i].a[1] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
-            //if (parent[i].a[0] >= canvasWidth) parent[i].a[0] = Math.floor(parent[i].a[0] * minChangeFactor);
-            //if (parent[i].a[1] >= canvasHeight) parent[i].a[1] = Math.floor(parent[i].a[1] * minChangeFactor);
             if (parent[i].a[0] > canvasWidth) parent[i].a[0] = canvasWidth;
             if (parent[i].a[1] > canvasHeight) parent[i].a[1] = canvasHeight;
         }
@@ -91,8 +92,6 @@ function mutate3(parent) {
         if (Math.floor(Math.random() * chanceToChange) === 0) {
             parent[i].b[0] = parent[i].b[0] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
             parent[i].b[1] = parent[i].b[1] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
-            //if (parent[i].b[0] >= canvasWidth) parent[i].b[0] = Math.floor(parent[i].b[0] * minChangeFactor);
-            //if (parent[i].b[1] >= canvasHeight) parent[i].b[1] = Math.floor(parent[i].b[1] * minChangeFactor);
             if (parent[i].b[0] >= canvasWidth) parent[i].b[0] = canvasWidth;
             if (parent[i].b[1] >= canvasHeight) parent[i].b[1] = canvasHeight;
         }
@@ -100,8 +99,6 @@ function mutate3(parent) {
         if (Math.floor(Math.random() * chanceToChange) === 0) {
             parent[i].c[0] = parent[i].c[0] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
             parent[i].c[1] = parent[i].c[1] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
-            //if (parent[i].c[0] >= canvasWidth) parent[i].c[0] = Math.floor(parent[i].c[0] * minChangeFactor);
-            //if (parent[i].c[1] >= canvasHeight) parent[i].c[1] = Math.floor(parent[i].c[1] * minChangeFactor);
             if (parent[i].c[0] >= canvasWidth) parent[i].c[0] = canvasWidth;
             if (parent[i].c[1] >= canvasHeight) parent[i].c[1] = canvasHeight;
         }
@@ -111,7 +108,7 @@ function mutate3(parent) {
 }
 
 
-function mutate4 (parent) {
+function mutate4(parent) {
 
     do {
 
@@ -126,3 +123,27 @@ function mutate4 (parent) {
 
     return parent;
 }
+
+function mutate5(parent) {
+
+    var chanceToChange = 5;
+
+    for (var i = 0; i < trianglesLimit; i++) {
+
+        if (Math.floor(Math.random() * chanceToChange) === 0) {
+            parent[i].a[0] = canvasWidth - parent[i].a[0];
+            parent[i].a[1] = canvasHeight - parent[i].a[1];
+            parent[i].b[0] = canvasWidth - parent[i].b[0];
+            parent[i].b[1] = canvasHeight - parent[i].b[1];
+            parent[i].c[0] = canvasWidth - parent[i].c[0];
+            parent[i].c[1] = canvasHeight - parent[i].c[1];
+        }
+    }
+
+    return parent;
+}
+
+
+
+
+

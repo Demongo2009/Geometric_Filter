@@ -39,3 +39,4 @@ function Triangle() {
         return t;
     };
 }
+

@@ -14,12 +14,9 @@ function rank() {
         var pointsOfPixel = checkColor(trianglesPixData, imgPixData);
 
         pixels++;
-        //console.log(pixels);
         points += pointsOfPixel;
     }
 
-    //console.log(trianglesData);
-    //if (pixels < 10) debugger;
     return points;
 }
 

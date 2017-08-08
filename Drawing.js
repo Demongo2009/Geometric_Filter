@@ -1,5 +1,3 @@
-var lastBestScore = -Infinity;
-
 function draw() {
 
     for (var i = popLength - 1; i >= 0; i--) {
@@ -21,32 +19,13 @@ function draw() {
         }
 
         population[i].points = rank();
-
-        /*if (population[i].points < 15) {
-            console.log('\n');
-            console.log(JSON.stringify(population[i]));
-            console.log(population[i].points);
-        }
-        */
     }
-
-    // if(population[0].points<lastBestScore){
-    //     console.log(JSON.stringify(population[0]));
-    //     debugger;
-    //
-    // }
 
     population.sort(function (a, b) {
 
         return b.points - a.points;
     });
 
-
-
-    if(population[0].points>lastBestScore){
-        lastBestScore = population[0].points;
-        // console.log(lastBestScore);
-    }
 
     document.getElementById("bestScore").innerText = population[0].points;
 
@@ -71,22 +50,15 @@ function draw() {
 
     population = generation(population);
 
-    if(firstScore !== population[0].points){
-        // debugger;
-        throw Error();
-    }
-
     for (var g = 0; g < popLength; g++) {
 
         population[g].generationNumber = countGeneration;
     }
 
     //console.log(population);
-    if ( generationNumber % 50 === 0) console.log('Generation number: ' + generationNumber);
+    if ( generationNumber % 500 === 0) console.log('Generation number: ' + generationNumber);
 
-    if(generationNumber<1000){
         setTimeout(draw, 1);
-    }
 }
 
 

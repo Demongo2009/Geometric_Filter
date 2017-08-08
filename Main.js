@@ -46,7 +46,7 @@ function main() {
 
         }, false);
 
-        // img.src = 'export.png';
+        //img.src = 'export.png';
         img.src = 'Mona_Lisa.jpg';
 
     }
