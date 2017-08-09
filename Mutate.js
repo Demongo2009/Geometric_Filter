@@ -151,7 +151,6 @@ function mutate4(parent) {
     for (var i = rand; i < figuresLimit; i++) {
 
         newParent[j] = parent[i].copy();
-        debugger;
         j++
     }
 
@@ -193,7 +192,7 @@ function mutate5Cir(parent) {
         parent.radius = parent.radius * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
         if (parent.center[0] + parent.radius > canvasWidth || parent.center[1] + parent.radius > canvasHeight) parent.radius = buffer;
     }
-
+    return parent;
 }
 
 
