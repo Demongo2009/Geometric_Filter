@@ -1,16 +1,16 @@
 function crossover(parent1, parent2) {
 
     var newGroupOfTriangles = new Object();
-    var rand = Math.floor(Math.random() * trianglesLimit);
 
-    for (var i = 0; i < rand; i++) {
+    for (var i = 0; i < trianglesLimit; i++) {
+        
+        if (Math.floor(Math.random() * 2) === 0) {
 
-        newGroupOfTriangles[i] = parent1[i].copy();
-    }
+            newGroupOfTriangles[i] = parent1[i].copy();
+        } else {
 
-    for (var i = rand; i < trianglesLimit; i++) {
-
-        newGroupOfTriangles[i] = parent2[i].copy();
+            newGroupOfTriangles[i] = parent2[i].copy();
+        }
     }
 
     return newGroupOfTriangles;
