@@ -2,12 +2,10 @@ function main() {
 
     console.log('It lives!');
 
-    countGeneration = 0;
-
     generationNumber = 0;
-    canvasWidth = 60;
-    canvasHeight = 90;
-    trianglesLimit = 10;
+    canvasWidth = 40;
+    canvasHeight = 60;
+    figuresLimit = 10;
     popLength = 50;
     canvasSqure = canvasWidth * canvasHeight;
 
@@ -17,10 +15,13 @@ function main() {
 
         population[i] = new Object();
 
-        for (var j = 0; j < trianglesLimit; j++) {
+        for (var j = 0; j < figuresLimit; j++) {
 
-            var newTriangle = new Triangle();
-            population[i][j] = newTriangle;
+            var newFigure;
+
+            if (Math.floor(Math.random() * 2) === 0) newFigure = new Triangle();
+            else newFigure = new Circle();
+            population[i][j] = newFigure;
         }
     }
 

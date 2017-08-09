@@ -40,9 +40,9 @@ function Mutate(subPopulation) {
 
 function mutate1(parent) {
 
-    for (var i = 0; i < trianglesLimit * 0.2; i++) {
+    for (var i = 0; i < figuresLimit * 0.2; i++) {
 
-        var rand = Math.floor(Math.random() * trianglesLimit);
+        var rand = Math.floor(Math.random() * figuresLimit);
 
         parent[rand] = new Triangle();
     }
@@ -56,7 +56,7 @@ function mutate2(parent) {
     var maxChangeFactor = 1.10;
     var minChangeFactor  = 0.90;
 
-    for (var i = 0; i < trianglesLimit; i++) {
+    for (var i = 0; i < figuresLimit; i++) {
 
         if (Math.floor(Math.random() * chanceToChange) === 0) {
             parent[i].red = Math.floor(parent[i].red * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor));
@@ -83,7 +83,7 @@ function mutate3(parent) {
     var maxChangeFactor = 1.10;
     var minChangeFactor = 0.90;
 
-    for (var i = 0; i < trianglesLimit; i++) {
+    for (var i = 0; i < figuresLimit; i++) {
 
         if (Math.floor(Math.random() * chanceToChange) === 0) {
             parent[i].a[0] = parent[i].a[0] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
@@ -113,12 +113,12 @@ function mutate3(parent) {
 
 function mutate4(parent) {
 
-    var rand = Math.floor(Math.random() * trianglesLimit);
+    var rand = Math.floor(Math.random() * figuresLimit);
 
     var newParent = new Object();
     var j = 0;
 
-    for (var i = rand; i < trianglesLimit; i++) {
+    for (var i = rand; i < figuresLimit; i++) {
 
         newParent[j] = parent[i].copy();
         j++
@@ -137,7 +137,7 @@ function mutate5(parent) {
 
     var chanceToChange = 3;
 
-    for (var i = 0; i < trianglesLimit; i++) {
+    for (var i = 0; i < figuresLimit; i++) {
 
         if (Math.floor(Math.random() * chanceToChange) === 0) {
             parent[i].a[0] = canvasWidth - parent[i].a[0];

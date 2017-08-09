@@ -1,7 +1,5 @@
 function generation(population) {
 
-    countGeneration++;
-
     var best = population.slice(0, popLength * 0.2);
     var newOffspring = new Array();
 
@@ -25,9 +23,10 @@ function generation(population) {
 
         var newGroupOfTriangles = new Object();
 
-        for (var j = 0; j < trianglesLimit; j++) {
+        for (var j = 0; j < figuresLimit; j++) {
 
-            newGroupOfTriangles[j] = new Triangle();
+            if (Math.floor(Math.random() * 2) === 0) newGroupOfTriangles[j] = new Triangle();
+            else newGroupOfTriangles[j] = new Circle();
         }
 
         newGeneration.push(newGroupOfTriangles);
