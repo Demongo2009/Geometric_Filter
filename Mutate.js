@@ -1,40 +1,40 @@
-function Mutate(subPopulation) {
+function Mutate(population) {
 
     var mutationNumber = 6;
 
-    for (var i = 0; i < subPopulation.length; i++) {
+    for (var i = 0; i < population.length; i++) {
 
         var event = Math.floor(Math.random() * mutationNumber);
 
         switch (event) {
 
             case 0:
-                subPopulation[i] = mutate1(subPopulation[i]);
+                population[i] = mutate1(population[i]);
                 break;
 
             case 1:
-                subPopulation[i] = mutate2(subPopulation[i]);
+                population[i] = mutate2(population[i]);
                 break;
 
             case 2:
-                subPopulation[i] = mutate3(subPopulation[i]);
+                population[i] = mutate3(population[i]);
                 break;
 
             case 3:
-                subPopulation[i] = mutate4(subPopulation[i]);
+                population[i] = mutate4(population[i]);
                 break;
 
             case 4:
-                subPopulation[i] = mutate5(subPopulation[i]);
+                population[i] = mutate5(population[i]);
                 break;
 
             case 5:
-                subPopulation[i] = mutate6(subPopulation[i]);
+                population[i] = mutate6(population[i]);
                 break;
         }
     }
 
-    return subPopulation;
+    return population;
 }
 
 
