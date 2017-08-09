@@ -53,7 +53,7 @@ function Mutate(population) {
             }
         }
 
-        var chanceToChange = 4;
+        var chanceToChange = 3;
         if (Math.floor(Math.random() * chanceToChange) === 0) mutate4(population[i]);
     }
 
@@ -71,7 +71,7 @@ function mutate1(parent) {
 
 function mutate2(parent) {
 
-    var chanceToChange = 3;
+    var chanceToChange = 2;
     var maxChangeFactor = 1.10;
     var minChangeFactor  = 0.90;
 
@@ -95,7 +95,7 @@ function mutate2(parent) {
 
 function mutate3Tri(parent) {
 
-    var chanceToChange = 3;
+    var chanceToChange = 2;
     var maxChangeFactor = 1.10;
     var minChangeFactor = 0.90;
 
@@ -169,7 +169,7 @@ function mutate4(parent) {
 
 function mutate5Tri(parent) {
 
-    var chanceToChange = 3;
+    var chanceToChange = 2;
 
     if (Math.floor(Math.random() * chanceToChange) === 0) {
         parent.a[0] = canvasWidth - parent.a[0];
