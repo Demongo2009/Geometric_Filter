@@ -7,7 +7,7 @@ function main() {
     generationNumber = 0;
     canvasWidth = 60;
     canvasHeight = 90;
-    trianglesLimit = 20;
+    trianglesLimit = 10;
     popLength = 50;
     canvasSqure = canvasWidth * canvasHeight;
 

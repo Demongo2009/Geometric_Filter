@@ -40,12 +40,11 @@ function Mutate(subPopulation) {
 
 function mutate1(parent) {
 
-    var chanceToChange = 2;
+    for (var i = 0; i < trianglesLimit * 0.2; i++) {
 
-    if (Math.floor(Math.random() * chanceToChange) === 0) {
+        var rand = Math.floor(Math.random() * trianglesLimit);
 
-    var rand = Math.floor(Math.random() * trianglesLimit);
-    parent[rand] = new Triangle();
+        parent[rand] = new Triangle();
     }
 
     return parent;
