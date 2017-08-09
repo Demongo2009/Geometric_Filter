@@ -2,11 +2,12 @@ function Mutate(population) {
 
     var mutationNumber = 4;
 
-    for (var i = 0; i < popLength; i++) {
+    for (var i = 0; i < population.length; i++) {
         for (var j = 0; j < figuresLimit; j++) {
 
             var event = Math.floor(Math.random() * mutationNumber);
 
+            if (population[i][j] === undefined) debugger;
             if (population[i][j] instanceof Triangle) {
 
                 switch (event) {
@@ -132,10 +133,13 @@ function mutate3Cir(parent) {
 
     if (Math.floor(Math.random() * chanceToChange) === 0) {
 
+        var bufferCenter0 = parent.center[0];
+        var bufferCenter1 = parent.center[1];
+
         parent.center[0] = parent.center[0] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
         parent.center[1] = parent.center[1] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
-        if (parent.center[0] > canvasWidth) parent.center[0] = canvasWidth;
-        if (parent.center[1] > canvasHeight) parent.center[1] = canvasHeight;
+        if (parent.center[0] + parent.radius > canvasWidth || parent.center[0] - parent.radius < 0 ) parent.center[0] = bufferCenter0;
+        if (parent.center[1] + parent.radius > canvasHeight || parent.center[1] - parent.radius < 0) parent.center[1] = bufferCenter1;
     }
 
     return parent;
@@ -190,7 +194,7 @@ function mutate5Cir(parent) {
         var buffer = parent.radius;
 
         parent.radius = parent.radius * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
-        if (parent.center[0] + parent.radius > canvasWidth || parent.center[1] + parent.radius > canvasHeight) parent.radius = buffer;
+        if (parent.center[0] + parent.radius > canvasWidth || parent.center[1] + parent.radius > canvasHeight || parent.center[0] - parent.radius < 0 || parent.center[1] - parent.radius < 0) parent.radius = buffer;
     }
     return parent;
 }

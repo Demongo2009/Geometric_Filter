@@ -24,7 +24,6 @@ function main() {
             population[i][j] = newFigure;
         }
     }
-
     var canvas = document.getElementById('GeometricFilter');
     var image = document.getElementById('image');
     var best = document.getElementById('best');
@@ -48,7 +47,6 @@ function main() {
         }, false);
 
         // img.src = 'export.png';
-        // img.src = 'Mona_Lisa.jpg';
         img.src = 'MonaLisa.jpg';
     }
 }

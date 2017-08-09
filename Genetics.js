@@ -36,6 +36,7 @@ function Triangle() {
     };
 }
 
+
 function Circle() {
 
     this.center = [];
