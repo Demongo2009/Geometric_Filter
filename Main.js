@@ -2,12 +2,16 @@ function main() {
 
     console.log('It lives!');
 
-    countGeneration = 0;
-
     generationNumber = 0;
+<<<<<<< HEAD
     canvasWidth = 60;
     canvasHeight = 90;
     trianglesLimit = 30;
+=======
+    canvasWidth = 40;
+    canvasHeight = 60;
+    figuresLimit = 20;
+>>>>>>> 040009b91d302c1f614d2f512c5a5d3911871a07
     popLength = 50;
     canvasSqure = canvasWidth * canvasHeight;
 
@@ -17,13 +21,15 @@ function main() {
 
         population[i] = new Object();
 
-        for (var j = 0; j < trianglesLimit; j++) {
+        for (var j = 0; j < figuresLimit; j++) {
 
-            var newTriangle = new Triangle();
-            population[i][j] = newTriangle;
+            var newFigure;
+
+            if (Math.floor(Math.random() * 2) === 0) newFigure = new Triangle();
+            else newFigure = new Circle();
+            population[i][j] = newFigure;
         }
     }
-
     var canvas = document.getElementById('GeometricFilter');
     var image = document.getElementById('image');
     var best = document.getElementById('best');
@@ -46,8 +52,7 @@ function main() {
 
         }, false);
 
-        // img.src = 'export.png';
-        // img.src = 'Mona_Lisa.jpg';
-        img.src = 'MonaLisa.jpg';
+        img.src = 'export.png';
+        // img.src = 'MonaLisa.jpg';
     }
 }
