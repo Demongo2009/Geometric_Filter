@@ -22,9 +22,9 @@ function Triangle() {
     this.copy = function(){
         var t = new Triangle();
 
-        t.a = [this.a[0],this.a[1]];
-        t.b = [this.b[0],this.b[1]];
-        t.c = [this.c[0],this.c[1]];
+        t.a = [this.a[0], this.a[1]];
+        t.b = [this.b[0], this.b[1]];
+        t.c = [this.c[0], this.c[1]];
 
         t.red = this.red;
         t.green = this.green;
@@ -64,6 +64,7 @@ function Circle() {
     this.copy = function(){
         var c = new Circle();
 
+        c.center = [this.center[0], this.center[1]];
         c.radius = this.radius;
         c.red = this.red;
         c.green = this.green;

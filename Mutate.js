@@ -1,51 +1,69 @@
-function Mutate(subPopulation) {
+function Mutate(population) {
 
-    var mutationNumber = 5;
+    var mutationNumber = 4;
 
-    for (var i = 0; i < subPopulation.length; i++) {
+    for (var i = 0; i < popLength; i++) {
+        for (var j = 0; j < figuresLimit; j++) {
 
-        var event = Math.floor(Math.random() * mutationNumber);
+            var event = Math.floor(Math.random() * mutationNumber);
 
-        switch (event) {
+            if (population[i][j] instanceof Triangle) {
 
-            case 0:
-                subPopulation[i] = mutate1(subPopulation[i]);
-                break;
+                switch (event) {
 
-            case 1:
-                subPopulation[i] = mutate2(subPopulation[i]);
-                break;
+                    case 0:
+                        population[i][j] = mutate1(population[i][j]);
+                        break;
 
-            case 2:
-                subPopulation[i] = mutate3(subPopulation[i]);
-                break;
+                    case 1:
+                        population[i][j] = mutate2(population[i][j]);
+                        break;
 
-            case 3:
-                subPopulation[i] = mutate4(subPopulation[i]);
-                break;
+                    case 2:
+                        population[i][j] = mutate3Tri(population[i][j]);
+                        break;
 
-            case 4:
-                subPopulation[i] = mutate5(subPopulation[i]);
-                break;
+                    case 3:
+                        population[i][j] = mutate5Tri(population[i][j]);
+                        break;
 
-            // case 5:
-            //     subPopulation[i] = mutate6(subPopulation[i]);
-            //     break;
+                }
+            } else if (population[i][j] instanceof Circle) {
+
+                switch (event) {
+
+                    case 0:
+                        population[i][j] = mutate1(population[i][j]);
+                        break;
+
+                    case 1:
+                        population[i][j] = mutate2(population[i][j]);
+                        break;
+
+                    case 2:
+                        population[i][j] = mutate3Cir(population[i][j]);
+                        break;
+
+                    case 3:
+                        population[i][j] = mutate5Cir(population[i][j]);
+                        break;
+
+                }
+            }
         }
+
+        var chanceToChange = 4;
+        if (Math.floor(Math.random() * chanceToChange) === 0) mutate4(population[i]);
     }
 
-    return subPopulation;
+    return population;
 }
 
 
 function mutate1(parent) {
 
-    for (var i = 0; i < figuresLimit * 0.2; i++) {
-
-        var rand = Math.floor(Math.random() * figuresLimit);
-
-        parent[rand] = new Triangle();
-    }
+    if (Math.floor(Math.random() * 2) === 0) parent = new Triangle();
+    else parent = new Circle();
 
     return parent;
 }
@@ -56,60 +74,72 @@ function mutate2(parent) {
     var maxChangeFactor = 1.10;
     var minChangeFactor  = 0.90;
 
-    for (var i = 0; i < figuresLimit; i++) {
+    if (Math.floor(Math.random() * chanceToChange) === 0) {
+        parent.red = Math.floor(parent.red * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor));
+        if (parent.red >= 255) parent.red = Math.floor(parent.red * minChangeFactor);
+    }
 
-        if (Math.floor(Math.random() * chanceToChange) === 0) {
-            parent[i].red = Math.floor(parent[i].red * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor));
-            if (parent[i].red >= 255) parent[i].red = Math.floor(parent[i].red * minChangeFactor);
-        }
+    if (Math.floor(Math.random() * chanceToChange) === 0) {
+        parent.green = Math.floor(parent.green * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor));
+        if (parent.green >= 255) parent.green = Math.floor(parent.green * minChangeFactor);
+    }
 
-        if (Math.floor(Math.random() * chanceToChange) === 0) {
-            parent[i].green = Math.floor(parent[i].green * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor));
-            if (parent[i].green >= 255) parent[i].green = Math.floor(parent[i].green * minChangeFactor);
-        }
-
-        if (Math.floor(Math.random() * chanceToChange) === 0) {
-            parent[i].blue = Math.floor(parent[i].blue * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor));
-            if (parent[i].blue >= 255) parent[i].blue = Math.floor(parent[i].blue * minChangeFactor);
-        }
+    if (Math.floor(Math.random() * chanceToChange) === 0) {
+        parent.blue = Math.floor(parent.blue * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor));
+        if (parent.blue >= 255) parent.blue = Math.floor(parent.blue * minChangeFactor);
     }
 
     return parent;
 }
 
-function mutate3(parent) {
+function mutate3Tri(parent) {
 
     var chanceToChange = 3;
     var maxChangeFactor = 1.10;
     var minChangeFactor = 0.90;
 
-    for (var i = 0; i < figuresLimit; i++) {
 
-        if (Math.floor(Math.random() * chanceToChange) === 0) {
-            parent[i].a[0] = parent[i].a[0] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
-            parent[i].a[1] = parent[i].a[1] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
-            if (parent[i].a[0] > canvasWidth) parent[i].a[0] = canvasWidth;
-            if (parent[i].a[1] > canvasHeight) parent[i].a[1] = canvasHeight;
-        }
+    if (Math.floor(Math.random() * chanceToChange) === 0) {
+        parent.a[0] = parent.a[0] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
+        parent.a[1] = parent.a[1] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
+        if (parent.a[0] > canvasWidth) parent.a[0] = canvasWidth;
+        if (parent.a[1] > canvasHeight) parent.a[1] = canvasHeight;
+    }
 
-        if (Math.floor(Math.random() * chanceToChange) === 0) {
-            parent[i].b[0] = parent[i].b[0] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
-            parent[i].b[1] = parent[i].b[1] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
-            if (parent[i].b[0] >= canvasWidth) parent[i].b[0] = canvasWidth;
-            if (parent[i].b[1] >= canvasHeight) parent[i].b[1] = canvasHeight;
-        }
+    if (Math.floor(Math.random() * chanceToChange) === 0) {
+        parent.b[0] = parent.b[0] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
+        parent.b[1] = parent.b[1] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
+        if (parent.b[0] > canvasWidth) parent.b[0] = canvasWidth;
+        if (parent.b[1] > canvasHeight) parent.b[1] = canvasHeight;
+    }
 
-        if (Math.floor(Math.random() * chanceToChange) === 0) {
-            parent[i].c[0] = parent[i].c[0] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
-            parent[i].c[1] = parent[i].c[1] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
-            if (parent[i].c[0] >= canvasWidth) parent[i].c[0] = canvasWidth;
-            if (parent[i].c[1] >= canvasHeight) parent[i].c[1] = canvasHeight;
-        }
+    if (Math.floor(Math.random() * chanceToChange) === 0) {
+        parent.c[0] = parent.c[0] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
+        parent.c[1] = parent.c[1] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
+        if (parent.c[0] > canvasWidth) parent.c[0] = canvasWidth;
+        if (parent.c[1] > canvasHeight) parent.c[1] = canvasHeight;
     }
 
     return parent;
 }
 
+function mutate3Cir(parent) {
+
+    var chanceToChange = 2;
+    var maxChangeFactor = 1.10;
+    var minChangeFactor = 0.90;
+
+
+    if (Math.floor(Math.random() * chanceToChange) === 0) {
+
+        parent.center[0] = parent.center[0] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
+        parent.center[1] = parent.center[1] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
+        if (parent.center[0] > canvasWidth) parent.center[0] = canvasWidth;
+        if (parent.center[1] > canvasHeight) parent.center[1] = canvasHeight;
+    }
+
+    return parent;
+}
 
 function mutate4(parent) {
 
@@ -121,6 +151,7 @@ function mutate4(parent) {
     for (var i = rand; i < figuresLimit; i++) {
 
         newParent[j] = parent[i].copy();
+        debugger;
         j++
     }
 
@@ -133,25 +164,37 @@ function mutate4(parent) {
     return newParent;
 }
 
-function mutate5(parent) {
+function mutate5Tri(parent) {
 
     var chanceToChange = 3;
 
-    for (var i = 0; i < figuresLimit; i++) {
-
-        if (Math.floor(Math.random() * chanceToChange) === 0) {
-            parent[i].a[0] = canvasWidth - parent[i].a[0];
-            parent[i].a[1] = canvasHeight - parent[i].a[1];
-            parent[i].b[0] = canvasWidth - parent[i].b[0];
-            parent[i].b[1] = canvasHeight - parent[i].b[1];
-            parent[i].c[0] = canvasWidth - parent[i].c[0];
-            parent[i].c[1] = canvasHeight - parent[i].c[1];
-        }
+    if (Math.floor(Math.random() * chanceToChange) === 0) {
+        parent.a[0] = canvasWidth - parent.a[0];
+        parent.a[1] = canvasHeight - parent.a[1];
+        parent.b[0] = canvasWidth - parent.b[0];
+        parent.b[1] = canvasHeight - parent.b[1];
+        parent.c[0] = canvasWidth - parent.c[0];
+        parent.c[1] = canvasHeight - parent.c[1];
     }
 
     return parent;
 }
 
+function mutate5Cir(parent) {
+
+    var chanceToChange = 2;
+    var maxChangeFactor = 1.10;
+    var minChangeFactor = 0.90;
+
+    if (Math.floor(Math.random() * chanceToChange) === 0) {
+
+        var buffer = parent.radius;
+
+        parent.radius = parent.radius * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
+        if (parent.center[0] + parent.radius > canvasWidth || parent.center[1] + parent.radius > canvasHeight) parent.radius = buffer;
+    }
+
+}
 
 
 
