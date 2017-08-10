@@ -25,8 +25,10 @@ function generation(population) {
 
         for (var j = 0; j < figuresLimit; j++) {
 
-            if (Math.floor(Math.random() * 2) === 0) newGroupOfTriangles[j] = new Triangle();
-            else newGroupOfTriangles[j] = new Circle();
+            if (Math.floor(Math.random() * 2) === 0)
+                newGroupOfTriangles[j] = new Triangle();
+            else
+            newGroupOfTriangles[j] = new Circle();
         }
 
         newGeneration.push(newGroupOfTriangles);

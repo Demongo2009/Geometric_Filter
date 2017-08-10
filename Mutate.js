@@ -7,7 +7,6 @@ function Mutate(population) {
 
             var event = Math.floor(Math.random() * mutationNumber);
 
-            if (population[i][j] === undefined) debugger;
             if (population[i][j] instanceof Triangle) {
 
                 switch (event) {
@@ -60,11 +59,12 @@ function Mutate(population) {
     return population;
 }
 
-
 function mutate1(parent) {
 
-    if (Math.floor(Math.random() * 2) === 0) parent = new Triangle();
-    else parent = new Circle();
+    if (Math.floor(Math.random() * 2) === 0)
+        parent = new Triangle();
+    else
+    parent = new Circle();
 
     return parent;
 }
@@ -99,7 +99,6 @@ function mutate3Tri(parent) {
     var maxChangeFactor = 1.10;
     var minChangeFactor = 0.90;
 
-
     if (Math.floor(Math.random() * chanceToChange) === 0) {
         parent.a[0] = parent.a[0] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
         parent.a[1] = parent.a[1] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
@@ -130,7 +129,6 @@ function mutate3Cir(parent) {
     var maxChangeFactor = 1.10;
     var minChangeFactor = 0.90;
 
-
     if (Math.floor(Math.random() * chanceToChange) === 0) {
 
         var bufferCenter0 = parent.center[0];
@@ -141,7 +139,6 @@ function mutate3Cir(parent) {
         if (parent.center[0] + parent.radius > canvasWidth || parent.center[0] - parent.radius < 0 ) parent.center[0] = bufferCenter0;
         if (parent.center[1] + parent.radius > canvasHeight || parent.center[1] - parent.radius < 0) parent.center[1] = bufferCenter1;
     }
-
     return parent;
 }
 
@@ -196,6 +193,7 @@ function mutate5Cir(parent) {
         parent.radius = parent.radius * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
         if (parent.center[0] + parent.radius > canvasWidth || parent.center[1] + parent.radius > canvasHeight || parent.center[0] - parent.radius < 0 || parent.center[1] - parent.radius < 0) parent.radius = buffer;
     }
+
     return parent;
 }
 

@@ -1,5 +1,6 @@
 function draw() {
 
+    // var t0 = performance.now();
     for (var i = popLength - 1; i >= 0; i--) {
 
         ctx.clearRect(0, 0, canvasWidth, canvasHeight);
@@ -10,7 +11,6 @@ function draw() {
             else if (population[i][j] instanceof Circle) drawCircle(population[i][j]);
 
         }
-
         population[i].points = rank();
     }
 
@@ -19,24 +19,15 @@ function draw() {
         return b.points - a.points;
     });
 
-
     document.getElementById("bestScore").innerText = population[0].points;
-
-    ctxBest.clearRect(0, 0, canvasWidth, canvasHeight);
-
-
-    for (var i = figuresLimit - 1; i >= 0; i--) {
-
-        if (population[i][j] instanceof Triangle) drawTriangle();
-        else if (population[i][j] instanceof Circle) drawCircle();
-
-    }
 
     population = generation(population);
 
-    //console.log(population);
-    if ( generationNumber % 100 === 0) console.log('Generation number: ' + generationNumber);
-
+    if (generationNumber % 100 === 0) {
+        console.log('Generation number: ' + generationNumber);
+        // var t1 = performance.now();
+        // console.log('Draw time: ' + (Math.floor(t1 - t0)));
+    }
         setTimeout(draw, 1);
 }
 
@@ -52,7 +43,6 @@ function drawTriangle(triangle) {
     ctx.lineTo(triangle.b[0], triangle.b[1]);
     ctx.lineTo(triangle.c[0], triangle.c[1]);
     ctx.fill();
-
 }
 
 function drawCircle(circle) {

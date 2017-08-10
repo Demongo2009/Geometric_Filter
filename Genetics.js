@@ -75,5 +75,4 @@ function Circle() {
 
         return c;
     };
-
 }
