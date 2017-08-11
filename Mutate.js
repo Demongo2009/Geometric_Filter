@@ -64,7 +64,7 @@ function mutate1() {
     // if (Math.floor(Math.random() * 2) === 0)
         var mutated = new Triangle();
     // else
-    // parent = new Circle();
+    // var mutated = new Circle();
 
     return mutated;
 }
@@ -98,8 +98,8 @@ function mutate2(parent) {
 function mutate3Tri(parent) {
 
     var chanceToChange = 1;
-    var maxChangeFactor = 1.40;
-    var minChangeFactor = 0.60;
+    var maxChangeFactor = 1.50;
+    var minChangeFactor = 0.50;
 
     var mutated = parent.copy();
 
