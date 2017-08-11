@@ -19,7 +19,9 @@ function draw() {
         return b.points - a.points;
     });
 
-    document.getElementById("bestScore").innerText = population[0].points;
+    var score = (population[0].points * 100)/(canvasSqure * 255 * 3);
+
+    document.getElementById("bestScore").innerText = Math.floor(score) + '%' +'  (' + population[0].points + ')';
 
     population = generation(population);
 

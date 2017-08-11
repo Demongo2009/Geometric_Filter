@@ -3,10 +3,10 @@ function main() {
     console.log('It lives!');
 
     generationNumber = 0;
-    canvasWidth = 60;
-    canvasHeight = 90;
-    figuresLimit = 20;
-    popLength = 50;
+    canvasWidth = 30;
+    canvasHeight = 45;
+    figuresLimit = 2;
+    popLength = 150;
     canvasSqure = canvasWidth * canvasHeight;
 
     population = new Array();
@@ -19,10 +19,10 @@ function main() {
 
             var newFigure;
 
-            if (Math.floor(Math.random() * 2) === 0)
+            // if (Math.floor(Math.random() * 2) === 0)
             newFigure = new Triangle();
-            else
-            newFigure = new Circle();
+            // else
+            // newFigure = new Circle();
             population[i][j] = newFigure;
         }
     }
@@ -46,7 +46,7 @@ function main() {
 
         }, false);
 
-        // img.src = 'export.png';
-        img.src = 'MonaLisa.jpg';
+        img.src = 'export.png';
+        // img.src = 'MonaLisa.jpg';
     }
 }
