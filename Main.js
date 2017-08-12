@@ -3,10 +3,10 @@ function main() {
     console.log('It lives!');
 
     generationNumber = 0;
-    canvasWidth = 40;
-    canvasHeight = 60;
-    figuresLimit = 10;
-    popLength = 50;
+    canvasWidth = 30;
+    canvasHeight = 45;
+    figuresLimit = 2;
+    popLength = 150;
     canvasSqure = canvasWidth * canvasHeight;
 
     population = new Array();
@@ -46,8 +46,8 @@ function main() {
 
         }, false);
 
-        // img.src = 'export.png';
-        img.src = 'MonaLisa.jpg';
+        img.src = 'export.png';
+        // img.src = 'MonaLisa.jpg';
         // img.src = 'testImg.png';
     }
 }

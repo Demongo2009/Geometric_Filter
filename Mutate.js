@@ -98,8 +98,8 @@ function mutate2(parent) {
 function mutate3Tri(parent) {
 
     var chanceToChange = 1;
-    var maxChangeFactor = 1.50;
-    var minChangeFactor = 0.50;
+    var maxChangeFactor = 1.25;
+    var minChangeFactor = 0.75;
 
     var mutated = parent.copy();
 

@@ -18,7 +18,6 @@ function generation(population) {
     }
 
     var newGeneration = best.concat(Mutate(newOffspring));
-    //newGeneration = newGeneration.concat(Mutate(best));
 
     for (var i = 0; i < popLength * 0.4; i++) {
 
