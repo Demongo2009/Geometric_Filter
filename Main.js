@@ -2,10 +2,12 @@ function main() {
 
     console.log('It lives!');
 
+    debugCanvas=true;
+
     generationNumber = 0;
     canvasWidth = 30;
     canvasHeight = 45;
-    figuresLimit = 10;
+    figuresLimit = 15;
     popLength = 50;
     canvasSqure = canvasWidth * canvasHeight;
 
@@ -29,7 +31,9 @@ function main() {
 
     var canvas = document.getElementById('GeometricFilter');
     var image = document.getElementById('image');
-    
+
+
+
     function createContext(name, width, height) {
 
         var canvas = document.createElement('canvas');
@@ -40,9 +44,12 @@ function main() {
         return canvas.getContext('2d');
     }
 
-    for(var i=0;i<popLength;i++){
-        createContext("canvas"+i,canvasWidth,canvasHeight);
-    }
+    ctxArray=[];
+    if(debugCanvas)
+    for(var k=0; k<popLength; k++)
+    ctxArray[k]=createContext("canvas"+k,canvasWidth,canvasHeight);
+
+
 
     var img = new Image();
 
