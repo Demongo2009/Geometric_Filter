@@ -2,12 +2,13 @@ function main() {
 
     console.log('It lives!');
 
+    debugCanvas = true;
+
     generationNumber = 0;
     canvasWidth = 30;
     canvasHeight = 45;
     figuresLimit = 10;
-
-    popLength = 50;
+    popLength = 80;
     canvasSqure = canvasWidth * canvasHeight;
 
     population = new Array();
@@ -31,7 +32,7 @@ function main() {
     var canvas = document.getElementById('GeometricFilter');
     var image = document.getElementById('image');
     
-    function createContext(name, width, height) {
+    function createContextCanvas(name, width, height) {
 
         var canvas = document.createElement('canvas');
         canvas.id=name;
@@ -41,11 +42,30 @@ function main() {
         return canvas.getContext('2d');
     }
 
-    for(var i=0;i<popLength;i++){
-        createContext("canvas"+i,canvasWidth,canvasHeight);
+    function createContextScore(name) {
+
+        var score = document.createElement('DIV');
+        score.id = name;
+        document.body.appendChild(score);
+        return score.innerText;
+
     }
 
+    //document.getElementById("bestScore").innerText = Math.floor(score) + '%' +'  (' + population[0].points + ')';
+
+    // for(var i = 0; i < popLength; i++){
+    //     createContextCanvas("canvas" + i, canvasWidth, canvasHeight);
+    // }
+
     var img = new Image();
+
+    ctxArray = [];
+    if(debugCanvas)
+        for(var k = 0; k < popLength; k++) {
+            ctxArray[k] = createContextCanvas("canvas" + k, canvasWidth, canvasHeight);
+            createContextScore('score' + k);
+        }
+
 
     if (canvas.getContext) {
 
