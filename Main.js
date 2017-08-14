@@ -5,8 +5,8 @@ function main() {
     generationNumber = 0;
     canvasWidth = 30;
     canvasHeight = 45;
-    figuresLimit = 2;
-    popLength = 150;
+    figuresLimit = 10;
+    popLength = 50;
     canvasSqure = canvasWidth * canvasHeight;
 
     population = new Array();
@@ -29,6 +29,20 @@ function main() {
 
     var canvas = document.getElementById('GeometricFilter');
     var image = document.getElementById('image');
+    
+    function createContext(name, width, height) {
+
+        var canvas = document.createElement('canvas');
+        canvas.id=name;
+        canvas.width=width;
+        canvas.height=height;
+        document.body.appendChild(canvas);
+        return canvas.getContext('2d');
+    }
+
+    for(var i=0;i<popLength;i++){
+        createContext("canvas"+i,canvasWidth,canvasHeight);
+    }
 
     var img = new Image();
 
@@ -46,8 +60,9 @@ function main() {
 
         }, false);
 
-        img.src = 'export.png';
-        // img.src = 'MonaLisa.jpg';
+        // img.src = 'export.png';
+        img.src = 'MonaLisa.jpg';
         // img.src = 'testImg.png';
+        // img.src = prompt("lol");
     }
 }

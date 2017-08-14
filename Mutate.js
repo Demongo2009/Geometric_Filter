@@ -1,6 +1,6 @@
 function Mutate(population) {
 
-    var mutationNumber = 4;
+    var mutationNumber = 5;
 
     for (var i = 0; i < population.length; i++) {
         for (var j = 0; j < figuresLimit; j++) {
@@ -27,28 +27,33 @@ function Mutate(population) {
                         population[i][j] = mutate5Tri(population[i][j]);
                         break;
 
-                }
-            } else if (population[i][j] instanceof Circle) {
-
-                switch (event) {
-
-                    case 0:
-                        population[i][j] = mutate1();
+                    case 4:
+                        population[i] = mutate6(population[i]);
                         break;
 
-                    case 1:
-                        population[i][j] = mutate2(population[i][j]);
-                        break;
-
-                    case 2:
-                        population[i][j] = mutate3Cir(population[i][j]);
-                        break;
-
-                    case 3:
-                        population[i][j] = mutate5Cir(population[i][j]);
-                        break;
 
                 }
+            // } else if (population[i][j] instanceof Circle) {
+            //
+            //     switch (event) {
+            //
+            //         case 0:
+            //             population[i][j] = mutate1();
+            //             break;
+            //
+            //         case 1:
+            //             population[i][j] = mutate2(population[i][j]);
+            //             break;
+            //
+            //         case 2:
+            //             population[i][j] = mutate3Cir(population[i][j]);
+            //             break;
+            //
+            //         case 3:
+            //             population[i][j] = mutate5Cir(population[i][j]);
+            //             break;
+            //
+            //     }
             }
         }
 
@@ -71,7 +76,7 @@ function mutate1() {
 
 function mutate2(parent) {
 
-    var chanceToChange = 2;
+    var chanceToChange = 1;
     var maxChangeFactor = 1.25;
     var minChangeFactor  = 0.75;
 
@@ -138,7 +143,7 @@ function mutate3Tri(parent) {
 
 function mutate3Cir(parent) {
 
-    var chanceToChange = 2;
+    var chanceToChange = 1;
     var maxChangeFactor = 1.10;
     var minChangeFactor = 0.90;
 
@@ -179,9 +184,10 @@ function mutate4(parent) {
     return newParent;
 }
 
+
 function mutate5Tri(parent) {
 
-    var chanceToChange = 2;
+    var chanceToChange = 1;
 
     var mutated = parent.copy();
 
@@ -199,7 +205,7 @@ function mutate5Tri(parent) {
 
 function mutate5Cir(parent) {
 
-    var chanceToChange = 2;
+    var chanceToChange = 1;
     var maxChangeFactor = 1.10;
     var minChangeFactor = 0.90;
 
@@ -214,6 +220,24 @@ function mutate5Cir(parent) {
     }
 
     return mutated;
+}
+
+
+function mutate6(parent){
+    var rand = Math.floor(Math.random() * figuresLimit-1)+1;
+
+    var newParent = new Object();
+
+    for (var i = 0; i < figuresLimit; i++) {
+
+        newParent[i] = parent[i].copy();
+    }
+
+    newParent[0]=parent[rand].copy();
+    newParent[rand]=parent[0].copy();
+
+    return newParent;
+
 }
 
 
