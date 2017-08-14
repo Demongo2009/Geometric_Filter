@@ -1,5 +1,5 @@
 function debugging() {
-    if(generationNumber % 50 === 0) {
+    if(generationNumber % 20 === 0) {
         for (var k = 0; k < popLength; k++) {
 
             ctxArray[k].clearRect(0, 0, canvasWidth, canvasHeight);
