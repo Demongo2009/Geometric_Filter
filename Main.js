@@ -7,7 +7,7 @@ function main() {
     generationNumber = 0;
     canvasWidth = 30;
     canvasHeight = 45;
-    figuresLimit = 15;
+    figuresLimit = 10;
     popLength = 50;
     canvasSqure = canvasWidth * canvasHeight;
 
@@ -68,8 +68,8 @@ function main() {
         }, false);
 
         // img.src = 'export.png';
-        img.src = 'MonaLisa.jpg';
-        // img.src = 'testImg.png';
+        // img.src = 'MonaLisa.jpg';
+        img.src = 'kolko.png';
         // img.src = prompt("lol");
     }
 }

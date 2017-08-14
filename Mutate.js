@@ -3,28 +3,29 @@ function Mutate(population) {
     var mutationNumber = 5;
 
     for (var i = 0; i < population.length; i++) {
-        for (var j = 0; j < figuresLimit; j++) {
+        // for (var j = 0; j < figuresLimit; j++) {
+        var randSpecimen = Math.floor(Math.random() * figuresLimit);
 
             var event = Math.floor(Math.random() * mutationNumber);
 
-            if (population[i][j] instanceof Triangle) {
+            if (population[i][randSpecimen] instanceof Triangle) {
 
                 switch (event) {
 
                     case 0:
-                        population[i][j] = mutate1();
+                        population[i][randSpecimen] = mutate1();
                         break;
 
                     case 1:
-                        population[i][j] = mutate2(population[i][j]);
+                        population[i][randSpecimen] = mutate2(population[i][randSpecimen]);
                         break;
 
                     case 2:
-                        population[i][j] = mutate3Tri(population[i][j]);
+                        population[i][randSpecimen] = mutate3Tri(population[i][randSpecimen]);
                         break;
 
                     case 3:
-                        population[i][j] = mutate5Tri(population[i][j]);
+                        population[i][randSpecimen] = mutate5Tri(population[i][randSpecimen]);
                         break;
 
                     case 4:
@@ -55,7 +56,7 @@ function Mutate(population) {
             //
             //     }
             }
-        }
+        // }
 
         var chanceToChange = 2;
         if (Math.floor(Math.random() * chanceToChange) === 0) mutate4(population[i]);
