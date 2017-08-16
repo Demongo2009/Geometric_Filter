@@ -1,4 +1,5 @@
 function debugging() {
+    
     if(generationNumber % 20 === 0) {
         for (var k = 0; k < popLength; k++) {
 

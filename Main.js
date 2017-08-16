@@ -84,6 +84,5 @@ function main() {
         // img.src = 'export.png';
         img.src = 'MonaLisa.jpg';
         // img.src = 'testImg.png';
-        // img.src = prompt("lol");
     }
 }
