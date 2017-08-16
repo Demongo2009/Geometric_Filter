@@ -64,7 +64,11 @@ function draw() {
 
 
 
-
+    // if(score<90){
+    //     population = generation(population);
+    // }else{
+    //     population = generationPhase2(population);
+    // }
 
     population = generation(population);
 

@@ -8,7 +8,7 @@ function main() {
     canvasWidth = 30;
     canvasHeight = 45;
     figuresLimit = 10;
-    popLength = 50;
+    popLength = 40;
     canvasSqure = canvasWidth * canvasHeight;
 
     population = new Array();
