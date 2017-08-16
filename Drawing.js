@@ -25,11 +25,11 @@ function draw() {
 
     if(debugCanvas) debugging();
 
-    if(figuresScore < 90){
-        population = generation(population);
-    }else{
-        population = generationPhase2(population);
-    }
+    // if(figuresScore < 90){
+    //     population = generation(population);
+    // }else{
+    //     population = generationPhase2(population);
+    // }
 
     population = generation(population);
 

@@ -2,6 +2,20 @@ function checkColor(figuresPixData, imgPixData) {
 
     var pointsOfPixel = 0;
 
+    if (imgPixData[3] === 0) {
+
+        imgPixData[0] = 255;
+        imgPixData[1] = 255;
+        imgPixData[2] = 255;
+    }
+
+    if (figuresPixData[3] === 0) {
+
+        figuresPixData[0] = 255;
+        figuresPixData[1] = 255;
+        figuresPixData[2] = 255;
+    }
+
     var redOdds = Math.abs(figuresPixData[0] - imgPixData[0]);
     var greenOdds = Math.abs(figuresPixData[1] - imgPixData[1]);
     var blueOdds = Math.abs(figuresPixData[2] - imgPixData[2]);

@@ -6,8 +6,8 @@ function main() {
     generationNumber = 0;
     canvasWidth = 30;
     canvasHeight = 45;
-    figuresLimit = 10;
-    popLength = 70;
+    figuresLimit = 25;
+    popLength = 120;
     canvasSqure = canvasWidth * canvasHeight;
 
     population = new Array();
@@ -78,6 +78,7 @@ function main() {
         // img.src = 'export.png';
         // img.src = 'testImg.png';
         // img.src = 'MonaLisa.jpg';
-        img.src = 'kolko.png';
+        img.src = 'girl.png';
+        // img.src = 'kolko.png';
     }
 }

@@ -60,8 +60,8 @@ function MutatePhase2(population) {
         }
         // }
 
-        var chanceToChange = 2;
-        if (Math.floor(Math.random() * chanceToChange) === 0) mutate4(population[i]);
+        // var chanceToChange = 2;
+        // if (Math.floor(Math.random() * chanceToChange) === 0) mutate4(population[i]);
     }
 
     return population;
