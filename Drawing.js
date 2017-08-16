@@ -24,6 +24,13 @@ function draw() {
     document.getElementById("bestScore").innerText = Math.floor(figuresScore) + '%' +'  (' + population[0].points + ')';
 
     if(debugCanvas) debugging();
+
+    if(figuresScore < 90){
+        population = generation(population);
+    }else{
+        population = generationPhase2(population);
+    }
+
     population = generation(population);
 
     if (generationNumber % 100 === 0) {

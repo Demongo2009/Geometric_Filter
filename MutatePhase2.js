@@ -1,34 +1,35 @@
-function Mutate(population) {
+function MutatePhase2(population) {
 
     var mutationNumber = 5;
 
     for (var i = 0; i < population.length; i++) {
-        //for (var j = 0; j < figuresLimit; j++) {
+
         var randSpecimen = Math.floor(Math.random() * figuresLimit);
 
         var event = Math.floor(Math.random() * mutationNumber);
 
         if (population[i][randSpecimen] instanceof Triangle) {
+
             switch (event) {
 
                 case 0:
-                    population[i][randSpecimen] = mutate1();
+                        population[i][randSpecimen] = mutate1();
                     break;
 
                 case 1:
-                    population[i][randSpecimen] = mutate2(population[i][randSpecimen]);
+                        population[i][randSpecimen] = mutate2(population[i][randSpecimen]);
                     break;
 
                 case 2:
-                    population[i][randSpecimen] = mutate3Tri(population[i][randSpecimen]);
+                        population[i][randSpecimen] = mutate3Tri(population[i][randSpecimen]);
                     break;
 
                 case 3:
-                    population[i][randSpecimen] = mutate5Tri(population[i][randSpecimen]);
+                        population[i][randSpecimen] = mutate5Tri(population[i][randSpecimen]);
                     break;
 
                 case 4:
-                    population[i] = mutate6(population[i]);
+                        population[i] = mutate6(population[i]);
                     break;
 
 
@@ -54,8 +55,10 @@ function Mutate(population) {
             //             break;
             //
             //     }
-        //}
-    }
+            event++;
+
+        }
+        // }
 
         var chanceToChange = 2;
         if (Math.floor(Math.random() * chanceToChange) === 0) mutate4(population[i]);
@@ -67,7 +70,7 @@ function Mutate(population) {
 function mutate1() {
 
     // if (Math.floor(Math.random() * 2) === 0)
-        var mutated = new Triangle();
+    var mutated = new Triangle();
     // else
     // var mutated = new Circle();
 
@@ -77,8 +80,8 @@ function mutate1() {
 function mutate2(parent) {
 
     var chanceToChange = 1;
-    var maxChangeFactor = 1.10;
-    var minChangeFactor  = 0.90;
+    var maxChangeFactor = 1.1;
+    var minChangeFactor  = 0.9;
 
     var mutated = parent.copy();
 
@@ -103,8 +106,8 @@ function mutate2(parent) {
 function mutate3Tri(parent) {
 
     var chanceToChange = 1;
-    var maxChangeFactor = 1.10;
-    var minChangeFactor = 0.90;
+    var maxChangeFactor = 1.1;
+    var minChangeFactor = 0.9;
 
     var mutated = parent.copy();
 
@@ -187,7 +190,7 @@ function mutate4(parent) {
 
 function mutate5Tri(parent) {
 
-    var chanceToChange = 2;
+    var chanceToChange = 1;
 
     var mutated = parent.copy();
 
@@ -237,6 +240,9 @@ function mutate6(parent){
     newParent[rand]=parent[0].copy();
 
     return newParent;
+
+}
+function mutate7(parent) {
 
 }
 

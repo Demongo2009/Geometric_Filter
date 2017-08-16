@@ -3,7 +3,6 @@ function main() {
     console.log('It lives!');
 
     debugCanvas = true;
-
     generationNumber = 0;
     canvasWidth = 30;
     canvasHeight = 45;
@@ -31,7 +30,7 @@ function main() {
 
     var canvas = document.getElementById('GeometricFilter');
     var image = document.getElementById('image');
-    
+
     function createContextCanvas(name, width, height) {
 
         var canvas = document.createElement('canvas');
@@ -46,16 +45,11 @@ function main() {
 
         var score = document.createElement('DIV');
         score.id = name;
+        score.style = "width:" + 30 + "px; height:" + 15 + "px; font-size:10px; display:inline-block";
         document.body.appendChild(score);
         return score.innerText;
 
     }
-
-    //document.getElementById("bestScore").innerText = Math.floor(score) + '%' +'  (' + population[0].points + ')';
-
-    // for(var i = 0; i < popLength; i++){
-    //     createContextCanvas("canvas" + i, canvasWidth, canvasHeight);
-    // }
 
     var img = new Image();
 
@@ -82,7 +76,8 @@ function main() {
         }, false);
 
         // img.src = 'export.png';
-        img.src = 'MonaLisa.jpg';
         // img.src = 'testImg.png';
+        // img.src = 'MonaLisa.jpg';
+        img.src = 'kolko.png';
     }
 }
