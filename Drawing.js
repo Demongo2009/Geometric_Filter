@@ -1,22 +1,30 @@
 function draw() {
 
+    // console.time('drawing');
     for (var i = popLength - 1; i >= 0; i--) {
 
+        
         ctx.clearRect(0, 0, canvasWidth, canvasHeight);
 
+        // console.time('draw triangles');
         for (var j = figuresLimit - 1; j >= 0; j--) {
 
             if (population[i][j] instanceof Triangle) drawTriangle(population[i][j]);
             else if (population[i][j] instanceof Circle) drawCircle(population[i][j]);
 
         }
+        // console.time('rank');
         population[i].points = rank();
+        // console.timeEnd('rank');
     }
+        // console.timeEnd('draw triangles');
 
+    // console.time('sortowanie');
     population.sort(function (a, b) {
 
         return b.points - a.points;
     });
+    // console.timeEnd('sortowanie');
 
     //var figuresScore = (population[0].points * 100)/(canvasSqure);
     var figuresScore = (population[0].points * 100)/(canvasSqure * 255 * 3);
@@ -31,7 +39,11 @@ function draw() {
     //     population = generationPhase2(population);
     // }
 
+    // console.timeEnd('drawing');
+
+    // console.time('generation');
     population = generation(population);
+    // console.timeEnd('generation');
 
     if (generationNumber % 100 === 0) {
         console.log('Generation number: ' + generationNumber);

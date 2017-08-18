@@ -2,6 +2,12 @@ function crossover(parent1, parent2) {
 
     var newGroupOfTriangles = new Object();
 
+    newGroupOfTriangles.bgColor = {
+       r:,
+       g:,
+        b:
+    };
+
     for (var i = 0; i < figuresLimit; i++) {
 
         if (Math.floor(Math.random() * 2) === 0) {

@@ -2,22 +2,24 @@ function rank() {
 
     var pixels = 0;
     var points = 0;
+    // console.time('getImageData');
     var figuresData = ctx.getImageData(0, 0, canvasWidth, canvasHeight).data;
+    // console.timeEnd('getImageData');
 
+    // console.time('for');
     for (var i = 0; i < canvasSqure * 4; i += 4) {
 
-        var figuresPixData = figuresData.slice(i, i + 4);
-        // if (figuresPixData[3] === 0) continue;
+        // if(figuresData[i+3]!==0) {
+            var pointsOfPixel = checkColor(figuresData, imgData, i);
 
-        var imgPixData = imgData.slice(i, i + 4);
 
-        var pointsOfPixel = checkColor(figuresPixData, imgPixData);
-
-        pixels++;
-        points += pointsOfPixel;
+            pixels++;
+            points += pointsOfPixel;
+        // }
     }
+    // console.timeEnd('for');
 
     //console.log(pixels);
-    return points;
+    return points/*/(Math.pow(pixels,0.95))*/;
 }
 

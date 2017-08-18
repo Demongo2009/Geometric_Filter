@@ -6,8 +6,8 @@ function main() {
     generationNumber = 0;
     canvasWidth = 30;
     canvasHeight = 45;
-    figuresLimit = 25;
-    popLength = 120;
+    figuresLimit = 4;
+    popLength = 100;
     canvasSqure = canvasWidth * canvasHeight;
 
     population = new Array();
@@ -15,6 +15,12 @@ function main() {
     for (var i = 0; i < popLength; i++) {
 
         population[i] = new Object();
+
+        population[i].bgColor = {
+            r:Math.floor(Math.random() * 256),
+            g:Math.floor(Math.random() * 256),
+            b:Math.floor(Math.random() * 256)
+        };
 
         for (var j = 0; j < figuresLimit; j++) {
 
