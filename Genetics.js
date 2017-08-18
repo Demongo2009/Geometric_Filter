@@ -4,15 +4,32 @@ function Triangle() {
     this.b = [];
     this.c = [];
 
-    //do {
+    var rangeX = canvasWidth * 0.1;
+    var rangeY = canvasHeight * 0.1;
+
         this.a[0] = Math.floor(Math.random() * canvasWidth);
         this.a[1] = Math.floor(Math.random() * canvasHeight);
-        this.b[0] = Math.floor(Math.random() * canvasWidth);
+
+        this.b[0] = this.b[0] * (Math.random() * rangeX + minRangeX);
+        if (this.b[0] > canvasWidth) this.b[0] = canvasWidth;
+
+        this.b[1] = this.b[1] * (Math.random() * (maxRangeY - minRangeY) + minRangeY);
+        if (this.b[1] > canvasHeight) this.b[1] = canvasHeight;
+
+        this.c[0] = this.c[0] * (Math.random() * (maxRangeX - minRangeX) + minRangeX);
+        if (this.c[0] > canvasWidth) this.c[0] = canvasWidth;
+
+        this.c[1] = this.c[1] * (Math.random() * (maxRangeY - minRangeY) + minRangeY);
+        if (this.c[1] > canvasHeight) this.c[1] = canvasHeight;
+
+
+
+    this.b[0] = Math.floor(Math.random() * canvasWidth);
         this.b[1] = Math.floor(Math.random() * canvasHeight);
         this.c[0] = Math.floor(Math.random() * canvasWidth);
         this.c[1] = Math.floor(Math.random() * canvasHeight);
-    //} while (this.a[0] === this.b[0] || this.a[0] === this.c[0] || this.b[0] === this.c[0] || this.a[1] === this.b[1] || this.a[1] === this.c[1] || this.b[1] === this.c[1]);
 
+        
     this.red = Math.floor(Math.random() * 256);
     this.green = Math.floor(Math.random() * 256);
     this.blue = Math.floor(Math.random() * 256);

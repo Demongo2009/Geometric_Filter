@@ -6,7 +6,7 @@ function main() {
     generationNumber = 0;
     canvasWidth = 30;
     canvasHeight = 45;
-    figuresLimit = 20;
+    figuresLimit = 30;
     popLength = 100;
     canvasSqure = canvasWidth * canvasHeight;
 
@@ -15,12 +15,6 @@ function main() {
     for (var i = 0; i < popLength; i++) {
 
         population[i] = new Object();
-
-        // population[i].bgColor = {
-        //     r:Math.floor(Math.random() * 256),
-        //     g:Math.floor(Math.random() * 256),
-        //     b:Math.floor(Math.random() * 256)
-        // };
 
         population[i].r = Math.floor(Math.random() * 256);
         population[i].g = Math.floor(Math.random() * 256);
@@ -89,8 +83,8 @@ function main() {
 
         // img.src = 'export.png';
         // img.src = 'testImg.png';
-        // img.src = 'MonaLisa.jpg';
-        img.src = 'girl.png';
+        img.src = 'MonaLisa.jpg';
+        // img.src = 'girl.png';
         // img.src = 'kolko.png';
     }
 }
