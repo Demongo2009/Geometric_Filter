@@ -1,6 +1,7 @@
 function draw() {
 
     // var t0 = performance.now();
+    console.time("draw");
     for (var i = popLength - 1; i >= 0; i--) {
 
         ctx.clearRect(0, 0, canvasWidth, canvasHeight);
@@ -13,6 +14,7 @@ function draw() {
         }
         population[i].points = rank();
     }
+    console.timeEnd("draw");
 
     population.sort(function (a, b) {
 
@@ -27,6 +29,7 @@ function draw() {
     
 
     if(debugCanvas){
+        console.time("debugcanvas");
         for (var k=0; k<popLength; k++){
 
             ctxArray[k].clearRect(0, 0, canvasWidth, canvasHeight);
@@ -58,12 +61,13 @@ function draw() {
 
 
         }
+        console.timeEnd("debugcanvas");
 
     }
 
 
 
-
+    //
     // if(score<90){
     //     population = generation(population);
     // }else{

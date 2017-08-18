@@ -1,5 +1,5 @@
 function generation(population) {
-
+    console.time("generation");
     var best = population.slice(0, popLength * 0.2);
     var newOffspring = new Array();
 
@@ -11,9 +11,9 @@ function generation(population) {
             var rand2 = Math.floor(Math.random() * (popLength * 0.2));
 
         } while (rand1 === rand2);
-
+        console.time("crossover");
         var offSpr = crossover(best[rand1], best[rand2]);
-
+        console.timeEnd("crossover");
         newOffspring.push(offSpr);
     }
 
@@ -35,5 +35,6 @@ function generation(population) {
     // }
 
     generationNumber++;
+    console.timeEnd("generation");
     return newGeneration;
 }

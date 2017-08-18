@@ -8,7 +8,7 @@ function main() {
     canvasWidth = 30;
     canvasHeight = 45;
     figuresLimit = 10;
-    popLength = 40;
+    popLength = 100;
     canvasSqure = canvasWidth * canvasHeight;
 
     population = new Array();
@@ -69,7 +69,7 @@ function main() {
 
         // img.src = 'export.png';
         // img.src = 'MonaLisa.jpg';
-        img.src = 'kolko.png';
+        img.src = 'czorny.png';
         // img.src = prompt("lol");
     }
 }

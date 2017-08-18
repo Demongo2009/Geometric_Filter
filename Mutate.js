@@ -1,5 +1,5 @@
 function Mutate(population) {
-
+    console.time("mutation");
     var mutationNumber = 5;
 
     for (var i = 0; i < population.length; i++) {
@@ -13,23 +13,33 @@ function Mutate(population) {
                 switch (event) {
 
                     case 0:
+                        console.time("mutate1");
                         population[i][randSpecimen] = mutate1();
+                        console.timeEnd("mutate1");
                         break;
 
                     case 1:
+                        console.time("mutate2");
                         population[i][randSpecimen] = mutate2(population[i][randSpecimen]);
+                        console.timeEnd("mutate2");
                         break;
 
                     case 2:
+                        console.time("mutate3");
                         population[i][randSpecimen] = mutate3Tri(population[i][randSpecimen]);
+                        console.timeEnd("mutate3");
                         break;
 
                     case 3:
+                        console.time("mutate4");
                         population[i][randSpecimen] = mutate5Tri(population[i][randSpecimen]);
+                        console.timeEnd("mutate4");
                         break;
 
                     case 4:
+                        console.time("mutate5");
                         population[i] = mutate6(population[i]);
+                        console.time("mutate5");
                         break;
 
 
@@ -62,6 +72,7 @@ function Mutate(population) {
         if (Math.floor(Math.random() * chanceToChange) === 0) mutate4(population[i]);
     }
 
+    console.timeEnd("mutation");
     return population;
 }
 
@@ -77,23 +88,23 @@ function mutate1() {
 
 function mutate2(parent) {
 
-    var chanceToChange = 1;
-    var maxChangeFactor = 1.25;
-    var minChangeFactor  = 0.75;
+    var chanceToChange = Math.floor(Math.random() * 3);
+    var maxChangeFactor = 1.5;
+    var minChangeFactor  = 0.5;
 
     var mutated = parent.copy();
 
-    if (Math.floor(Math.random() * chanceToChange) === 0) {
+    if (chanceToChange===0) {
         mutated.red = Math.floor(mutated.red * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor));
         if (mutated.red >= 255) mutated.red = Math.floor(mutated.red * minChangeFactor);
     }
 
-    if (Math.floor(Math.random() * chanceToChange) === 0) {
+    if (chanceToChange===1) {
         mutated.green = Math.floor(mutated.green * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor));
         if (mutated.green >= 255) mutated.green = Math.floor(mutated.green * minChangeFactor);
     }
 
-    if (Math.floor(Math.random() * chanceToChange) === 0) {
+    if (chanceToChange===2) {
         mutated.blue = Math.floor(mutated.blue * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor));
         if (mutated.blue >= 255) mutated.blue = Math.floor(mutated.blue * minChangeFactor);
     }
@@ -103,38 +114,38 @@ function mutate2(parent) {
 
 function mutate3Tri(parent) {
 
-    var chanceToChange = 1;
-    var maxChangeFactor = 1.25;
-    var minChangeFactor = 0.75;
+    var chanceToChange = 6;
+    var maxChangeFactor = 1.5;
+    var minChangeFactor = 0.5;
 
     var mutated = parent.copy();
 
-    if (Math.floor(Math.random() * chanceToChange) === 0) {
+    if (chanceToChange === 0) {
         mutated.a[0] = mutated.a[0] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
         if (mutated.a[0] > canvasWidth) mutated.a[0] = canvasWidth;
     }
 
-    if (Math.floor(Math.random() * chanceToChange) === 0) {
+    if (chanceToChange === 1) {
         mutated.a[1] = mutated.a[1] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
         if (mutated.a[1] > canvasHeight) mutated.a[1] = canvasHeight;
     }
 
-    if (Math.floor(Math.random() * chanceToChange) === 0) {
+    if (chanceToChange === 2) {
         mutated.b[0] = mutated.b[0] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
         if (mutated.b[0] > canvasWidth) mutated.b[0] = canvasWidth;
     }
 
-    if (Math.floor(Math.random() * chanceToChange) === 0) {
+    if (chanceToChange === 3) {
         mutated.b[1] = mutated.b[1] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
         if (mutated.b[1] > canvasHeight) mutated.b[1] = canvasHeight;
     }
 
-    if (Math.floor(Math.random() * chanceToChange) === 0) {
+    if (chanceToChange === 4) {
         mutated.c[0] = mutated.c[0] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
         if (mutated.c[0] > canvasWidth) mutated.c[0] = canvasWidth;
     }
 
-    if (Math.floor(Math.random() * chanceToChange) === 0) {
+    if (chanceToChange === 5) {
         mutated.c[1] = mutated.c[1] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
         if (mutated.c[1] > canvasHeight) mutated.c[1] = canvasHeight;
     }

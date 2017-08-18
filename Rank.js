@@ -10,9 +10,7 @@ function rank() {
         // if (figuresPixData[3] === 0) continue;
 
         var imgPixData = imgData.slice(i, i + 4);
-
         var pointsOfPixel = checkColor(figuresPixData, imgPixData);
-
         pixels++;
         points += pointsOfPixel;
     }
