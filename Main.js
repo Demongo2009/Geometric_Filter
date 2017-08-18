@@ -6,7 +6,7 @@ function main() {
     generationNumber = 0;
     canvasWidth = 30;
     canvasHeight = 45;
-    figuresLimit = 4;
+    figuresLimit = 20;
     popLength = 100;
     canvasSqure = canvasWidth * canvasHeight;
 
@@ -16,11 +16,17 @@ function main() {
 
         population[i] = new Object();
 
-        population[i].bgColor = {
-            r:Math.floor(Math.random() * 256),
-            g:Math.floor(Math.random() * 256),
-            b:Math.floor(Math.random() * 256)
-        };
+        // population[i].bgColor = {
+        //     r:Math.floor(Math.random() * 256),
+        //     g:Math.floor(Math.random() * 256),
+        //     b:Math.floor(Math.random() * 256)
+        // };
+
+        population[i].r = Math.floor(Math.random() * 256);
+        population[i].g = Math.floor(Math.random() * 256);
+        population[i].b = Math.floor(Math.random() * 256);
+
+        population[i].bgColor = 'rgb(' + population[i].r + ', ' + population[i].g + ', ' + population[i].b + ')';
 
         for (var j = 0; j < figuresLimit; j++) {
 

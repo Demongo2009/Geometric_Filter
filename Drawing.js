@@ -3,8 +3,8 @@ function draw() {
     // console.time('drawing');
     for (var i = popLength - 1; i >= 0; i--) {
 
-        
-        ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+        ctx.fillStyle = population[i].bgColor;
+        ctx.fillRect(0, 0, canvasWidth, canvasHeight);
 
         // console.time('draw triangles');
         for (var j = figuresLimit - 1; j >= 0; j--) {
