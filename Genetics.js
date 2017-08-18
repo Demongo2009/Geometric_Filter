@@ -76,3 +76,13 @@ function Circle() {
         return c;
     };
 }
+
+function Specimen() {
+    this.points=0;
+
+    this.red = Math.floor(Math.random() * 256);
+    this.green = Math.floor(Math.random() * 256);
+    this.blue = Math.floor(Math.random() * 256);
+
+    this.bgColor = 'rgb(' + this.red + ', ' + this.green + ', ' + this.blue + ')';
+}

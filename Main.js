@@ -14,13 +14,9 @@ function main() {
 
     for (var i = 0; i < popLength; i++) {
 
-        population[i] = new Object();
+        population[i] = new Specimen();
 
-        population[i].bgColor = {
-            r:Math.floor(Math.random() * 256),
-            g:Math.floor(Math.random() * 256),
-            b:Math.floor(Math.random() * 256)
-        };
+        population[i].
 
         for (var j = 0; j < figuresLimit; j++) {
 
