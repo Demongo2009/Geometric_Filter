@@ -59,6 +59,8 @@ function Mutate(population) {
 
         var chanceToChange = 2;
         if (Math.floor(Math.random() * chanceToChange) === 0) mutate4(population[i]);
+        if (Math.floor(Math.random() * chanceToChange) === 0) mutateBg(population[i]);
+
     }
 
     return population;
@@ -232,6 +234,23 @@ function mutate6(parent){
 
     return newParent;
 
+}
+
+function mutateBg(parent) {
+
+    var maxChangeFactor = 1.50;
+    var minChangeFactor  = 0.5;
+
+        parent.r = Math.floor(parent.r * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor));
+        if (parent.r >= 255) parent.r = Math.floor(parent.r * minChangeFactor);
+
+        parent.g = Math.floor(parent.g * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor));
+        if (parent.g >= 255) parent.g = Math.floor(parent.g * minChangeFactor);
+
+        parent.b = Math.floor(parent.b * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor));
+        if (parent.b >= 255) parent.b = Math.floor(parent.b * minChangeFactor);
+
+        parent.bgColor = 'rgb(' + parent.r + ', ' + parent.g + ', ' + parent.b + ')';
 }
 
 
