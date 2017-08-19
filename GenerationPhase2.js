@@ -1,4 +1,4 @@
-function generation(population) {
+function generationPhase2(population) {
 
     var best = population.slice(0, popLength * 0.1);
     var newOffspring = new Array();
@@ -17,9 +17,7 @@ function generation(population) {
         newOffspring.push(offSpr);
     }
 
-    // console.time('Mutate');
-    var newGeneration = best.concat(Mutate(newOffspring));
-    // console.timeEnd('Mutate');
+    var newGeneration = best.concat(MutatePhase2(newOffspring));
 
     generationNumber++;
     return newGeneration;

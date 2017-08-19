@@ -2,7 +2,8 @@ function draw() {
 
     for (var i = popLength - 1; i >= 0; i--) {
 
-        ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+        ctx.fillStyle = population[i].bgColor;
+        ctx.fillRect(0, 0, canvasWidth, canvasHeight);
 
         for (var j = figuresLimit - 1; j >= 0; j--) {
 
@@ -10,7 +11,6 @@ function draw() {
             else if (population[i][j] instanceof Circle) drawCircle(population[i][j]);
 
         }
-
         population[i].points = rank();
     }
 
@@ -19,25 +19,38 @@ function draw() {
         return b.points - a.points;
     });
 
+    //var figuresScore = (population[0].points * 100)/(canvasSqure);
+    var figuresScore = (population[0].points * 100)/(canvasSqure * 255 * 3);
 
-    document.getElementById("bestScore").innerText = population[0].points;
+    document.getElementById("bestScore").innerText = Math.floor(figuresScore) + '%' +'  (' + population[0].points + ')';
 
-    ctxBest.clearRect(0, 0, canvasWidth, canvasHeight);
+    if(debugCanvas) debugging();
 
+    if (generationNumber % 100 === 0) {
+        console.log('Generation number: ' + generationNumber);
 
-    for (var i = figuresLimit - 1; i >= 0; i--) {
+        if (lastFiguresScore + 0.05 > figuresScore) {
 
-        if (population[i][j] instanceof Triangle) drawTriangle();
-        else if (population[i][j] instanceof Circle) drawCircle();
+            ancestors.push(population[0]);
+
+            for (var i = 0; i < popLength; i++) {
+                for (var j = 0; j < figuresLimit; j++) {
+
+                    population[i][j] = new Triangle();
+                }
+            }
+
+            lastFiguresScore = 0;
+
+            console.log('NEW BRANCH!');
+
+        } else lastFiguresScore = figuresScore;
 
     }
 
     population = generation(population);
 
-    //console.log(population);
-    if ( generationNumber % 100 === 0) console.log('Generation number: ' + generationNumber);
-
-        setTimeout(draw, 1);
+    setTimeout(draw, 1);
 }
 
 
@@ -52,7 +65,6 @@ function drawTriangle(triangle) {
     ctx.lineTo(triangle.b[0], triangle.b[1]);
     ctx.lineTo(triangle.c[0], triangle.c[1]);
     ctx.fill();
-
 }
 
 function drawCircle(circle) {
