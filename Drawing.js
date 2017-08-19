@@ -27,7 +27,7 @@ function draw() {
     // console.timeEnd('sortowanie');
 
     //var figuresScore = (population[0].points * 100)/(canvasSqure);
-    var figuresScore = (population[0].points * 100)/(canvasSqure * 255 * 3);
+    figuresScore = (population[0].points * 100)/(canvasSqure * 255 * 3);
 
     document.getElementById("bestScore").innerText = Math.floor(figuresScore) + '%' +'  (' + population[0].points + ')';
 
@@ -42,13 +42,46 @@ function draw() {
     // console.timeEnd('drawing');
 
     // console.time('generation');
-    population = generation(population);
     // console.timeEnd('generation');
 
     if (generationNumber % 100 === 0) {
+
+        if((lastFiguresScore + 0.05)> figuresScore){
+
+            ancestors.push(population[0]);// copy Specimen than Triangles <----------------------
+            debugger;
+
+            for(var i=0; i < popLength ; i++) {
+                for (var j = 0; j < figuresLimit; j++) {
+
+                    var newFigure;
+
+                    // if (Math.floor(Math.random() * 2) === 0)
+
+                    // else
+                    // newFigure = new Circle();
+                    population[i][j] = new Triangle();
+                }
+            }
+
+
+            if(debugCanvas) {
+
+                ancestorsCtxArray[ancestorsCtxArray.length] = createContextCanvas("ancestorCanvas" + ancestors.length, canvasWidth, canvasHeight);
+                createContextScore('ancestorScore' + ancestors.length);
+            }
+
+            lastFiguresScore=0;
+            console.log("NEW BRANCH!!");
+        }else{
+            lastFiguresScore=figuresScore;
+        }
+
         console.log('Generation number: ' + generationNumber);
     }
-        setTimeout(draw, 1);
+    population = generation(population);
+
+    setTimeout(draw, 1);
 }
 
 

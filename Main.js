@@ -9,6 +9,9 @@ function main() {
     figuresLimit = 20;
     popLength = 100;
     canvasSqure = canvasWidth * canvasHeight;
+    figuresScore = 0;
+    lastFiguresScore=0;
+    ancestors=[];
 
     population = new Array();
 
@@ -44,30 +47,14 @@ function main() {
     var canvas = document.getElementById('GeometricFilter');
     var image = document.getElementById('image');
 
-    function createContextCanvas(name, width, height) {
 
-        var canvas = document.createElement('canvas');
-        canvas.id=name;
-        canvas.width=width;
-        canvas.height=height;
-        document.body.appendChild(canvas);
-        return canvas.getContext('2d');
-    }
-
-    function createContextScore(name) {
-
-        var score = document.createElement('DIV');
-        score.id = name;
-        score.style = "width:" + 30 + "px; height:" + 15 + "px; font-size:10px; display:inline-block";
-        document.body.appendChild(score);
-        return score.innerText;
-
-    }
 
     var img = new Image();
 
-    ctxArray = [];
+
     if(debugCanvas)
+        ctxArray = [];
+        ancestorsCtxArray=[];
         for(var k = 0; k < popLength; k++) {
             ctxArray[k] = createContextCanvas("canvas" + k, canvasWidth, canvasHeight);
             createContextScore('score' + k);
@@ -91,7 +78,26 @@ function main() {
         // img.src = 'export.png';
         // img.src = 'testImg.png';
         // img.src = 'MonaLisa.jpg';
-        img.src = 'girl.png';
+        img.src = 'panda2.png';
         // img.src = 'kolko.png';
     }
+}
+function createContextCanvas(name, width, height) {
+
+    var canvas = document.createElement('canvas');
+    canvas.id=name;
+    canvas.width=width;
+    canvas.height=height;
+    document.body.appendChild(canvas);
+    return canvas.getContext('2d');
+}
+
+function createContextScore(name) {
+
+    var score = document.createElement('DIV');
+    score.id = name;
+    score.style = "width:" + 30 + "px; height:" + 15 + "px; font-size:10px; display:inline-block";
+    document.body.appendChild(score);
+    return score.innerText;
+
 }

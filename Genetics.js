@@ -5,12 +5,31 @@ function Triangle() {
     this.c = [];
 
     //do {
-        this.a[0] = Math.floor(Math.random() * canvasWidth);
-        this.a[1] = Math.floor(Math.random() * canvasHeight);
-        this.b[0] = Math.floor(Math.random() * canvasWidth);
-        this.b[1] = Math.floor(Math.random() * canvasHeight);
-        this.c[0] = Math.floor(Math.random() * canvasWidth);
-        this.c[1] = Math.floor(Math.random() * canvasHeight);
+    this.a[0] = Math.floor(Math.random() * canvasWidth);
+    this.a[1] = Math.floor(Math.random() * canvasHeight);
+
+    var rangeX=0.2 * canvasWidth;
+    var rangeY=0.2 * canvasHeight;
+
+    this.b[0] = this.a[0] - rangeX + (Math.random() * rangeX * 2);
+    if(this.b[0] > canvasWidth) this.b[0]=canvasWidth;
+    if(this.b[0] < 0) this.b[0]=0;
+
+
+    this.b[1] = this.a[1] - rangeY + (Math.random() * rangeY * 2);
+    if(this.b[1] > canvasWidth) this.b[1]=canvasHeight;
+    if(this.b[1] < 0) this.b[1]=0;
+
+
+    this.c[0] = this.a[0] - rangeX + (Math.random() * rangeX * 2);
+    if(this.c[0] > canvasWidth) this.c[0]=canvasWidth;
+    if(this.c[0] < 0) this.c[0]=0;
+
+
+    this.c[1] = this.a[1] - rangeY + (Math.random() * rangeY * 2);
+    if(this.c[1] > canvasWidth) this.c[1]=canvasHeight;
+    if(this.c[1] < 0) this.c[1]=0;
+
     //} while (this.a[0] === this.b[0] || this.a[0] === this.c[0] || this.b[0] === this.c[0] || this.a[1] === this.b[1] || this.a[1] === this.c[1] || this.b[1] === this.c[1]);
 
     this.red = Math.floor(Math.random() * 256);
