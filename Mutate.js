@@ -61,6 +61,7 @@ function Mutate(population) {
         if (Math.floor(Math.random() * chanceToChange) === 0) mutate4(population[i]);
         if (Math.floor(Math.random() * chanceToChange) === 0) mutateBg(population[i]);
 
+        if (ancestors.length !== 0) mutate7(population[i]);
     }
 
     return population;
@@ -162,7 +163,7 @@ function mutate4(parent) {
 
     var rand = Math.floor(Math.random() * figuresLimit);
 
-    var newParent = new Object();
+    var newParent = new Specimen();
     var j = 0;
 
     for (var i = rand; i < figuresLimit; i++) {
@@ -222,7 +223,7 @@ function mutate5Cir(parent) {
 function mutate6(parent){
     var rand = Math.floor(Math.random() * figuresLimit-1)+1;
 
-    var newParent = new Object();
+    var newParent = new Specimen();
 
     for (var i = 0; i < figuresLimit; i++) {
 
@@ -253,5 +254,19 @@ function mutateBg(parent) {
         parent.bgColor = 'rgb(' + parent.r + ', ' + parent.g + ', ' + parent.b + ')';
 }
 
+function mutate7(parent) {
 
+    var rand = Math.floor(Math.random() * figuresLimit);
+    var chooseAncestor = Math.floor(Math.random() * ancestors.length);
+    var newParent = new Specimen();
+
+    for (var i = 0; i < figuresLimit - 1; i++) {
+
+        newParent[i + 1] = parent[i].copy();
+    }
+
+    newParent[0] = ancestors[chooseAncestor][rand].copy();
+
+    return newParent;
+}
 

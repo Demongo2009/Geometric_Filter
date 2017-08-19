@@ -2,35 +2,24 @@ function main() {
 
     console.log('It lives!');
 
-    debugCanvas = true;
+    debugCanvas = false;
     generationNumber = 0;
     canvasWidth = 30;
     canvasHeight = 45;
-    figuresLimit = 30;
+    figuresLimit = 40;
     popLength = 100;
     canvasSqure = canvasWidth * canvasHeight;
+    ancestors = [];
+    lastFiguresScore = 0;
 
     population = new Array();
 
     for (var i = 0; i < popLength; i++) {
 
-        population[i] = new Object();
-
-        population[i].r = Math.floor(Math.random() * 256);
-        population[i].g = Math.floor(Math.random() * 256);
-        population[i].b = Math.floor(Math.random() * 256);
-
-        population[i].bgColor = 'rgb(' + population[i].r + ', ' + population[i].g + ', ' + population[i].b + ')';
-
+        population[i] = new Specimen();
         for (var j = 0; j < figuresLimit; j++) {
 
-            var newFigure;
-
-            // if (Math.floor(Math.random() * 2) === 0)
-            newFigure = new Triangle();
-            // else
-            // newFigure = new Circle();
-            population[i][j] = newFigure;
+            population[i][j] = new Triangle();
         }
     }
 
@@ -83,8 +72,11 @@ function main() {
 
         // img.src = 'export.png';
         // img.src = 'testImg.png';
-        img.src = 'MonaLisa.jpg';
-        // img.src = 'girl.png';
+        // img.src = 'MonaLisa.jpg';
+        img.src = 'girl.png';
         // img.src = 'kolko.png';
+        // img.src = 'zergling.jpg';
+        // img.src = 'kordian.jpg';
+
     }
 }

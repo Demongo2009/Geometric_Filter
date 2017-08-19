@@ -1,6 +1,6 @@
 function crossover(parent1, parent2) {
 
-    var newGroupOfTriangles = new Object();
+    var newGroupOfTriangles = new Specimen();
 
     newGroupOfTriangles.r = (parent1.r + parent2.r)/2;
     newGroupOfTriangles.g = (parent1.g + parent2.g)/2;
