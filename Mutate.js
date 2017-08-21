@@ -61,7 +61,9 @@ function Mutate(population) {
         if (Math.floor(Math.random() * chanceToChange) === 0) mutate4(population[i]);
         if (Math.floor(Math.random() * chanceToChange) === 0) mutateBg(population[i]);
 
-        if (ancestors.length !== 0) mutate7(population[i]);
+        if (ancestors.length !== 0)
+            for (var j = 0; j < Math.floor(figuresLimit * 0.05); j++)
+            mutate7(population[j]);
     }
 
     return population;
@@ -256,7 +258,7 @@ function mutateBg(parent) {
 
 function mutate7(parent) {
 
-    var rand = Math.floor(Math.random() * figuresLimit);
+    var rand = Math.floor(Math.random() * (figuresLimit / 2));
     var chooseAncestor = Math.floor(Math.random() * ancestors.length);
     var newParent = new Specimen();
 
