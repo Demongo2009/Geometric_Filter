@@ -10,6 +10,7 @@ function main() {
     popLength = 100;
     canvasSqure = canvasWidth * canvasHeight;
     ancestors = [];
+    ancestorsArray = [];
     lastFiguresScore = 0;
 
     population = new Array();
@@ -26,12 +27,13 @@ function main() {
     var canvas = document.getElementById('GeometricFilter');
     var image = document.getElementById('image');
 
+
     function createContextCanvas(name, width, height) {
 
         var canvas = document.createElement('canvas');
-        canvas.id=name;
-        canvas.width=width;
-        canvas.height=height;
+        canvas.id = name;
+        canvas.width = width;
+        canvas.height = height;
         document.body.appendChild(canvas);
         return canvas.getContext('2d');
     }
@@ -48,12 +50,13 @@ function main() {
 
     var img = new Image();
 
-    ctxArray = [];
-    if(debugCanvas)
-        for(var k = 0; k < popLength; k++) {
+    if(debugCanvas) {
+        ctxArray = [];
+        for (var k = 0; k < popLength; k++) {
             ctxArray[k] = createContextCanvas("canvas" + k, canvasWidth, canvasHeight);
             createContextScore('score' + k);
         }
+    }
 
 
     if (canvas.getContext) {

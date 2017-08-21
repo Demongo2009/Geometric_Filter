@@ -29,9 +29,10 @@ function draw() {
     if (generationNumber % 100 === 0) {
         console.log('Generation number: ' + generationNumber);
 
-        if (lastFiguresScore + 0.05 > figuresScore) {
+        if (lastFiguresScore + 0.5 > figuresScore) {
 
             ancestors.push(population[0]);
+            drawAncestors();
 
             for (var i = 0; i < popLength; i++) {
                 for (var j = 0; j < figuresLimit; j++) {
