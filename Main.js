@@ -1,5 +1,7 @@
 function main() {
 
+
+
     console.log('It lives!');
 
     debugCanvas = false;
@@ -11,6 +13,7 @@ function main() {
     canvasSqure = canvasWidth * canvasHeight;
     ancestors = [];
     lastFiguresScore = 0;
+
 
     population = new Array();
 
@@ -76,7 +79,7 @@ function main() {
         img.src = 'girl.png';
         // img.src = 'kolko.png';
         // img.src = 'zergling.jpg';
-        // img.src = 'kordian.jpg';
-
+         // img.src = 'kordian.jpg';
+        // img.src = zdjecie;
     }
 }
