@@ -1,5 +1,14 @@
 <!DOCTYPE html>
 <head>
+    <button id="przycisk" onclick="klik()">WŁĄCZ</button>
+    <button id="snap">Snap Photo</button>
+    <canvas id="GeometricFilter" width="30" height="45" ></canvas>
+    <canvas id="image" width="30" height="45"></canvas>
+
+    <div id="bestScore" style="color:red"></div>
+    <canvas id="canvas" width="30" height="45"></canvas>
+    <video id="video" width="30" height="45"></video>
+
     <meta charset="UTF-8">
     <title>GeometricFilter</title>
     <script src="Debugging.js"></script>
@@ -11,17 +20,13 @@
     <script src="GenerationPhase2.js"></script>
     <script src="MutatePhase2.js"></script>
     <script src="Ancestors.js"></script>
+    <script src="Camera.js"></script>
 
     <script src="Genetics.js"></script>
     <script src="Rank.js"></script>
     <script src="Drawing.js"></script>
     <script src="Main.js" ></script>
 </head>
-<body onload="main();">
-<canvas id="GeometricFilter" width="30" height="45" ></canvas>
-<canvas id="image" width="30" height="45"></canvas>
-
-<div id="bestScore" style="color:red"></div>
-
+<body>
 </body>
 </html>

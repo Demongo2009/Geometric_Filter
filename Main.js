@@ -1,4 +1,9 @@
+function klik(){
+    document.getElementById("przycisk").innerHTML = main();
+}
+
 function main() {
+    camera();
 
     console.log('It lives!');
 
@@ -9,8 +14,8 @@ function main() {
     figuresLimit = 40;
     popLength = 100;
     canvasSqure = canvasWidth * canvasHeight;
-    ancestors = [];
-    ancestorsArray = [];
+    // ancestors = [];
+    // ancestorsArray = [];
     lastFiguresScore = 0;
 
     population = new Array();
@@ -69,6 +74,7 @@ function main() {
 
             imgData = ctxImg.getImageData(0, 0, canvasWidth, canvasHeight).data;
 
+            console.time('anc');
             draw();
 
         }, false);

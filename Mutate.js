@@ -3,7 +3,6 @@ function Mutate(population) {
     var mutationNumber = 5;
 
     for (var i = 0; i < population.length; i++) {
-        //for (var j = 0; j < figuresLimit; j++) {
         var randSpecimen = Math.floor(Math.random() * figuresLimit);
 
         var event = Math.floor(Math.random() * mutationNumber);
@@ -61,9 +60,9 @@ function Mutate(population) {
         if (Math.floor(Math.random() * chanceToChange) === 0) mutate4(population[i]);
         if (Math.floor(Math.random() * chanceToChange) === 0) mutateBg(population[i]);
 
-        if (ancestors.length !== 0)
-            for (var j = 0; j < Math.floor(figuresLimit * 0.05); j++)
-            mutate7(population[j]);
+    //     if (ancestors.length !== 0)
+    //         for (var j = 0; j < Math.floor(figuresLimit * 1); j++)
+    //         mutate7(population[i]);
     }
 
     return population;
@@ -223,7 +222,7 @@ function mutate5Cir(parent) {
 
 
 function mutate6(parent){
-    var rand = Math.floor(Math.random() * figuresLimit-1)+1;
+    var rand = Math.floor(Math.random() * figuresLimit - 1) + 1;
 
     var newParent = new Specimen();
 
@@ -255,20 +254,20 @@ function mutateBg(parent) {
 
         parent.bgColor = 'rgb(' + parent.r + ', ' + parent.g + ', ' + parent.b + ')';
 }
-
-function mutate7(parent) {
-
-    var rand = Math.floor(Math.random() * (figuresLimit / 2));
-    var chooseAncestor = Math.floor(Math.random() * ancestors.length);
-    var newParent = new Specimen();
-
-    for (var i = 0; i < figuresLimit - 1; i++) {
-
-        newParent[i + 1] = parent[i].copy();
-    }
-
-    newParent[0] = ancestors[chooseAncestor][rand].copy();
-
-    return newParent;
-}
+//
+// function mutate7(parent) {
+//
+//     var rand = Math.floor(Math.random() * figuresLimit);
+//     var chooseAncestor = Math.floor(Math.random() * ancestors.length);
+//     var newParent = parent.copy();
+//
+//     // for (var i = 0; i < figuresLimit; i++) {
+//     //
+//     //     newParent[i] = parent[i].copy();
+//     // }
+//
+//     newParent[rand] = ancestors[chooseAncestor][rand].copy();
+//
+//     return newParent;
+// }
 
