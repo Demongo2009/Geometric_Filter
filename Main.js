@@ -3,14 +3,13 @@ function klik(){
 }
 
 function main() {
-    camera();
 
     console.log('It lives!');
 
     debugCanvas = false;
     generationNumber = 0;
-    canvasWidth = 30;
-    canvasHeight = 45;
+    canvasWidth = 40;
+    canvasHeight = 30;
     figuresLimit = 40;
     popLength = 100;
     canvasSqure = canvasWidth * canvasHeight;
@@ -70,12 +69,14 @@ function main() {
         ctxImg = image.getContext('2d');
 
         img.addEventListener('load', function() {
-            ctxImg.drawImage(img, 0, 0, canvasWidth, canvasHeight);
+            camera();
+            calibration();
+            // ctxImg.drawImage(img, 0, 0, canvasWidth, canvasHeight);
+            //
+            // imgData = ctxImg.getImageData(0, 0, canvasWidth, canvasHeight).data;
 
-            imgData = ctxImg.getImageData(0, 0, canvasWidth, canvasHeight).data;
-
-            console.time('anc');
-            draw();
+            // console.time('anc');
+            // draw();
 
         }, false);
 

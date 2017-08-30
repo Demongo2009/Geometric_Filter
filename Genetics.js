@@ -116,7 +116,7 @@ function Specimen() {
         s.b = this.b;
 
         for (var i = 0; i < figuresLimit; i++) {
-            s[i] = this[i];
+            s[i] = this[i].copy();
         }
 
         s.bgColor = 'rgb(' + s.r + ', ' + s.g + ', ' + s.b + ')';

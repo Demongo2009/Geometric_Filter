@@ -13,6 +13,9 @@ function camera() {
     var context = canvas.getContext('2d');
 
     document.getElementById("snap").addEventListener("click", function() {
-        context.drawImage(video, 0, 0, 30, 45);
+        context.drawImage(video, 0, 0, canvasWidth, canvasHeight);
+        imgData = context.getImageData(0, 0, canvasWidth, canvasHeight).data;
+        console.time('anc');
+        draw();
     });
 }
