@@ -9,8 +9,8 @@ function main() {
     debugCanvas = false;
     generationNumber = 0;
     canvasWidth = 40;
-    canvasHeight = 30;
-    figuresLimit = 40;
+    canvasHeight = 60;
+    figuresLimit = 50;
     popLength = 100;
     canvasSqure = canvasWidth * canvasHeight;
     // ancestors = [];
@@ -71,22 +71,21 @@ function main() {
         img.addEventListener('load', function() {
             camera();
             calibration();
-            // ctxImg.drawImage(img, 0, 0, canvasWidth, canvasHeight);
-            //
-            // imgData = ctxImg.getImageData(0, 0, canvasWidth, canvasHeight).data;
+            ctxImg.drawImage(img, 0, 0, canvasWidth, canvasHeight);
 
-            // console.time('anc');
-            // draw();
+            imgData = ctxImg.getImageData(0, 0, canvasWidth, canvasHeight).data;
+
+            console.time('anc');
+            draw();
 
         }, false);
 
         // img.src = 'export.png';
         // img.src = 'testImg.png';
         // img.src = 'MonaLisa.jpg';
-        img.src = 'girl.png';
-        // img.src = 'kolko.png';
-        // img.src = 'zergling.jpg';
-        // img.src = 'kordian.jpg';
+        // img.src = 'girl.png';
+        //img.src = 'kordian.jpg';
+        img.src = 'panda.jpg';
 
     }
 }
