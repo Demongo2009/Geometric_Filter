@@ -69,7 +69,7 @@ function main() {
         ctxImg = image.getContext('2d');
 
         img.addEventListener('load', function() {
-            camera();
+            // camera();
             calibration();
             ctxImg.drawImage(img, 0, 0, canvasWidth, canvasHeight);
 
@@ -80,12 +80,12 @@ function main() {
 
         }, false);
 
-        // img.src = 'export.png';
-        // img.src = 'testImg.png';
         // img.src = 'MonaLisa.jpg';
         // img.src = 'girl.png';
         //img.src = 'kordian.jpg';
-        img.src = 'panda.jpg';
+        // img.src = 'panda.jpg';
+        img.src = 'zamek.jpg';
+
 
     }
 }

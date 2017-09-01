@@ -113,27 +113,84 @@ function mutate3Tri(parent) {
     var mutated = parent.copy();
 
     if (chanceToChange === 0) {
+
+        var buffor = mutated.a[0];
+        var range1 = Math.abs(mutated.a[0] - mutated.b[0]);
+        var range2 = Math.abs(mutated.a[0] - mutated.c[0]);
+
         mutated.a[0] = mutated.a[0] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
         if (mutated.a[0] > canvasWidth) mutated.a[0] = canvasWidth;
 
+        if (range1 > Math.abs(mutated.a[0] - mutated.b[0]) || range2 > Math.abs(mutated.a[0] - mutated.c[0])) {
+
+            mutated.a[0] = buffor;
+        }
+
+        buffor = mutated.a[1];
+        range1 = Math.abs(mutated.a[1] - mutated.b[1]);
+        range2 = Math.abs(mutated.a[1] - mutated.c[1]);
+
         mutated.a[1] = mutated.a[1] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
         if (mutated.a[1] > canvasHeight) mutated.a[1] = canvasHeight;
+
+        if (range1 > Math.abs(mutated.a[1] - mutated.b[1]) || range2 > Math.abs(mutated.a[1] - mutated.c[1])) {
+
+            mutated.a[1] = buffor;
+        }
     }
 
     if (chanceToChange === 1) {
+
+        var buffor = mutated.b[0];
+        var range1 = Math.abs(mutated.b[0] - mutated.a[0]);
+        var range2 = Math.abs(mutated.b[0] - mutated.c[0]);
+
         mutated.b[0] = mutated.b[0] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
         if (mutated.b[0] > canvasWidth) mutated.b[0] = canvasWidth;
 
+        if (range1 > Math.abs(mutated.b[0] - mutated.a[0]) || range2 > Math.abs(mutated.b[0] - mutated.c[0])) {
+
+            mutated.b[0] = buffor;
+        }
+
+        buffor = mutated.b[1];
+        range1 = Math.abs(mutated.b[1] - mutated.a[1]);
+        range2 = Math.abs(mutated.b[1] - mutated.c[1]);
+
         mutated.b[1] = mutated.b[1] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
         if (mutated.b[1] > canvasHeight) mutated.b[1] = canvasHeight;
+
+        if (range1 > Math.abs(mutated.b[1] - mutated.a[1]) || range2 > Math.abs(mutated.b[1] - mutated.c[1])) {
+
+            mutated.b[1] = buffor;
+        }
     }
 
     if (chanceToChange === 2) {
+
+        var buffor = mutated.c[0];
+        var range1 = Math.abs(mutated.c[0] - mutated.a[0]);
+        var range2 = Math.abs(mutated.c[0] - mutated.b[0]);
+
         mutated.c[0] = mutated.c[0] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
         if (mutated.c[0] > canvasWidth) mutated.c[0] = canvasWidth;
 
+        if (range1 > Math.abs(mutated.c[0] - mutated.a[0]) || range2 > Math.abs(mutated.c[0] - mutated.b[0])) {
+
+            mutated.c[0] = buffor;
+        }
+
+        buffor = mutated.c[1];
+        range1 = Math.abs(mutated.c[1] - mutated.a[1]);
+        range2 = Math.abs(mutated.c[1] - mutated.b[1]);
+
         mutated.c[1] = mutated.c[1] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
         if (mutated.c[1] > canvasHeight) mutated.c[1] = canvasHeight;
+
+        if (range1 > Math.abs(mutated.c[1] - mutated.a[1]) || range2 > Math.abs(mutated.c[1] - mutated.b[1])) {
+
+            mutated.c[1] = buffor;
+        }
     }
 
     return mutated;
