@@ -45,7 +45,6 @@ function draw() {
             console.log('NEW BRANCH!');
 
         } else lastFiguresScore = figuresScore;
-
     }
 
     population = generation(population);

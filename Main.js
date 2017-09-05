@@ -1,15 +1,20 @@
+function klik(){
+    document.getElementById("przycisk").innerHTML = main();
+}
+
 function main() {
 
     console.log('It lives!');
 
     debugCanvas = false;
     generationNumber = 0;
-    canvasWidth = 30;
-    canvasHeight = 45;
-    figuresLimit = 100;
+    canvasWidth = 40;
+    canvasHeight = 60;
+    figuresLimit = 50;
     popLength = 100;
     canvasSqure = canvasWidth * canvasHeight;
-    ancestors = [];
+    // ancestors = [];
+    // ancestorsArray = [];
     lastFiguresScore = 0;
 
     population = new Array();
@@ -26,12 +31,13 @@ function main() {
     var canvas = document.getElementById('GeometricFilter');
     var image = document.getElementById('image');
 
+
     function createContextCanvas(name, width, height) {
 
         var canvas = document.createElement('canvas');
-        canvas.id=name;
-        canvas.width=width;
-        canvas.height=height;
+        canvas.id = name;
+        canvas.width = width;
+        canvas.height = height;
         document.body.appendChild(canvas);
         return canvas.getContext('2d');
     }
@@ -48,12 +54,13 @@ function main() {
 
     var img = new Image();
 
-    ctxArray = [];
-    if(debugCanvas)
-        for(var k = 0; k < popLength; k++) {
+    if(debugCanvas) {
+        ctxArray = [];
+        for (var k = 0; k < popLength; k++) {
             ctxArray[k] = createContextCanvas("canvas" + k, canvasWidth, canvasHeight);
             createContextScore('score' + k);
         }
+    }
 
 
     if (canvas.getContext) {
@@ -62,10 +69,13 @@ function main() {
         ctxImg = image.getContext('2d');
 
         img.addEventListener('load', function() {
+            // camera();
+            calibration();
             ctxImg.drawImage(img, 0, 0, canvasWidth, canvasHeight);
 
             imgData = ctxImg.getImageData(0, 0, canvasWidth, canvasHeight).data;
 
+            console.time('anc');
             draw();
 
         }, false);
