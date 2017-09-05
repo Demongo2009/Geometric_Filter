@@ -1,16 +1,6 @@
 <!DOCTYPE html>
 <head>
-    <button id="przycisk" onclick="klik()">WŁĄCZ</button>
-    <button id="snap">Snap Photo</button>
-    <button id="calibration">Calibration</button>
-    <canvas id="GeometricFilter" width="40" height="60" ></canvas>
-    <canvas id="image" width="40" height="60"></canvas>
 
-    <div id="bestScore" style="color:red"></div>
-    <canvas id="canvas" width="40" height="60"></canvas>
-    <video id="video" width="40" height="60"></video>
-    <canvas id="resized" width="120" height="180"></canvas>
-    <canvas id="scaled" width="120" height="180"></canvas>
 
     <meta charset="UTF-8">
     <title>GeometricFilter</title>
@@ -32,5 +22,22 @@
     <script src="Main.js" ></script>
 </head>
 <body>
+<div id="all" style="margin: auto; width: 600px;padding-top: 100px;">
+    <div id="przyciski" style="width: 100px; float: left;">
+       <button id="przycisk" onclick="klik()">WŁĄCZ</button>
+       <button id="snap">Snap Photo</button>
+       <button id="calibration">Calibration</button>
+    </div>
+    <div id="images" >
+        <canvas id="GeometricFilter" width="40" height="60" ></canvas>
+        <canvas id="image" width="40" height="60"></canvas>
+    </div>
+
+    <div id="bestScore" style="margin-top: 5px; color: red;"></div>
+    <canvas id="canvas" width="40" height="60"></canvas>
+    <video id="video" width="40" height="60"></video>
+    <canvas id="resized" width="120" height="180"></canvas>
+    <canvas id="scaled" width="120" height="180"></canvas>
+</div>
 </body>
 </html>

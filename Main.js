@@ -80,11 +80,11 @@ function main() {
 
         }, false);
 
-        // img.src = 'MonaLisa.jpg';
+        img.src = 'MonaLisa.jpg';
         // img.src = 'girl.png';
         //img.src = 'kordian.jpg';
         // img.src = 'panda.jpg';
-        img.src = 'zamek.jpg';
+        // img.src = 'zamek.jpg';
 
 
     }
