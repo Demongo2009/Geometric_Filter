@@ -1,16 +1,22 @@
 function crossover(parent1, parent2) {
 
-    var newGroupOfTriangles = new Object();
-    var rand = Math.floor(Math.random() * trianglesLimit);
+    var newGroupOfTriangles = new Specimen();
 
-    for (var i = 0; i < rand; i++) {
+    newGroupOfTriangles.r = (parent1.r + parent2.r)/2;
+    newGroupOfTriangles.g = (parent1.g + parent2.g)/2;
+    newGroupOfTriangles.b = (parent1.b + parent2.b)/2;
 
-        newGroupOfTriangles[i] = parent1[i];
-    }
+    newGroupOfTriangles.bgColor = 'rgb(' + newGroupOfTriangles.r + ', ' + newGroupOfTriangles.g + ', ' + newGroupOfTriangles.b + ')';
 
-    for (var i = rand; i < trianglesLimit; i++) {
+    for (var i = 0; i < figuresLimit; i++) {
 
-        newGroupOfTriangles[i] = parent2[i];
+        if (Math.floor(Math.random() * 2) === 0) {
+
+            newGroupOfTriangles[i] = parent1[i].copy();
+        } else {
+
+            newGroupOfTriangles[i] = parent2[i].copy();
+        }
     }
 
     return newGroupOfTriangles;

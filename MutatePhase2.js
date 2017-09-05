@@ -1,33 +1,35 @@
-function Mutate(population) {
+function MutatePhase2(population) {
 
     var mutationNumber = 5;
 
     for (var i = 0; i < population.length; i++) {
+
         var randSpecimen = Math.floor(Math.random() * figuresLimit);
 
         var event = Math.floor(Math.random() * mutationNumber);
 
         if (population[i][randSpecimen] instanceof Triangle) {
+
             switch (event) {
 
                 case 0:
-                    population[i][randSpecimen] = mutate1();
+                        population[i][randSpecimen] = mutate1();
                     break;
 
                 case 1:
-                    population[i][randSpecimen] = mutate2(population[i][randSpecimen]);
+                        population[i][randSpecimen] = mutate2(population[i][randSpecimen]);
                     break;
 
                 case 2:
-                    population[i][randSpecimen] = mutate3Tri(population[i][randSpecimen]);
+                        population[i][randSpecimen] = mutate3Tri(population[i][randSpecimen]);
                     break;
 
                 case 3:
-                    population[i][randSpecimen] = mutate5Tri(population[i][randSpecimen]);
+                        population[i][randSpecimen] = mutate5Tri(population[i][randSpecimen]);
                     break;
 
                 case 4:
-                    population[i] = mutate6(population[i]);
+                        population[i] = mutate6(population[i]);
                     break;
 
 
@@ -53,16 +55,13 @@ function Mutate(population) {
             //             break;
             //
             //     }
-        //}
-    }
+            event++;
 
-        var chanceToChange = 2;
-        if (Math.floor(Math.random() * chanceToChange) === 0) mutate4(population[i]);
-        if (Math.floor(Math.random() * chanceToChange) === 0) mutateBg(population[i]);
+        }
+        // }
 
-    //     if (ancestors.length !== 0)
-    //         for (var j = 0; j < Math.floor(figuresLimit * 1); j++)
-    //         mutate7(population[i]);
+        // var chanceToChange = 2;
+        // if (Math.floor(Math.random() * chanceToChange) === 0) mutate4(population[i]);
     }
 
     return population;
@@ -71,7 +70,7 @@ function Mutate(population) {
 function mutate1() {
 
     // if (Math.floor(Math.random() * 2) === 0)
-        var mutated = new Triangle();
+    var mutated = new Triangle();
     // else
     // var mutated = new Circle();
 
@@ -81,8 +80,8 @@ function mutate1() {
 function mutate2(parent) {
 
     var chanceToChange = 1;
-    var maxChangeFactor = 1.50;
-    var minChangeFactor  = 0.5;
+    var maxChangeFactor = 1.1;
+    var minChangeFactor  = 0.9;
 
     var mutated = parent.copy();
 
@@ -106,91 +105,40 @@ function mutate2(parent) {
 
 function mutate3Tri(parent) {
 
-    var chanceToChange = Math.floor(Math.random() * 3);
-    var maxChangeFactor = 1.5;
-    var minChangeFactor = 0.5;
+    var chanceToChange = 1;
+    var maxChangeFactor = 1.1;
+    var minChangeFactor = 0.9;
 
     var mutated = parent.copy();
 
-    if (chanceToChange === 0) {
-
-        var buffor = mutated.a[0];
-        var range1 = Math.abs(mutated.a[0] - mutated.b[0]);
-        var range2 = Math.abs(mutated.a[0] - mutated.c[0]);
-
+    if (Math.floor(Math.random() * chanceToChange) === 0) {
         mutated.a[0] = mutated.a[0] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
         if (mutated.a[0] > canvasWidth) mutated.a[0] = canvasWidth;
+    }
 
-        if (range1 > Math.abs(mutated.a[0] - mutated.b[0]) || range2 > Math.abs(mutated.a[0] - mutated.c[0])) {
-
-            mutated.a[0] = buffor;
-        }
-
-        buffor = mutated.a[1];
-        range1 = Math.abs(mutated.a[1] - mutated.b[1]);
-        range2 = Math.abs(mutated.a[1] - mutated.c[1]);
-
+    if (Math.floor(Math.random() * chanceToChange) === 0) {
         mutated.a[1] = mutated.a[1] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
         if (mutated.a[1] > canvasHeight) mutated.a[1] = canvasHeight;
-
-        if (range1 > Math.abs(mutated.a[1] - mutated.b[1]) || range2 > Math.abs(mutated.a[1] - mutated.c[1])) {
-
-            mutated.a[1] = buffor;
-        }
     }
 
-    if (chanceToChange === 1) {
-
-        var buffor = mutated.b[0];
-        var range1 = Math.abs(mutated.b[0] - mutated.a[0]);
-        var range2 = Math.abs(mutated.b[0] - mutated.c[0]);
-
+    if (Math.floor(Math.random() * chanceToChange) === 0) {
         mutated.b[0] = mutated.b[0] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
         if (mutated.b[0] > canvasWidth) mutated.b[0] = canvasWidth;
-
-        if (range1 > Math.abs(mutated.b[0] - mutated.a[0]) || range2 > Math.abs(mutated.b[0] - mutated.c[0])) {
-
-            mutated.b[0] = buffor;
-        }
-
-        buffor = mutated.b[1];
-        range1 = Math.abs(mutated.b[1] - mutated.a[1]);
-        range2 = Math.abs(mutated.b[1] - mutated.c[1]);
-
-        mutated.b[1] = mutated.b[1] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
-        if (mutated.b[1] > canvasHeight) mutated.b[1] = canvasHeight;
-
-        if (range1 > Math.abs(mutated.b[1] - mutated.a[1]) || range2 > Math.abs(mutated.b[1] - mutated.c[1])) {
-
-            mutated.b[1] = buffor;
-        }
     }
 
-    if (chanceToChange === 2) {
+    if (Math.floor(Math.random() * chanceToChange) === 0) {
+        mutated.b[1] = mutated.b[1] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
+        if (mutated.b[1] > canvasHeight) mutated.b[1] = canvasHeight;
+    }
 
-        var buffor = mutated.c[0];
-        var range1 = Math.abs(mutated.c[0] - mutated.a[0]);
-        var range2 = Math.abs(mutated.c[0] - mutated.b[0]);
-
+    if (Math.floor(Math.random() * chanceToChange) === 0) {
         mutated.c[0] = mutated.c[0] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
         if (mutated.c[0] > canvasWidth) mutated.c[0] = canvasWidth;
+    }
 
-        if (range1 > Math.abs(mutated.c[0] - mutated.a[0]) || range2 > Math.abs(mutated.c[0] - mutated.b[0])) {
-
-            mutated.c[0] = buffor;
-        }
-
-        buffor = mutated.c[1];
-        range1 = Math.abs(mutated.c[1] - mutated.a[1]);
-        range2 = Math.abs(mutated.c[1] - mutated.b[1]);
-
+    if (Math.floor(Math.random() * chanceToChange) === 0) {
         mutated.c[1] = mutated.c[1] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
         if (mutated.c[1] > canvasHeight) mutated.c[1] = canvasHeight;
-
-        if (range1 > Math.abs(mutated.c[1] - mutated.a[1]) || range2 > Math.abs(mutated.c[1] - mutated.b[1])) {
-
-            mutated.c[1] = buffor;
-        }
     }
 
     return mutated;
@@ -199,8 +147,8 @@ function mutate3Tri(parent) {
 function mutate3Cir(parent) {
 
     var chanceToChange = 1;
-    var maxChangeFactor = 1.5;
-    var minChangeFactor = 0.5;
+    var maxChangeFactor = 1.10;
+    var minChangeFactor = 0.90;
 
     var mutated = parent.copy();
 
@@ -221,7 +169,7 @@ function mutate4(parent) {
 
     var rand = Math.floor(Math.random() * figuresLimit);
 
-    var newParent = new Specimen();
+    var newParent = new Object();
     var j = 0;
 
     for (var i = rand; i < figuresLimit; i++) {
@@ -242,7 +190,7 @@ function mutate4(parent) {
 
 function mutate5Tri(parent) {
 
-    var chanceToChange = 2;
+    var chanceToChange = 1;
 
     var mutated = parent.copy();
 
@@ -261,8 +209,8 @@ function mutate5Tri(parent) {
 function mutate5Cir(parent) {
 
     var chanceToChange = 1;
-    var maxChangeFactor = 1.25;
-    var minChangeFactor = 0.75;
+    var maxChangeFactor = 1.10;
+    var minChangeFactor = 0.90;
 
     var mutated = parent.copy();
 
@@ -279,9 +227,9 @@ function mutate5Cir(parent) {
 
 
 function mutate6(parent){
-    var rand = Math.floor(Math.random() * figuresLimit - 1) + 1;
+    var rand = Math.floor(Math.random() * figuresLimit-1)+1;
 
-    var newParent = new Specimen();
+    var newParent = new Object();
 
     for (var i = 0; i < figuresLimit; i++) {
 
@@ -294,37 +242,9 @@ function mutate6(parent){
     return newParent;
 
 }
+function mutate7(parent) {
 
-function mutateBg(parent) {
-
-    var maxChangeFactor = 1.50;
-    var minChangeFactor  = 0.5;
-
-        parent.r = Math.floor(parent.r * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor));
-        if (parent.r >= 255) parent.r = Math.floor(parent.r * minChangeFactor);
-
-        parent.g = Math.floor(parent.g * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor));
-        if (parent.g >= 255) parent.g = Math.floor(parent.g * minChangeFactor);
-
-        parent.b = Math.floor(parent.b * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor));
-        if (parent.b >= 255) parent.b = Math.floor(parent.b * minChangeFactor);
-
-        parent.bgColor = 'rgb(' + parent.r + ', ' + parent.g + ', ' + parent.b + ')';
 }
-//
-// function mutate7(parent) {
-//
-//     var rand = Math.floor(Math.random() * figuresLimit);
-//     var chooseAncestor = Math.floor(Math.random() * ancestors.length);
-//     var newParent = parent.copy();
-//
-//     // for (var i = 0; i < figuresLimit; i++) {
-//     //
-//     //     newParent[i] = parent[i].copy();
-//     // }
-//
-//     newParent[rand] = ancestors[chooseAncestor][rand].copy();
-//
-//     return newParent;
-// }
+
+
 

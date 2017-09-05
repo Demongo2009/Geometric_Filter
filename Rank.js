@@ -2,23 +2,24 @@ function rank() {
 
     var pixels = 0;
     var points = 0;
-    var trianglesData = ctx.getImageData(0, 0, canvasWidth, canvasHeight).data;
+    // console.time('getImageData');
+    var figuresData = ctx.getImageData(0, 0, canvasWidth, canvasHeight).data;
+    // console.timeEnd('getImageData');
 
-    for (var i = 0; i < canvasSqure; i += 4) {
+    // console.time('for');
+    for (var i = 0; i < canvasSqure * 4; i += 4) {
 
-        var trianglesPixData = trianglesData.slice(i, i + 4);
-        if (trianglesPixData[3] === 0) continue;
+        // if(figuresData[i+3]!==0) {
+            var pointsOfPixel = checkColor(figuresData, imgData, i);
 
-        var imgPixData = imgData.slice(i, i + 4);
 
-        var pointsOfPixel = checkColor(trianglesPixData, imgPixData);
-
-        pixels++;
-        //console.log(pixels);
-        points += pointsOfPixel;
+            pixels++;
+            points += pointsOfPixel;
+        // }
     }
+    // console.timeEnd('for');
 
-    var ranking = points / pixels;
-    return ranking;
+    //console.log(pixels);
+    return points/*/(Math.pow(pixels,0.95))*/;
 }
 

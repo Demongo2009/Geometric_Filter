@@ -2,80 +2,82 @@ function draw() {
 
     for (var i = popLength - 1; i >= 0; i--) {
 
-        ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+        ctx.fillStyle = population[i].bgColor;
+        ctx.fillRect(0, 0, canvasWidth, canvasHeight);
 
-        for (var j = trianglesLimit - 1; j >= 0; j--) {
+        for (var j = figuresLimit - 1; j >= 0; j--) {
 
-            validate(population[i][j]);
-
-            ctx.fillStyle = population[i][j].color;
-
-            ctx.beginPath();
-            ctx.moveTo(population[i][j].a[0], population[i][j].a[1]);
-            ctx.lineTo(population[i][j].b[0], population[i][j].b[1]);
-            ctx.lineTo(population[i][j].c[0], population[i][j].c[1]);
-            ctx.fill();
+            if (population[i][j] instanceof Triangle) drawTriangle(population[i][j]);
+            else if (population[i][j] instanceof Circle) drawCircle(population[i][j]);
 
         }
-
         population[i].points = rank();
-
-        if (population[i].points < 18) {
-            console.log(JSON.stringify(population[i]));
-            console.log(population[i].points);
-            bestOfPopulation.push(population[i]);
-
-            if (bestOfPopulation.length === popLength) {
-                console.log(JSON.stringify(bestOfPopulation));
-                console.log('bestOfPopulation full');
-                drawBest(bestOfPopulation);
-                break;
-            }
-
-            //for (var j = 0; j < trianglesLimit; j++) {
-
-            //    population[i][j] = new Triangle();
-            //}
-
-        }
     }
 
-    //console.log('Drawn');
     population.sort(function (a, b) {
 
-        return a.points - b.points;
-    })
+        return b.points - a.points;
+    });
+
+    //var figuresScore = (population[0].points * 100)/(canvasSqure);
+    var figuresScore = (population[0].points * 100)/(canvasSqure * 255 * 3);
+
+    document.getElementById("bestScore").innerText = Math.floor(figuresScore) + '%' +'  (' + population[0].points + ')';
+
+    if(debugCanvas) debugging();
+
+    if (generationNumber % 100 === 0) {
+        console.log('Generation number: ' + generationNumber);
+
+        // if (lastFiguresScore + 0.05 > figuresScore) {
+        //
+        //     ancestors.push(population[0].copy());
+        //     console.timeEnd('anc');
+        //     console.log(ancestors[ancestors.length - 1].points);
+        //     drawAncestors();
+        //     console.time('anc');
+        //
+        //     for (var i = 0; i < popLength; i++) {
+        //         for (var j = 0; j < figuresLimit; j++) {
+        //
+        //             population[i][j] = new Triangle();
+        //         }
+        //     }
+        //
+        //     lastFiguresScore = 0;
+        //
+        //     console.log('NEW BRANCH!');
+        //
+        // } else lastFiguresScore = figuresScore;
+
+    }
 
     population = generation(population);
-    //console.log(population);
-    if ( generationNumber % 1000 === 0) console.log('Generation number: ' + generationNumber);
 
-    if (keepGoingLoop) setTimeout(draw, 10);
+    setTimeout(draw, 1);
 }
 
 
-function drawBest (bestOfPopulation) {
+function drawTriangle(triangle) {
 
-    console.log(JSON.stringify(bestOfPopulation));
+    validateTriangle(triangle);
 
-    keepGoingLoop = false;
+    ctx.fillStyle = triangle.color;
 
-    for (var i = popLength - 1; i >= 0; i--) {
+    ctx.beginPath();
+    ctx.moveTo(triangle.a[0], triangle.a[1]);
+    ctx.lineTo(triangle.b[0], triangle.b[1]);
+    ctx.lineTo(triangle.c[0], triangle.c[1]);
+    ctx.fill();
+}
 
-        for (var j = trianglesLimit - 1; j >= 0; j--) {
+function drawCircle(circle) {
 
-            validate(bestOfPopulation[i][j]);
+    validateCircle(circle);
 
-            ctx.fillStyle = bestOfPopulation[i][j].color;
+    ctx.fillStyle = circle.color;
 
-            ctx.beginPath();
-            ctx.moveTo(bestOfPopulation[i][j].a[0], bestOfPopulation[i][j].a[1]);
-            ctx.lineTo(bestOfPopulation[i][j].b[0], bestOfPopulation[i][j].b[1]);
-            ctx.lineTo(bestOfPopulation[i][j].c[0], bestOfPopulation[i][j].c[1]);
-            ctx.fill();
-
-        }
-    }
-
-
+    ctx.beginPath();
+    ctx.arc(circle.center[0], circle.center[1], circle.radius, 0 , Math.PI * 2, true);
+    ctx.fill();
 }

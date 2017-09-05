@@ -1,19 +1,24 @@
-function checkColor(trianglesPixData, imgPixData) {
+function checkColor(figuresPixData, imgPixData, offset) {
 
-    var redOdds = Math.abs(trianglesPixData[0] - imgPixData[0]);
-    var greenOdds = Math.abs(trianglesPixData[1] - imgPixData[1]);
-    var blueOdds = Math.abs(trianglesPixData[2] - imgPixData[2]);
+    if (imgPixData[3+offset] === 0) {
 
-    var colors = [redOdds, greenOdds, blueOdds];
+        imgPixData[0+offset] = 255;
+        imgPixData[1+offset] = 255;
+        imgPixData[2+offset] = 255;
+    }
 
-    colors.sort(function(a, b) {
+    if (figuresPixData[3+offset] === 0) {
 
-        return a - b;
-    });
+        figuresPixData[0+offset] = 255;
+        figuresPixData[1+offset] = 255;
+        figuresPixData[2+offset] = 255;
+    }
 
-    var pointsOfPixel = colors[2];
+    var redOdds = Math.abs(figuresPixData[0+offset] - imgPixData[0+offset]);
+    var greenOdds = Math.abs(figuresPixData[1+offset] - imgPixData[1+offset]);
+    var blueOdds = Math.abs(figuresPixData[2+offset] - imgPixData[2+offset]);
 
-    //console.log('Pixel gains: ' + pointsOfPixel + ' points');
+    var pointsOfPixel = (255 - redOdds) + (255 - greenOdds) + (255 - blueOdds);
+
     return pointsOfPixel;
-
 }

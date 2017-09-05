@@ -1,27 +1,30 @@
+function klik(){
+    document.getElementById("przycisk").innerHTML = main();
+}
+
 function main() {
 
     console.log('It lives!');
 
+    debugCanvas = false;
     generationNumber = 0;
-    canvasWidth = 30;
-    canvasHeight = 45;
-    trianglesLimit = 8;
-    popLength = 20;
+    canvasWidth = 40;
+    canvasHeight = 60;
+    figuresLimit = 50;
+    popLength = 100;
     canvasSqure = canvasWidth * canvasHeight;
-    keepGoingLoop = true;
-
-    bestOfPopulation = new Array();
+    // ancestors = [];
+    // ancestorsArray = [];
+    lastFiguresScore = 0;
 
     population = new Array();
 
     for (var i = 0; i < popLength; i++) {
 
-        population[i] = new Object()
+        population[i] = new Specimen();
+        for (var j = 0; j < figuresLimit; j++) {
 
-        for (var j = 0; j < trianglesLimit; j++) {
-
-            var newTriangle = new Triangle();
-            population[i][j] = newTriangle;
+            population[i][j] = new Triangle();
         }
     }
 
@@ -29,26 +32,60 @@ function main() {
     var image = document.getElementById('image');
 
 
+    function createContextCanvas(name, width, height) {
+
+        var canvas = document.createElement('canvas');
+        canvas.id = name;
+        canvas.width = width;
+        canvas.height = height;
+        document.body.appendChild(canvas);
+        return canvas.getContext('2d');
+    }
+
+    function createContextScore(name) {
+
+        var score = document.createElement('DIV');
+        score.id = name;
+        score.style = "width:" + 30 + "px; height:" + 15 + "px; font-size:10px; display:inline-block";
+        document.body.appendChild(score);
+        return score.innerText;
+
+    }
+
     var img = new Image();
+
+    if(debugCanvas) {
+        ctxArray = [];
+        for (var k = 0; k < popLength; k++) {
+            ctxArray[k] = createContextCanvas("canvas" + k, canvasWidth, canvasHeight);
+            createContextScore('score' + k);
+        }
+    }
+
 
     if (canvas.getContext) {
 
         ctx = canvas.getContext('2d');
         ctxImg = image.getContext('2d');
 
-
-
-
         img.addEventListener('load', function() {
+            // camera();
+            calibration();
             ctxImg.drawImage(img, 0, 0, canvasWidth, canvasHeight);
 
             imgData = ctxImg.getImageData(0, 0, canvasWidth, canvasHeight).data;
 
+            console.time('anc');
             draw();
 
         }, false);
 
-        img.src = "Mona_Lisa.jpg";
+        // img.src = 'MonaLisa.jpg';
+        // img.src = 'girl.png';
+        //img.src = 'kordian.jpg';
+        // img.src = 'panda.jpg';
+        img.src = 'zamek.jpg';
+
 
     }
 }
