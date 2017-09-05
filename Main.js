@@ -6,7 +6,7 @@ function main() {
     generationNumber = 0;
     canvasWidth = 30;
     canvasHeight = 45;
-    figuresLimit = 40;
+    figuresLimit = 100;
     popLength = 100;
     canvasSqure = canvasWidth * canvasHeight;
     ancestors = [];
@@ -75,7 +75,7 @@ function main() {
         // img.src = 'MonaLisa.jpg';
         img.src = 'girl.png';
         // img.src = 'kolko.png';
-        // img.src = 'zergling.jpg';
+        // img.src = 'zergling.png';
         // img.src = 'kordian.jpg';
 
     }
