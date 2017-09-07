@@ -17,9 +17,7 @@ function generation(population) {
         newOffspring.push(offSpr);
     }
 
-    // console.time('Mutate');
     var newGeneration = best.concat(Mutate(newOffspring));
-    // console.timeEnd('Mutate');
 
     generationNumber++;
     return newGeneration;

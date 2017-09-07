@@ -2,9 +2,9 @@ function crossover(parent1, parent2) {
 
     var newGroupOfTriangles = new Specimen();
 
-    newGroupOfTriangles.r = (parent1.r + parent2.r)/2;
-    newGroupOfTriangles.g = (parent1.g + parent2.g)/2;
-    newGroupOfTriangles.b = (parent1.b + parent2.b)/2;
+    newGroupOfTriangles.r = (parent1.r + parent2.r) / 2;
+    newGroupOfTriangles.g = (parent1.g + parent2.g) / 2;
+    newGroupOfTriangles.b = (parent1.b + parent2.b) / 2;
 
     newGroupOfTriangles.bgColor = 'rgb(' + newGroupOfTriangles.r + ', ' + newGroupOfTriangles.g + ', ' + newGroupOfTriangles.b + ')';
 

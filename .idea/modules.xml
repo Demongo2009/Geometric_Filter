@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+<<<<<<< HEAD
+<<<<<<< HEAD
+      <module fileurl="file://$PROJECT_DIR$/.idea/GeometricFilter.iml" filepath="$PROJECT_DIR$/.idea/GeometricFilter.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/.idea/Geometric_Filter.iml" filepath="$PROJECT_DIR$/.idea/Geometric_Filter.iml" />
+>>>>>>> ae4cf33726466733ce9df313b2a229d23ad659f7
+=======
+      <module fileurl="file://$PROJECT_DIR$/.idea/Geometric_Filter.iml" filepath="$PROJECT_DIR$/.idea/Geometric_Filter.iml" />
+>>>>>>> ae4cf33726466733ce9df313b2a229d23ad659f7
+    </modules>
+  </component>
+</project>
