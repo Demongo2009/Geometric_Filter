@@ -1,25 +1,23 @@
-function convertCanvastoImage(canvas) {
-    var image = new Image();
-    image.src = canvas.toDataURL("image/png");
-    return image;
+var blur = 0;
+
+function setBlur(val){
+    blur = val;
 }
 
 function calibration() {
 
-    var canvas = document.getElementById('GeometricFilter');
-
-    var factor = 3;
-
-    document.getElementById("calibration").addEventListener("click", function () {
-
         var resizedCanvas = document.getElementById('resized');
         var scaledCanvas = document.getElementById('scaled');
+
+        resizedCanvas.width = canvasWidth*factor;
+        resizedCanvas.height = canvasHeight*factor;
+
+        scaledCanvas.width = canvasWidth*factor;
+        scaledCanvas.height = canvasHeight*factor;
 
         var ctxResized = resizedCanvas.getContext('2d');
         var ctxScaled = scaledCanvas.getContext('2d');
 
-        var convertedImage = convertCanvastoImage(canvas);
-        ctxScaled.drawImage(convertedImage, 0, 0, canvasWidth * factor, canvasHeight * factor);
 
         var resized = population[0].copy();
 
@@ -44,7 +42,8 @@ function calibration() {
             ctxResized.fill();
 
         }
+    ctxScaled.putImageData(ctxResized.getImageData(0, 0, canvasWidth * factor, canvasHeight * factor), 0, 0);
 
-    });
+    scaledCanvas.style['-webkit-filter']='blur('+String(blur)+'px)';
 
 }

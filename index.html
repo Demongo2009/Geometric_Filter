@@ -1,43 +1,70 @@
 <!DOCTYPE html>
 <head>
 
-
     <meta charset="UTF-8">
     <title>GeometricFilter</title>
-    <script src="Debugging.js"></script>
-    <script src="Validate.js" ></script>
-    <script src="CheckColor.js"></script>
-    <script src="Crossover.js"></script>
-    <script src="Mutate.js"></script>
-    <script src="Generation.js"></script>
-    <script src="GenerationPhase2.js"></script>
-    <script src="MutatePhase2.js"></script>
-    <script src="Ancestors.js"></script>
-    <script src="Calibration.js"></script>
-    <script src="Camera.js"></script>
 
-    <script src="Genetics.js"></script>
-    <script src="Rank.js"></script>
-    <script src="Drawing.js"></script>
-    <script src="Main.js" ></script>
+    <style>
+
+        button {
+
+            width: 200px;
+            height: 100px;
+            font-size: 32px;
+            font-weight: 600;
+            display:inline-block;
+        }
+
+        #imgs img {
+            height:100px;
+            padding:2px;
+            margin:2px;
+            border:1px solid white;
+        }
+
+        #imgs img:hover {
+            border:1px solid black;
+            cursor:pointer;
+        }
+
+    </style>
 </head>
 <body>
-<div id="all" style="margin: auto; width: 600px;padding-top: 100px;">
-    <div id="przyciski" style="width: 100px; float: left;">
-       <button id="przycisk" onclick="klik()">WŁĄCZ</button>
-       <button id="snap">Snap Photo</button>
-       <button id="calibration">Calibration</button>
-    </div>
-    <div id="images" >
-        <canvas id="GeometricFilter" width="40" height="60" ></canvas>
-        <canvas id="image" width="40" height="60"></canvas>
-    </div>
 
-    <div id="bestScore" style="margin-top: 5px; color: red;"></div>
-    <canvas id="canvas" width="40" height="60"></canvas>
-    <video id="video" width="40" height="60"></video>
-    <canvas id="resized" width="120" height="180"></canvas>
-    <canvas id="scaled" width="120" height="180"></canvas>
+<div id="imgs">
+
 </div>
+
+<button id="loadImg" style="display:none;" onclick="zaladujObraz()">ZAŁADUJ OBRAZ</button>
+<button id="przycisk" style="display:none;" onclick="klik()">START</button>
+<button id="cameraON" onclick="camera()">WŁĄCZ KAMERĘ</button>
+<button id="snap" style="display:none;">ZRÓB ZDJĘCIE</button>
+
+<canvas id="GeometricFilter" width="40" height="60" ></canvas>
+<canvas id="image"></canvas>
+
+<div id="bestScore" style="color:red"></div>
+<canvas id="canvas"></canvas>
+<video id="video"></video>
+<canvas id="resized" ></canvas>
+<canvas id="scaled"></canvas>
+
+<script src="Params.js" ></script>
+
+<script src="Debugging.js"></script>
+<script src="Validate.js" ></script>
+<script src="CheckColor.js"></script>
+<script src="Crossover.js"></script>
+<script src="Mutate.js"></script>
+<script src="Generation.js"></script>
+<script src="Calibration.js"></script>
+<script src="Camera.js"></script>
+
+<script src="Genetics.js"></script>
+<script src="Rank.js"></script>
+<script src="Drawing.js"></script>
+<script src="Main.js" ></script>
+<br>
+<input type="range" oninput="setBlur(this.valueAsNumber);" value="0" step="0.1" min="0" max="10">
 </body>
 </html>

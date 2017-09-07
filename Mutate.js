@@ -29,40 +29,13 @@ function Mutate(population) {
                 case 4:
                     population[i] = mutate6(population[i]);
                     break;
-
-
             }
-            // } else if (population[i][j] instanceof Circle) {
-            //
-            //     switch (event) {
-            //
-            //         case 0:
-            //             population[i][j] = mutate1();
-            //             break;
-            //
-            //         case 1:
-            //             population[i][j] = mutate2(population[i][j]);
-            //             break;
-            //
-            //         case 2:
-            //             population[i][j] = mutate3Cir(population[i][j]);
-            //             break;
-            //
-            //         case 3:
-            //             population[i][j] = mutate5Cir(population[i][j]);
-            //             break;
-            //
-            //     }
-        //}
-    }
+        }
 
         var chanceToChange = 2;
         if (Math.floor(Math.random() * chanceToChange) === 0) mutate4(population[i]);
         if (Math.floor(Math.random() * chanceToChange) === 0) mutateBg(population[i]);
 
-    //     if (ancestors.length !== 0)
-    //         for (var j = 0; j < Math.floor(figuresLimit * 1); j++)
-    //         mutate7(population[i]);
     }
 
     return population;
@@ -70,11 +43,7 @@ function Mutate(population) {
 
 function mutate1() {
 
-    // if (Math.floor(Math.random() * 2) === 0)
-        var mutated = new Triangle();
-    // else
-    // var mutated = new Circle();
-
+    var mutated = new Triangle();
     return mutated;
 }
 
@@ -196,27 +165,6 @@ function mutate3Tri(parent) {
     return mutated;
 }
 
-function mutate3Cir(parent) {
-
-    var chanceToChange = 1;
-    var maxChangeFactor = 1.5;
-    var minChangeFactor = 0.5;
-
-    var mutated = parent.copy();
-
-    if (Math.floor(Math.random() * chanceToChange) === 0) {
-
-        var bufferCenter0 = mutated.center[0];
-        var bufferCenter1 = mutated.center[1];
-
-        mutated.center[0] = mutated.center[0] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
-        mutated.center[1] = mutated.center[1] * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
-        if (mutated.center[0] + mutated.radius > canvasWidth || mutated.center[0] - mutated.radius < 0 ) mutated.center[0] = bufferCenter0;
-        if (mutated.center[1] + mutated.radius > canvasHeight || mutated.center[1] - mutated.radius < 0) mutated.center[1] = bufferCenter1;
-    }
-    return mutated;
-}
-
 function mutate4(parent) {
 
     var rand = Math.floor(Math.random() * figuresLimit);
@@ -258,26 +206,6 @@ function mutate5Tri(parent) {
     return mutated;
 }
 
-function mutate5Cir(parent) {
-
-    var chanceToChange = 1;
-    var maxChangeFactor = 1.25;
-    var minChangeFactor = 0.75;
-
-    var mutated = parent.copy();
-
-    if (Math.floor(Math.random() * chanceToChange) === 0) {
-
-        var buffer = mutated.radius;
-
-        mutated.radius = mutated.radius * (Math.random() * (maxChangeFactor - minChangeFactor) + minChangeFactor);
-        if (mutated.center[0] + mutated.radius > canvasWidth || mutated.center[1] + mutated.radius > canvasHeight || mutated.center[0] - mutated.radius < 0 || mutated.center[1] - mutated.radius < 0) mutated.radius = buffer;
-    }
-
-    return mutated;
-}
-
-
 function mutate6(parent){
     var rand = Math.floor(Math.random() * figuresLimit - 1) + 1;
 
@@ -311,20 +239,3 @@ function mutateBg(parent) {
 
         parent.bgColor = 'rgb(' + parent.r + ', ' + parent.g + ', ' + parent.b + ')';
 }
-//
-// function mutate7(parent) {
-//
-//     var rand = Math.floor(Math.random() * figuresLimit);
-//     var chooseAncestor = Math.floor(Math.random() * ancestors.length);
-//     var newParent = parent.copy();
-//
-//     // for (var i = 0; i < figuresLimit; i++) {
-//     //
-//     //     newParent[i] = parent[i].copy();
-//     // }
-//
-//     newParent[rand] = ancestors[chooseAncestor][rand].copy();
-//
-//     return newParent;
-// }
-

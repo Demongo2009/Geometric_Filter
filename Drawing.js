@@ -1,3 +1,9 @@
+
+function firstDraw(){
+    imgData = ctxImg.getImageData(0, 0, canvasWidth, canvasHeight).data;
+    draw();
+}
+
 function draw() {
 
     for (var i = popLength - 1; i >= 0; i--) {
@@ -19,7 +25,6 @@ function draw() {
         return b.points - a.points;
     });
 
-    //var figuresScore = (population[0].points * 100)/(canvasSqure);
     var figuresScore = (population[0].points * 100)/(canvasSqure * 255 * 3);
 
     document.getElementById("bestScore").innerText = Math.floor(figuresScore) + '%' +'  (' + population[0].points + ')';
@@ -28,23 +33,11 @@ function draw() {
 
     if (generationNumber % 100 === 0) {
         console.log('Generation number: ' + generationNumber);
+    }
 
-        if (lastFiguresScore + 0 > figuresScore) {
+    if (generationNumber % 5 === 0) {
 
-            ancestors.push(population[0]);
-
-            for (var i = 0; i < popLength; i++) {
-                for (var j = 0; j < figuresLimit; j++) {
-
-                    population[i][j] = new Triangle();
-                }
-            }
-
-            lastFiguresScore = 0;
-
-            console.log('NEW BRANCH!');
-
-        } else lastFiguresScore = figuresScore;
+        calibration()
     }
 
     population = generation(population);

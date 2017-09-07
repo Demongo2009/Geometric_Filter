@@ -1,23 +1,58 @@
 function klik(){
-    document.getElementById("przycisk").innerHTML = main();
+
+    document.getElementById("snap").style.display="none";
+    firstDraw();
+    document.getElementById("przycisk").style.display="none";
+    video.style.display = "none";
+    document.getElementById("imgs").style.display="none";
+
+}
+
+population = new Array();
+
+var canvas = document.getElementById('GeometricFilter');
+var image = document.getElementById('image');
+
+ctx = canvas.getContext('2d');
+ctxImg = image.getContext('2d');
+
+canvas.width = canvasWidth;
+canvas.height = canvasHeight;
+
+image.width = canvasWidth;
+image.height = canvasHeight;
+
+
+function zaladujObraz(fName) {
+
+    var img = new Image();
+
+    var origCanvas = document.getElementById('canvas');
+    origCanvas.width = canvasWidth*factor;
+    origCanvas.height = canvasHeight*factor;
+
+    document.getElementById("przycisk").style.display="inline-block";
+    document.getElementById("loadImg").style.display="none";
+    document.getElementById("cameraON").style.display="none";
+
+    img.addEventListener('load', function() {
+        var wPrim = canvasHeight* img.width / img.height;
+
+        ctxImg.drawImage(img, 0, 0, img.width,img.height,-(wPrim -canvasWidth )/2,0, wPrim , canvasHeight);
+
+
+        origCanvas.getContext('2d').drawImage(img, 0,0, img.width,img.height,-(wPrim *factor-canvasWidth*factor )/2,0, wPrim *factor, canvasHeight*factor);
+
+        console.time('anc');
+
+    }, false);
+
+    img.src = fName;
 }
 
 function main() {
 
     console.log('It lives!');
-
-    debugCanvas = false;
-    generationNumber = 0;
-    canvasWidth = 40;
-    canvasHeight = 60;
-    figuresLimit = 50;
-    popLength = 100;
-    canvasSqure = canvasWidth * canvasHeight;
-    // ancestors = [];
-    // ancestorsArray = [];
-    lastFiguresScore = 0;
-
-    population = new Array();
 
     for (var i = 0; i < popLength; i++) {
 
@@ -27,10 +62,6 @@ function main() {
             population[i][j] = new Triangle();
         }
     }
-
-    var canvas = document.getElementById('GeometricFilter');
-    var image = document.getElementById('image');
-
 
     function createContextCanvas(name, width, height) {
 
@@ -52,8 +83,6 @@ function main() {
 
     }
 
-    var img = new Image();
-
     if(debugCanvas) {
         ctxArray = [];
         for (var k = 0; k < popLength; k++) {
@@ -61,33 +90,6 @@ function main() {
             createContextScore('score' + k);
         }
     }
-
-
-    if (canvas.getContext) {
-
-        ctx = canvas.getContext('2d');
-        ctxImg = image.getContext('2d');
-
-        img.addEventListener('load', function() {
-            // camera();
-            calibration();
-            ctxImg.drawImage(img, 0, 0, canvasWidth, canvasHeight);
-
-            imgData = ctxImg.getImageData(0, 0, canvasWidth, canvasHeight).data;
-
-            console.time('anc');
-            draw();
-
-        }, false);
-
-        // img.src = 'export.png';
-        // img.src = 'testImg.png';
-        // img.src = 'MonaLisa.jpg';
-        img.src = 'girl.png';
-        // img.src = 'kolko.png';
-        // img.src = 'zergling.png';
-        // img.src = 'kordian.jpg';
-
-
-    }
 }
+
+main();
