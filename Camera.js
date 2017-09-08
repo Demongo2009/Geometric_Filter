@@ -29,7 +29,7 @@ function camera() {
         context.drawImage(video, 0, 0, video.offsetWidth, video.offsetHeight, -(wPrim - canvasWidth ) / 2, 0, wPrim, canvasHeight);
         origCanvas.getContext('2d').drawImage(video, 0, 0, video.offsetWidth, video.offsetHeight, -(wPrim * factor - canvasWidth * factor) / 2, 0, wPrim * factor, canvasHeight * factor);
 
-        imgData = context.getImageData(0, (wPrim-canvasWidth ) / 2, wPrim, canvasHeight).data;
+        imgData = context.getImageData(0, (wPrim-canvasWidth ) / 3, wPrim, canvasHeight).data;
         console.time('anc');
 
     });

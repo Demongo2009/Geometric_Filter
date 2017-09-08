@@ -11,9 +11,17 @@ var factor = Math.floor(((window.innerWidth)/3)/canvasWidth);
 
 var obrazy = [
 
+    'balon.jpg',
+    'bird.jpg',
+    'barak.png',
+    'dodge.jpg',
+    'girl.jpg',
+    'goomba.png',
+    'liberty.png',
+    'mario.png',
     'MonaLisa.jpg',
-    'pika.jpg',
-    'panda.jpg'
+    'panda.jpg',
+    'vader.jpg',
 ];
 
 for (var i = 0; i < obrazy.length; i++) {
